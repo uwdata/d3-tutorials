@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Technology Fundamental for d3</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Hakim El Hattab">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/idl.css" id="theme">
+
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+  <script>
+  document.write('<link rel="stylesheet" href="reveal.js/css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+  </script>
+
+  <script src="jquery.js"></script>
+
+
+
+
+  <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section>
+        <h1>
+          <small>Technology fundamental for d3.js</small>
+        </h1>
+        <br/>
+        <p>
+          <small>
+            A tutorial by <a href="http://hakim.se">Kanit "Ham" Wongsuphasawat</a>
+          </small>
+        </p>
+        <p>
+          <small>
+            <a href="http://idl.cs.washington.edu">Interactive Data Lab</a>,
+            <a href="http://uw.edu">University of Washington</a>
+          </small>
+        </p>
+        <p>
+          <small>
+            <a href="http://twitter.com/kanitw">@kanitw</a>
+            /
+            <a href="http://kanitw.yellowpigz.com">kanitw.yellowpigz.com</a>
+          </small>
+        </p>
+      </section>
+
+      <section>
+        <section>
+          <h2>HTML & CSS</h2>
+          <p>
+            Hypertext Markup Language & Cascading Stylesheet
+          </p>
+
+          <aside class="notes">
+            First thing first.
+          </aside>
+        </section>
+
+        <section>
+          <h3>Plain Text</h3>
+          <iframe src="example/plain.html" width="100%" height="450"></iframe>
+
+        </section>
+
+        <section>
+          <h3>Use HTML to markup</h3>
+          <p><code>html, body, h1, p, strong, em, a, img</code></p>
+
+          <div class="leftright">
+            <div class="left">
+              <!-- <pre><code id="html0" data-trim></code></pre>
+
+              <script>
+                $("#html0").load('example/html0.html');
+              </script> -->
+              <!-- <iframe src="example/html0.txt" width="100%" height="500"></iframe> -->
+              <p data-height="450" data-theme-id="0" data-slug-hash="wBmEu" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/wBmEu'>wBmEu</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+              </p>
+
+            </div>
+
+            <div class="right">
+              <!-- <iframe src="example/html0.html" width="100%" height="500"></iframe> -->
+
+              <p data-height="450" data-theme-id="0" data-slug-hash="wBmEu" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/wBmEu'>wBmEu</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+              </p>
+            </div>
+            <aside class="note">
+              Tags must be closed
+            </aside>
+          </div>
+          <!-- <iframe width="100%" height="500">
+            <b> source </b>
+          </iframe> -->
+          <!-- <a class="jsbin-embed" href="http://jsbin.com/OHeDaTu/6/embed?html,output">JS Bin</a> -->
+          <!-- <iframe width="100%" height="300" src="http://jsfiddle.net/kanitw/8gG7R/1/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe> -->
+        </section>
+        <!-- <section>
+          <h3>HTML: Link</h3>
+          <p>
+            <code>&lt;a href="//url"&gt;link text&lt;/a&gt;</code>
+          </p>
+
+          <div class="left">
+            <pre>
+              <code id="html-link"></code>
+            </pre>
+          </div>
+
+          <script>
+          $("#html-link").load('example/html-link.html');
+          </script>
+
+          <div class="right">
+            <iframe src="example/html-link.html" height="100"></iframe>
+          </div> -->
+
+        <!-- <iframe src="http://jsbin.com/ejeduPIR/6/embed?html,output" width="100%" height="500"></iframe> -->
+        <!-- <a class="jsbin-embed" href="http://jsbin.com/ejeduPIR/6/embed?html,output">JS Bin</a> -->
+        <!-- </section> -->
+
+        <section>
+          <h3>HTML: div, span + ID, Class</h3>
+          <p>
+            <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div">&lt;div&gt;</a>
+            </code>,
+            <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span">&lt;span&gt;</a>
+            </code>
+          </p>
+          <div class="left">
+            <p data-height="450" data-theme-id="0" data-slug-hash="jAHsK" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/jAHsK'>jAHsK</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <div class="right">
+            <p data-height="450" data-theme-id="0" data-slug-hash="jAHsK" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/jAHsK'>jAHsK</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <!-- <iframe src="http://jsbin.com/OnIweJOb/1/embed?html,output" width="100%" height="500"></iframe> -->
+          <!-- <a class="jsbin-embed" href="http://jsbin.com/OnIweJOb/1/embed?html,output">JS Bin</a> -->
+        </section>
+
+        <!-- <section>
+          <h3>HTML: List</h3>
+          <p>
+            <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">&lt;ul&gt;</a>
+            </code>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol">&lt;ol&gt;</a>
+          </p>
+          <div class="left">
+            <p data-height="450" data-theme-id="0" data-slug-hash="BKwLI" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/BKwLI'>BKwLI</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <div class="right">
+            <p data-height="450" data-theme-id="0" data-slug-hash="BKwLI" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/BKwLI'>BKwLI</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section> -->
+
+        <section>
+          <h3>More Tags</h3>
+          <li>list (<code>ul, ol, li</code>),
+          <code>
+          hr, br, form, input, select, iframe</code>
+          </li>
+          <!-- <p>&lt;table&gt;, -->
+          <li class="see-also">
+            See a <a href="http://www.w3schools.com/html/html_quick.asp">quick list</a> of the most commonly used HTML tags at <a href="http://www.w3schools.com/html">w3schools.com</a>
+              and Mozilla Develop Network's <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML">HTML tutorial</a>.
+          </li>
+          <aside class="notes">
+            In interests of saving time, I would skip other commonly used tags.
+          </aside>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h3>DOM</h3>
+          <ul>
+            <li>A convention for representing and interacting with objects in HTML, XHTML and XML documents.</li>
+            <li>Nodes of every document are organized in a tree structure, called the DOM tree</li>
+            <li>Provides API for modify its content using language such as Javascript</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h3>CSS</h3>
+          <!-- <iframe src="http://jsbin.com/OHeDaTu/8/embed?html,output" width="100%" height="500"></iframe> -->
+        </section>
+        <section>
+          <h3>CSS Selectors</h3>
+          <p>Query the DOM</p>
+          <div class="left">
+            <p data-height="450" data-theme-id="0" data-slug-hash="xDIbe" data-user="kanitw" data-default-tab="css" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/xDIbe'>xDIbe</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <div class="right">
+            <p data-height="450" data-theme-id="0" data-slug-hash="xDIbe" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/xDIbe'>xDIbe</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>ID:
+                <code id="">tag#id</code>
+              </li>
+              <li>Classes:
+                <code>tag.class</code>
+              </li>
+              <li>
+                Pseudo-classes:
+                <code>a:hover</code>,
+                <code>div:first-child</code>
+              </li>
+              <li>
+                Descendant:
+                <code>A D</code>
+              </li>
+              <li>
+                Child:
+                <code>A > C</code>
+              </li>
+
+              <li>
+                Next Sibling:
+                <code>A + C</code>
+              </li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>CSS: Box Model, Position</h3>
+          <div class="left">
+            <img src="img/box-model.gif" width="100%" />
+          </div>
+          <div class="right">
+            <p data-height="300" data-theme-id="0" data-slug-hash="eLlKj" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/eLlKj'>eLlKj</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p>
+
+          </p>
+        </section>
+        <section>
+          <h3>CSS: Position</h3>
+          <p>
+            <small>
+              <code>relative</code>
+              adjust the element's position, without changing layout
+            </small>
+            <div class="left">
+              <p data-height="300" data-theme-id="0" data-slug-hash="Fnulb" data-user="kanitw" data-default-tab="css" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Fnulb'>Fnulb</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+            </div>
+            <div class="right">
+              <p data-height="300" data-theme-id="0" data-slug-hash="Fnulb" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Fnulb'>Fnulb</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+              </p>
+            </div>
+          </p>
+        </section>
+        <section>
+          <h3>CSS: Position</h3>
+          <p>
+            <small>
+              <code>absolute</code>
+              taken out of the flow and thus takes up no space when placing other elements. The absolutely positioned element is positioned relative to nearest positioned ancestor. If a positioned ancestor doesn't exist, the initial container is used.
+            </small>
+
+            <div class="left">
+              <p data-height="300" data-theme-id="0" data-slug-hash="HDfgn" data-user="kanitw" data-default-tab="css" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/HDfgn'>HDfgn</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+              </p>
+            </div>
+            <div class="right">
+              <p data-height="300" data-theme-id="0" data-slug-hash="HDfgn" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/HDfgn'>HDfgn</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+              </p>
+            </div>
+          </p>
+        </section>
+        <section>
+          <h3>CSS: Position</h3>
+          <p>
+            <small>
+              <code>absolute</code> under <code>relative</code>
+            </small>
+            <div class="left">
+              <p data-height="300" data-theme-id="0" data-slug-hash="EyaHr" data-user="kanitw" data-default-tab="css" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/EyaHr'>EyaHr</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+              </p>
+            </div>
+
+            <div class="right">
+              <p data-height="300" data-theme-id="0" data-slug-hash="EyaHr" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/EyaHr'>EyaHr</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+              </p>
+            </div>
+          </p>
+        </section>
+        <section>
+          <h3>CSS: Short Form</h3>
+          <p>
+            <pre>
+              <code>
+                background-color: #000; background-image: url(images/bg.gif); background-repeat: no-repeat; background-position: top right;
+              </code>
+            </pre>
+          </p>
+          <p>Can be shortened to:</p>
+          <p>
+            <pre>
+              <code>
+                background: #000 url(images/bg.gif) no-repeat top right;
+              </code>
+            </pre>
+          </p>
+        </section>
+        <section>
+          <h3>CSS: Include</h3>
+          <p>
+            <small>Inline:</small>
+          </p>
+          <p>
+            <pre>
+              <code>
+                <style>
+                /* put css here */
+                </style>
+              </code>
+            </pre>
+            <pre>
+              <code>
+                <div style="/* put css in style attribute of any tag */">
+                ...
+                </div>
+              </code>
+            </pre>
+          </p>
+          <p>
+            <small>Include:</small>
+          </p>
+          <p>
+            <pre>
+              <code>
+                <link rel="stylesheet" href="style.css">
+              </code>
+            </pre>
+          </p>
+        </section>
+        <section>
+          <h3>CSS grids</h3>
+          <!--TODO-->
+          <p>
+            See <a href="http://getbootstrap.com">bootstrap</a> grid's
+            <a href="http://getbootstrap.com/examples/grid/">examples</a>
+          </p>
+        </section>
+        <section>
+          <h3><a href="http://sass-lang.com">Sass</a>
+          </h3>
+          <p>
+            <b>Variable</b>, <b>Nesting</b>, Partials, Import, <b>Mixins</b>, Inheritance, <b>Operators</b>
+            <div style="height: 350px;" class="overflow-y">
+            <pre><code>
+/* variable, operator */
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 0.8*100% $font-stack;
+  color: $primary-color;
+}
+
+/* nesting */
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+
+/* mixin */
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.box { @include border-radius(10px); }
+            </code></pre></div>
+          </p>
+          <p class="see-also"><small><a href="http://lesscss.org/">Less</a> is a another option.</small></p>
+        </section>
+        <section>
+          <h3><a href="http://compass-style.org/">Compass</a>
+          </h3>
+          <h4>a collection of reusable mixins for designers</h4>
+          <p>Example: inline-block</p>
+
+          <pre><code>
+@mixin inline-block($alignment: $inline-block-alignment) {
+  @if $legacy-support-for-mozilla {
+    display: -moz-inline-stack;
+  }
+  display: inline-block;
+  @if $alignment and $alignment != none {
+    vertical-align: $alignment;
+  }
+  @if $legacy-support-for-ie {
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+  }
+}
+          </code></pre>
+
+        </section>
+        <section>
+          <h3>CSS: Learn more!</h3>
+          <p>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/learn/css">CSS</a> – Mozilla Developer Network</li>
+              <li><a href="http://www.csszengarden.com/">CSS Zen Garden</a>– huge collection of examples</li>
+              <li>Use inspector to learn from others.</li>
+            </ul>
+
+          </p>
+        </section>
+      </section>
+
+
+      <section>
+        <section>
+          <h3>SVG</h3>
+          <h4>Scalable Vector Graphics</h4>
+        </section>
+        <section>
+          <h3>SVG</h3>
+          <div class="left">
+            <p data-height="450" data-theme-id="0" data-slug-hash="tpmfo" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/tpmfo'>tpmfo</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <div class="right">
+            <p data-height="450" data-theme-id="0" data-slug-hash="tpmfo" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/tpmfo'>tpmfo</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h3>SVG + CSS</h3>
+          <div class="left">
+            <p data-height="450" data-theme-id="0" data-slug-hash="upxsq" data-user="kanitw" data-default-tab="css" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/upxsq'>upxsq</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="450" data-theme-id="0" data-slug-hash="upxsq" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/upxsq'>upxsq</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h3>SVG: Polygon, Polyline</h3>
+          <p>Use coordinates to specify path</p>
+          <div class="left">
+            <p data-height="450" data-theme-id="0" data-slug-hash="GfxFD" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/GfxFD'>GfxFD</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="450" data-theme-id="0" data-slug-hash="GfxFD" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/GfxFD'>GfxFD</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h3>SVG: Path</h3>
+          <p>
+            <code>M x y</code> – Move to (x,y)
+          </p>
+          <p>
+            <code>m dx dy</code> – Move by (dx,dy)
+          </p>
+          <p><code>L x y</code> – Line to (x,y) (or <code>l dx dy</code>)</p>
+          <p><code>H x</code>, <code>V y</code> – draw horizontal and vertical lines</p>
+          <p><code>Z</code>, <code>z</code> close path</p>
+        </section>
+
+        <section>
+          <h3>SVG: Path Example</h3>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Dbrau" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Dbrau'>Dbrau</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Dbrau" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Dbrau'>Dbrau</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p class="see-also"><small>See also: <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths?redirectlocale=en-US&redirectslug=SVG%2FTutorial%2FPaths#Curve_commands">Curves Commands</a></small></p>
+        </section>
+
+
+        <section>
+          <h3>SVG: Group,title & Transform</h3>
+          <p>Transform example:<small><code>translate</code></small>, use  </p>
+
+          <div class="left">
+            <p data-height="450" data-theme-id="0" data-slug-hash="Dbuhd" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Dbuhd'>Dbuhd</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <div class="right">
+            <p data-height="450" data-theme-id="0" data-slug-hash="Dbuhd" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Dbuhd'>Dbuhd</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>SVG: More Transforms</h3>
+          <p><small>rotate, scale, skewX, skewY</small></p>
+          <div class="left">
+            <p data-height="450" data-theme-id="0" data-slug-hash="cprgG" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/cprgG'>cprgG</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <div class="right">
+            <p data-height="450" data-theme-id="0" data-slug-hash="cprgG" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/cprgG'>cprgG</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p class="see-also"><small>See more <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Transformations">Transformation</a></small></p>
+        </section>
+        <section>
+          <h3>SVG: No-Layer</h3>
+          <p>Painter's Algorithm: any pixel-paint applied later obscure any earlier paint and therefore appear to be "in front".</p>
+
+          <div class="left">
+            <p data-height="350" data-theme-id="0" data-slug-hash="linFm" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/linFm'>linFm</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <div class="right">
+            <p data-height="350" data-theme-id="0" data-slug-hash="linFm" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/linFm'>linFm</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h3>SVG: Transparency</h3>
+          <p>Two ways: use <code>rgba</code> or <code>opacity</code></p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="AFzvx" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/AFzvx'>AFzvx</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="AFzvx" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/AFzvx'>AFzvx</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>SVG: Learn more!</h3>
+          <ul>
+            <li>
+              more about
+              <code><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts?redirectlocale=en-US&redirectslug=SVG%2FTutorial%2FTexts">Text</a></code>
+              Gradient
+              Patterns
+              <code><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Clipping_and_masking">Clip Mask</a></code>
+              <code><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Other_content_in_SVG">Image</a></code>
+            </li>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial?redirectlocale=en-US&redirectslug=SVG%2FTutorial">SVG Tutorial</a> – Mozilla Developer Network
+            </li>
+          </ul>
+        </section>
+      </section>
+
+
+      <section>
+        <section>
+          <h3>Javascript</h3>
+        </section>
+
+        <section>
+          <h3>Javascript</h3>
+          <ul>
+            <li>Originally developed as a prototype language for web browser (Client-side)</li>
+            <li>Now used in server-side (Node.js) as well.</li>
+            <li>Not related to Java, just named similarly for marketing purpose.</li>
+            <li>C style syntax but got inspiration from Functional programming</li>
+          </ul>
+        </section>
+        <section>
+          <h3>5 types of values</h3>
+          <ul>
+            <li><i>Numbers</i> - 42, 3.14159</li>
+            <li><i>Logical</i> - true, false</li>
+            <li><i>Strings</i> - "Hello"</li>
+            <li>
+              <code>null</code>
+            </li>
+            <li>
+              <code>undefined</code>
+            </li>
+            <li>
+              <code>Objects</code>
+            </li>
+            <li>
+              <code>functions</code>
+            </li>
+        </section>
+        <section>
+          <h3>Dynamic Typing</h3>
+          <pre>
+            <code id="js-dynamic" class="javascript">
+x = "The answer is " + 42; // "The answer is 42"
+"37" - 7; // 30
+"37" + 7; // "377"
+"1.1" + "1.1"; //= "1.11.1"
+(+"1.1") + (+"1.1"); // 2.2
++"1.1" // 1.1 "+" operator converts string to number
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Object</h3>
+
+        </section>
+        <section>
+          <h3>Javascript Object vs JSON</h3>
+          <ul>
+            <li>JSON need to have quote(") around keys</li>
+            <li></li>
+            <li></li>
+          </ul>
+
+        </section>
+        <section>
+          <h3>Array</h3>
+          <pre><code>
+var numbers = [ 5, 10, 15, 20, 25];
+numbers[1] // 10
+numbers[2] // 15
+numbers.length = 5
+numbers.a = 5 // Array is an object
+numbers.a // 5
+          </code></pre>
+          <pre><code>
+var numbers = [ 5, 10, , 20, 25, , ];
+numbers[1] // 10
+numbers[2] // undefined
+numbers.length //6 last empty comma is automatically ignored
+          </code></pre>
+        </section>
+        <section>
+          <h3>Scope</h3>
+          <p></p>
+        </section>
+        <section>
+          <h3>Scope: Hoisting</h3>
+          <pre><code>
+console.log(x === undefined); // logs "true"
+var x = 3;
+          </code></pre>
+          <p>is equivalent to</p>
+          <pre><code>
+var x;
+console.log(x === undefined); // logs "true"
+x = 3;
+          </code></pre>
+        </section>
+        <section>
+          <h3>Function</h3>
+          <p>First class object...</p>
+          <pre><code>
+            function a(){
+              // code
+            }
+          </code></pre>
+          <small>same as</small>
+          <pre><code>
+            var a = function(){
+              // code
+            }
+          </code></pre>
+        </section>
+        <section>
+          <h3>Prototypal Inheritance</h3>
+          <p></p>
+        </section>
+        <section>
+          <h3>OOP in Javascript</h3>
+          <p>
+            How many ways should I explain
+          </p>
+        </section>
+        <section>
+          <h3>this</h3>
+          <p></p>
+        </section>
+        <section>
+          <h3>IIFE</h3>
+          <p></p>
+        </section>
+        <section>
+          <h3>apply, call</h3>
+          <p></p>
+        </section>
+
+        <section>
+          <h3>=== and ==</h3>
+          <ul>
+            <li>The
+              <code>==</code> operator will compare for equality after doing any necessary type conversions (with very weird conversion rules). </li>
+            <li>
+              The
+              <code>===</code> operator will not do the conversion, so if two values are not the same type
+              <code>===</code> will simply return false.</li>
+          </ul>
+          <pre>
+            <code data-trim>
+'' == '0'           // false
+0 == ''             // true
+0 == '0'            // true
+
+false == 'false'    // false
+false == '0'        // true
+
+false == undefined  // false
+false == null       // false
+null == undefined   // true
+
+' \t\r\n ' == 0     // true
+            </code>
+          </pre>
+          <blockquote cite="Douglas Crockford">
+            Never use the evil twins. <br/>
+            Instead, always use <code>===</code> and <code>!==</code>.
+          </blockquote>
+          <small>See also: http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons</small>
+        </section>
+        <section>
+          <h3>Read more</h3>
+          <ul>
+            <li><a href="http://bonsaiden.github.io/JavaScript-Garden/">Javascript Garden</a></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h3>Workflow & Tools</h3>
+        </section>
+        <section>
+          <h3>Reduce the gulf</h3>
+          <p>
+            Use Live Reload
+          </p>
+        </section>
+      </section>
+      <section>
+        <h3>Q&A</h3>
+      </section>
+
+
+
+      <!-- <section>
+        <section>
+          <h3>data-* attributes</h3>
+          <p>Developers can use
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">
+              <code>data-*</code>attributes</a>to add extra information without polluting the class name.</p>
+        </section>
+      </section> -->
+
+      <!-- <section>
+        <h1>Q&A</h1>
+
+        <p>
+          <small>
+            http://chimera.labs.oreilly.com/books/1230000000345/ch03.html#_the_web
+          </small>
+        </p>
+      </section> -->
+    </div>
+
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.min.js"></script>
+
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Parallax scrolling
+    // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    // parallaxBackgroundSize: '2100px 900px',
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [{
+      src: 'reveal.js/lib/js/classList.js',
+      condition: function() {
+        return !document.body.classList;
+      }
+    }, {
+      src: 'reveal.js/plugin/markdown/marked.js',
+      condition: function() {
+        return !!document.querySelector('[data-markdown]');
+      }
+    }, {
+      src: 'reveal.js/plugin/markdown/markdown.js',
+      condition: function() {
+        return !!document.querySelector('[data-markdown]');
+      }
+    }, {
+      src: 'reveal.js/plugin/highlight/highlight.js',
+      async: true,
+      callback: function() {
+        hljs.initHighlightingOnLoad();
+      }
+    }, {
+      src: 'reveal.js/plugin/zoom-js/zoom.js',
+      async: true,
+      condition: function() {
+        return !!document.body.classList;
+      }
+    }, {
+      src: 'reveal.js/plugin/notes/notes.js',
+      async: true,
+      condition: function() {
+        return !!document.body.classList;
+      }
+    }]
+  });
+  </script>
+  <script async src="//codepen.io/assets/embed/ei.js"></script>
+  <!-- <script src="http://static.jsbin.com/js/embed.js"></script> -->
+</body>
+
+</html>

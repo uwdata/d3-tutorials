@@ -1,0 +1,24 @@
+/* variable, operator */
+body {
+  font: 80% Helvetica, sans-serif;
+  color: #333333; }
+
+/* nesting */
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+nav li {
+  display: inline-block; }
+nav a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none; }
+
+/* mixin */
+.box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px; }
