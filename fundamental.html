@@ -66,12 +66,19 @@
           </small>
         </p>
       </section>
-
+      <section>
+        <h3>Notes</h3>
+        <ul>
+          <li>HTML, CSS and SVG examples are all codepens, which you can click edit to play with.</li>
+          <li>You can also use inspector (<code>⌘⎇I</code> in Chrome) to inspect examples.</li>
+          <li>Also use Javascript console (<code>⌘⎇J</code> in Chrome) to try Javascript code examples.</li>
+        </ul>
+      </section>
       <section>
         <section>
-          <h2>HTML & CSS</h2>
+          <h2>HTML</h2>
           <p>
-            Hypertext Markup Language & Cascading Stylesheet
+            Hypertext Markup Language
           </p>
 
           <aside class="notes">
@@ -108,7 +115,7 @@
               <p data-height="450" data-theme-id="0" data-slug-hash="wBmEu" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/wBmEu'>wBmEu</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
               </p>
             </div>
-            <aside class="note">
+            <aside class="notes">
               Tags must be closed
             </aside>
           </div>
@@ -186,9 +193,9 @@
           </li>
           <!-- <p>&lt;table&gt;, -->
           <li class="see-also">
-            See a <a href="http://www.w3schools.com/html/html_quick.asp">quick list</a> of the most commonly used HTML tags at <a href="http://www.w3schools.com/html">w3schools.com</a>
-              and Mozilla Develop Network's <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML">HTML tutorial</a>.
+            See w3schools's <a href="http://www.w3schools.com/html/html_quick.asp">quick list</a> of the most commonly used HTML tags
           </li>
+          <li>Or learn more at Mozilla Develop Network's <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML">HTML tutorial</a>.</li>
           <aside class="notes">
             In interests of saving time, I would skip other commonly used tags.
           </aside>
@@ -199,19 +206,24 @@
           <h3>DOM</h3>
           <ul>
             <li>A convention for representing and interacting with objects in HTML, XHTML and XML documents.</li>
-            <li>Nodes of every document are organized in a tree structure, called the DOM tree</li>
+            <li>Nodes of every document are organized in a tree structure, called the DOM tree
+              <ul>
+                <li>For example, use inspector to see this file's source.</li>
+              </ul>
+
+            </li>
             <li>Provides API for modify its content using language such as Javascript</li>
           </ul>
         </section>
       </section>
       <section>
-        <section>
-          <h3>CSS</h3>
-          <!-- <iframe src="http://jsbin.com/OHeDaTu/8/embed?html,output" width="100%" height="500"></iframe> -->
+        <section data-markdown>
+          ### CSS
+          #### Cascading Stylesheet
         </section>
         <section>
           <h3>CSS Selectors</h3>
-          <p>Query the DOM</p>
+          <p>Query the DOM Tree</p>
           <div class="left">
             <p data-height="450" data-theme-id="0" data-slug-hash="xDIbe" data-user="kanitw" data-default-tab="css" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/xDIbe'>xDIbe</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
             </p>
@@ -220,6 +232,7 @@
             <p data-height="450" data-theme-id="0" data-slug-hash="xDIbe" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/xDIbe'>xDIbe</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
             </p>
           </div>
+          <p class="see-also"><small>See also: <a href="http://www.webmonkey.com/2010/02/css-properties/">CSS Properties</a> – Webmonkey</small></p>
           <aside class="notes">
             <ul>
               <li>ID:
@@ -251,6 +264,8 @@
         </section>
         <section>
           <h3>CSS: Box Model, Position</h3>
+
+          <p>The default position is <code>position: static;</code></p>
           <div class="left">
             <img src="img/box-model.gif" width="100%" />
           </div>
@@ -318,7 +333,7 @@
           <h3>CSS: Short Form</h3>
           <p>
             <pre>
-              <code>
+              <code class="css">
                 background-color: #000; background-image: url(images/bg.gif); background-repeat: no-repeat; background-position: top right;
               </code>
             </pre>
@@ -326,7 +341,7 @@
           <p>Can be shortened to:</p>
           <p>
             <pre>
-              <code>
+              <code class="css">
                 background: #000 url(images/bg.gif) no-repeat top right;
               </code>
             </pre>
@@ -339,14 +354,14 @@
           </p>
           <p>
             <pre>
-              <code>
+              <code class="html">
                 <style>
                 /* put css here */
                 </style>
               </code>
             </pre>
             <pre>
-              <code>
+              <code class="html">
                 <div style="/* put css in style attribute of any tag */">
                 ...
                 </div>
@@ -365,11 +380,17 @@
           </p>
         </section>
         <section>
-          <h3>CSS grids</h3>
-          <!--TODO-->
+          <h3>CSS: Grids</h3>
           <p>
-            See <a href="http://getbootstrap.com">bootstrap</a> grid's
-            <a href="http://getbootstrap.com/examples/grid/">examples</a>
+            Grid is one of the most commonly used graphic design concept.
+          </p>
+          <p>
+            <img src="img/grid-crop.png" height="350"/>
+          </p>
+          <p>
+            <small>For instance, see
+            <a href="http://getbootstrap.com">bootstrap</a> grid's
+              <a href="http://getbootstrap.com/examples/grid/">examples</a></small>
           </p>
         </section>
         <section>
@@ -378,7 +399,7 @@
           <p>
             <b>Variable</b>, <b>Nesting</b>, Partials, Import, <b>Mixins</b>, Inheritance, <b>Operators</b>
             <div style="height: 350px;" class="overflow-y">
-            <pre><code>
+            <pre><code class="scss">
 /* variable, operator */
 
 $font-stack:    Helvetica, sans-serif;
@@ -427,7 +448,7 @@ nav {
           <h4>a collection of reusable mixins for designers</h4>
           <p>Example: inline-block</p>
 
-          <pre><code>
+          <pre><code class="scss">
 @mixin inline-block($alignment: $inline-block-alignment) {
   @if $legacy-support-for-mozilla {
     display: -moz-inline-stack;
@@ -449,7 +470,7 @@ nav {
           <h3>CSS: Learn more!</h3>
           <p>
             <ul>
-              <li><a href="https://developer.mozilla.org/en-US/learn/css">CSS</a> – Mozilla Developer Network</li>
+              <li><a href="https://developer.mozilla.org/en-US/learn/css">Learn CSS</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS Portal</a> – Mozilla Developer Network</li>
               <li><a href="http://www.csszengarden.com/">CSS Zen Garden</a>– huge collection of examples</li>
               <li>Use inspector to learn from others.</li>
             </ul>
@@ -514,6 +535,7 @@ nav {
           <p><code>L x y</code> – Line to (x,y) (or <code>l dx dy</code>)</p>
           <p><code>H x</code>, <code>V y</code> – draw horizontal and vertical lines</p>
           <p><code>Z</code>, <code>z</code> close path</p>
+          <p class="see-also"><small>See also: <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths?redirectlocale=en-US&redirectslug=SVG%2FTutorial%2FPaths#Curve_commands">Curves Commands</a></small></p>
         </section>
 
         <section>
@@ -527,20 +549,24 @@ nav {
             <p data-height="400" data-theme-id="0" data-slug-hash="Dbrau" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Dbrau'>Dbrau</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
             </p>
           </div>
-          <p class="see-also"><small>See also: <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths?redirectlocale=en-US&redirectslug=SVG%2FTutorial%2FPaths#Curve_commands">Curves Commands</a></small></p>
         </section>
 
 
         <section>
-          <h3>SVG: Group,title & Transform</h3>
-          <p>Transform example:<small><code>translate</code></small>, use  </p>
+          <h3>SVG: Group, Title & Transform</h3>
+          <p>
+            <ul>
+              <li>Transform example: <code>translate</code></li>
+              <li>Use <code>title</code> for tooltip</li>
+            </ul>
+          </p>
 
           <div class="left">
-            <p data-height="450" data-theme-id="0" data-slug-hash="Dbuhd" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Dbuhd'>Dbuhd</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            <p data-height="400" data-theme-id="0" data-slug-hash="Dbuhd" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Dbuhd'>Dbuhd</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
             </p>
           </div>
           <div class="right">
-            <p data-height="450" data-theme-id="0" data-slug-hash="Dbuhd" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Dbuhd'>Dbuhd</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            <p data-height="400" data-theme-id="0" data-slug-hash="Dbuhd" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Dbuhd'>Dbuhd</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
             </p>
           </div>
         </section>
@@ -573,7 +599,7 @@ nav {
 
         <section>
           <h3>SVG: Transparency</h3>
-          <p>Two ways: use <code>rgba</code> or <code>opacity</code></p>
+          <p><code>rgba</code> or <code>opacity</code></p>
           <div class="left">
             <p data-height="400" data-theme-id="0" data-slug-hash="AFzvx" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/AFzvx'>AFzvx</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
             </p>
@@ -588,15 +614,14 @@ nav {
           <h3>SVG: Learn more!</h3>
           <ul>
             <li>
-              more about
-              <code><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts?redirectlocale=en-US&redirectslug=SVG%2FTutorial%2FTexts">Text</a></code>
-              Gradient
-              Patterns
-              <code><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Clipping_and_masking">Clip Mask</a></code>
+              <code><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts?redirectlocale=en-US&redirectslug=SVG%2FTutorial%2FTexts">Text</a></code>,
+              <code><a href="https://developer.mozilla.org/en-US/SVG/Tutorial/Gradients">Gradient</a></code>,
+              <code><a href="https://developer.mozilla.org/en-US/SVG/Tutorial/Patterns">Patterns</a></code>,
+              <code><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Clipping_and_masking">Clip Mask</a></code>,
               <code><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Other_content_in_SVG">Image</a></code>
             </li>
             <li>
-              <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial?redirectlocale=en-US&redirectslug=SVG%2FTutorial">SVG Tutorial</a> – Mozilla Developer Network
+              <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial">SVG Tutorial</a> – Mozilla Developer Network
             </li>
           </ul>
         </section>
@@ -605,39 +630,67 @@ nav {
 
       <section>
         <section>
-          <h3>Javascript</h3>
+          <h2>Javascript</h2>
         </section>
 
-        <section>
-          <h3>Javascript</h3>
-          <ul>
-            <li>Originally developed as a prototype language for web browser (Client-side)</li>
-            <li>Now used in server-side (Node.js) as well.</li>
-            <li>Not related to Java, just named similarly for marketing purpose.</li>
-            <li>C style syntax but got inspiration from Functional programming</li>
-          </ul>
+        <section data-markdown>
+          ### Javascript
+
+          * Originally developed as a prototype language for web browser (Client-side)
+          * Now used in server-side (Node.js) as well.
+          * Not related to Java, just named similarly for marketing purpose.
+          * C style syntax but got inspiration from Functional programming
+            * `for`, `while`, `continue`, `break`, `if`/`else`, `switch` are similar to C
+            * operators (`+`,`-`,`*`,`/`,`%`) are also similar (except `==`,`!=`,`||`)
         </section>
         <section>
-          <h3>5 types of values</h3>
-          <ul>
-            <li><i>Numbers</i> - 42, 3.14159</li>
-            <li><i>Logical</i> - true, false</li>
-            <li><i>Strings</i> - "Hello"</li>
-            <li>
-              <code>null</code>
-            </li>
-            <li>
-              <code>undefined</code>
-            </li>
-            <li>
-              <code>Objects</code>
-            </li>
-            <li>
-              <code>functions</code>
-            </li>
+          <h3>Client-side Javascript: Inline/Include</h3>
+          <p>Inline</p>
+          <pre><code class="html">
+<script>
+//Put Javascript code here
+</script>
+          </code></pre>
+
+          <p>Include</p>
+
+          <pre><code class="html">
+<script src="blank.js"></script>
+          </code></pre>
         </section>
         <section>
-          <h3>Dynamic Typing</h3>
+          <h3>Data Types</h3>
+          <p>
+            <ul>
+              <li><i>Numbers</i> - 42, 3.14159</li>
+              <li><i>Logical</i> - true, false</li>
+              <li><i>Strings</i> - "Hello", 'Hello'</li>
+              <li>
+                <code>null</code>
+              </li>
+              <li>
+                <code>undefined</code>
+              </li>
+              <li>
+                <code>Objects</code>
+              </li>
+              <li>
+                <code>functions</code>
+              </li>
+            </ul>
+          </p>
+          <p class="see-also"><small>See also <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Values,_variables,_and_literals">Values, Variable, Literals</a>–MDN</small></p>
+        </section>
+        <section>
+          <h3>Variables</h3>
+          <pre><code class="javascript">
+var a;
+console.log("The value of a is " + a); // logs "The value of a is undefined"
+console.log("The value of b is " + b); // throws ReferenceError exception
+b = 5 // declare global variable  ... equivalent to window.b = 5
+console.log(b, window.b) // 5, 5
+          </code></pre>
+          <p>Javascript uses dynamic typing.</p>
           <pre>
             <code id="js-dynamic" class="javascript">
 x = "The answer is " + 42; // "The answer is 42"
@@ -648,92 +701,392 @@ x = "The answer is " + 42; // "The answer is 42"
 +"1.1" // 1.1 "+" operator converts string to number
             </code>
           </pre>
+          <p><small>Tips: || operator can return Object too.</small></p>
+          <pre><code class="javascript">
+y = null || "String"
+y // "String"
+          </code></pre>
         </section>
         <section>
-          <h3>Object</h3>
+          <h3>Control Flow</h3>
+          <p>C-Style `for`, `while`, `continue`, `break`, `if`/`else`, `switch/case`</p>
+          <pre><code class="javascript">
+for(i=0; i<10; i++){
+  if (condition) {
+      statement_1_runs_if_condition_is_true();
+      break;
+  } else {
+      statement_2_runs_if_condition_is_false();
+      continue;
+  }
+}
+          </code></pre>
+          <p><small>(I'm not showing <code>while</code>, <code>switch/case</code> here for brevity.)</small></p>
+        </section>
+        <section data-markdown>
+          ### Object
+
+          * An object in javascript is an associative array of property names (Strings) and values (Objects).
+          * Everything except null and undefined) can be treated as objects.
+          * Object can be used as <a href="http://en.wikipedia.org/wiki/Hashmap">hashmaps</a>.
+          * Object can be created using (a) literals (b) new
+
 
         </section>
         <section>
-          <h3>Javascript Object vs JSON</h3>
-          <ul>
-            <li>JSON need to have quote(") around keys</li>
-            <li></li>
-            <li></li>
-          </ul>
-
+          <h3>Objects: Literals & new</h3>
+          <pre><code class="javascript">//create object using an object literal
+var apple = {
+  // quotes not required for a property name
+  state: "CA",
+  // unless the name contains space(s) or precedes with number or the name is reserved word
+  "famous founder": "Steve Jobs",
+  // property value can be any type including function
+  getCity: function(){return "Cupertino";},
+  // nested object
+  boards: { "CEO": "Tim Cook"}
+};
+apple.state; // "CA"
+apple["state"]; // "CA"
+apple.getCity(); // "Cupertino"
+apple['getCity'](); // "Cupertino"
+apple.boards.CEO // "Tim Cook"
+</code></pre>
+          <pre><code class="javascript">//create object using new instead
+var microsoft = new Object();
+microsoft.state = "WA";
+microsoft['famous founder'] = "Bill Gates";
+microsoft.getCity = function(){ return "Redmond";};
+        </code></pre>
         </section>
         <section>
-          <h3>Array</h3>
-          <pre><code>
+          <h3><code>for .. in</code></h3>
+          <p>Careful: use <code>hasOwnProperty</code> to check</p>
+          <pre><code class="javascript">
+var obj = {a:1, b:2, c:3}, key;
+Object.prototype.crazy = 4;
+for(key in obj){
+  if(obj.hasOwnProperty(key)){ //avoid the inherited obj.crazy=4
+    console.log(key, obj[key]); // "a, 1" "b, 2", "c, 3"
+  }
+}
+          </code></pre>
+        </section>
+        <section>
+          <h3>Arrays</h3>
+          <pre><code class="javascript">
 var numbers = [ 5, 10, 15, 20, 25];
 numbers[1] // 10
 numbers[2] // 15
 numbers.length = 5
+2 in numbers // true
+5 in numbers // false
 numbers.a = 5 // Array is an object
 numbers.a // 5
+'a' in numbers // true
           </code></pre>
-          <pre><code>
+          <pre><code class="javascript">
 var numbers = [ 5, 10, , 20, 25, , ];
 numbers[1] // 10
 numbers[2] // undefined
 numbers.length //6 last empty comma is automatically ignored
           </code></pre>
+
+          <pre>
+          <code>
+// array with multiple types of values
+var mashup = [ 1,3, 4.5, 5.6, "string", null, undefined, true ];
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Function</h3>
+          <p>First class object...</p>
+          <pre><code class="javascript">
+            function foo(a1, a2){
+              // code
+              console.log(a1+a2);
+            }
+
+          </code></pre>
+          <small>same as</small>
+          <pre><code class="javascript">
+            var foo = function(a1, a2){
+              // code
+              console.log(a1+a2);
+            };
+          </code></pre>
+          <pre><code class="javascript">
+            foo(a1,a2); // call
+          </code></pre>
+          <pre><code class="javascript">
+            function g(f){ f(1,2); }
+            g(foo) // 3
+          </code></pre>
+          <p class="see-also"><small>
+            See also:
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#Using_the_arguments_object">Arguments Objects</a>
+          </small></p>
         </section>
         <section>
           <h3>Scope</h3>
-          <p></p>
+          <ul>
+            <li>Javascript has function level scope, not block level scope.</li>
+            <li>The inner function full access to all the variables and functions defined inside the outer function.  But the converse is not true.</li>
+          </ul>
+          <pre><code class="javascript">
+var name = "Andy"
+var pet = function(name) {      // The outer function defines a variable called "name"
+      var getName = function() {
+        return name;            // The inner function has access to the "name" variable of the outer function, which is "Vivie" in this case.
+      }
+
+      return getName;           // Return the inner function, thereby exposing it to outer scopes
+    };
+var myPet = pet("Vivie");
+myPet();                        // Returns "Vivie"
+console.log(name);              // "Andy"
+          </code></pre>
+
+        </section>
+        <section>
+          <h3>Scope</h3>
+          <p>Javascript has function level scope, <b>not block level scope</b>.</p>
+          <pre><code class="javascript">
+var x = 1;
+{
+  var x = 2;
+}
+alert(x); // outputs 2
+          </code></pre>
         </section>
         <section>
           <h3>Scope: Hoisting</h3>
-          <pre><code>
+          <pre><code class="javascript">
 console.log(x === undefined); // logs "true"
 var x = 3;
           </code></pre>
           <p>is equivalent to</p>
-          <pre><code>
+          <pre><code class="javascript">
 var x;
 console.log(x === undefined); // logs "true"
 x = 3;
           </code></pre>
         </section>
         <section>
-          <h3>Function</h3>
-          <p>First class object...</p>
-          <pre><code>
-            function a(){
-              // code
-            }
+          <h3>IIFE</h3>
+          <h4>Immediately Invoked Function Expression</h4>
+          <div>
+            <div class="left">
+              <p>
+                <pre><code class="javascript">
+var elems = document.getElementsByTagName( 'a' );
+
+for ( var i = 0; i < elems.length; i++ ) {
+
+  elems[ i ].addEventListener( 'click', function(e){
+    e.preventDefault();
+    alert( 'I am link #' + i );
+  }, 'false' );
+}
+                </code></pre>
+              </p>
+              <p>
+                <small class="fragment">The value of `i` never
+                  gets locked in. Thus, every link, when clicked (well after the loop
+                  has finished executing), alerts the total number of elements.</small>
+              </p>
+            </div>
+            <div class="right fragment">
+              <p>
+                <pre><code class="javascript">
+var elems = document.getElementsByTagName( 'a' );
+
+for ( var i = 0; i < elems.length; i++ ) {
+
+  (function( lockedInIndex ){
+    elems[ i ].addEventListener( 'click', function(e){
+      e.preventDefault();
+      alert( 'I am link #' + lockedInIndex );
+    }, 'false' );
+  })( i );
+
+}
+                </code></pre>
+              </p>
+              <p>
+                <small class="fragment">This works, because inside the IIFE, the value of `i` is locked in as
+                  `lockedInIndex`.</small>
+              </p>
+            </div>
+          </div>
+          <div class="see-also"><small>
+            See also: <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Ben Alman's Post</a>
+          </small></div>
+        </section>
+        <section>
+          <h3>IIFE: Anonymous Namespaces</h3>
+          <p>Use IIFE to avoid namespace clashing!</p>
+          <pre><code class="javascript">
+(function() {
+    // a self contained "namespace"
+
+    // PUT YOUR NONE PUBLIC SCRIPT HERE
+    // ...
+
+    window.foo = function() {
+        // an exposed closure
+    };
+
+})(); // execute the function immediately
           </code></pre>
-          <small>same as</small>
-          <pre><code>
-            var a = function(){
-              // code
-            }
+          <p><small>For public namespace, use nested objects. See <a href="https://github.com/mbostock/d3/blob/master/d3.js">d3.js</a>, for example.</small></p>
+        </section>
+        <section>
+          <h3><code>this</code></h3>
+          <pre><code class="javascript">
+var test = {};
+this; // this = global object aka window
+foo(); // this = global object again
+test.foo(); // this = test
+new foo(); // this = newly created object
+          </code></pre>
+          <p>Explicity Setting of <code>this</code></p>
+          <pre><code class="javascript">
+function foo(a, b, c) {
+  // this = bar here when foo is called from apply and call below
+}
+var bar = {};
+foo.apply(bar, [1, 2, 3]); // array will expand to the below
+foo.call(bar, 1, 2, 3); // results in a = 1, b = 2, c = 3
+          </code></pre>
+
+          <p><small>Source: <a href="http://bonsaiden.github.io/JavaScript-Garden/#function.this">Javascript Garden</a></small></p>
+        </section>
+        <section>
+          <h3>"<code>that</code>"</h3>
+          <pre><code class="javascript">
+Foo = {a:1};
+Foo.method = function() {
+    var that = this;
+    function test() {
+        // Use that instead of this here
+        // because here this is set to the global object
+        console.log(this, that); // Window, {a:1, method: function}
+    }
+    test();
+}
+          </code></pre>
+        </section>
+        <section>
+          <h3>OOP in Javascript: using Constructor</h3>
+          <pre><code class="javascript">
+function Person(gender) {
+  this.gender = gender;
+}
+
+Person.prototype.sayHello = function(){
+  alert ('hello');
+};
+
+var person1 = new Person('Male'), person2 = new Person('Female');
+
+// call the Person sayHello method.
+person1.sayHello(); // hello
+        </code></pre>
+          <p><small>Source: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript">Mozilla</a></small></p>
+        </section>
+
+        <section>
+          <h3>OOP in Javascript: Inheritance</h3>
+          <p>Extend Person</p>
+          <pre><code class="javascript">
+function Person(gender) {
+  this.gender = gender;
+}
+Person.prototype.sayHello = function(){
+  alert ('hello');
+};
+        </code></pre>
+        <pre><code class="javascript">
+// inherit Person
+Student.prototype = new Person();
+
+// correct the constructor pointer because it points to Person
+Student.prototype.constructor = Student;
+
+// replace the sayHello method
+Student.prototype.sayHello = function(){
+  alert('hi, I am a student');
+}
+
+var student1 = new Student();
+student1.sayHello();
+
+alert(student1 instanceof Person); // true
+alert(student1 instanceof Student); // true
           </code></pre>
         </section>
         <section>
           <h3>Prototypal Inheritance</h3>
-          <p></p>
-        </section>
-        <section>
-          <h3>OOP in Javascript</h3>
-          <p>
-            How many ways should I explain
-          </p>
-        </section>
-        <section>
-          <h3>this</h3>
-          <p></p>
-        </section>
-        <section>
-          <h3>IIFE</h3>
-          <p></p>
-        </section>
-        <section>
-          <h3>apply, call</h3>
-          <p></p>
-        </section>
+          <pre><code class="javascript">
+var o = {a: 1};
 
+// The newly created object o has Object.prototype as its [[Prototype]]
+// o has no own property named 'hasOwnProperty'
+// hasOwnProperty is an own property of Object.prototype. So o inherits hasOwnProperty from Object.prototype
+// Object.prototype has null as its prototype.
+// o ---> Object.prototype ---> null
+
+var a = ["yo", "whadup", "?"];
+
+// Arrays inherit from Array.prototype (which has methods like indexOf, forEach, etc.)
+// The prototype chain looks like:
+// a ---> Array.prototype ---> Object.prototype ---> null
+
+function f(){
+  return 2;
+}
+
+// Functions inherit from Function.prototype (which has methods like call, bind, etc.)
+// f ---> Function.prototype ---> Object.prototype ---> null
+          </code></pre>
+          <p class="see-also"><small>source & see also: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain">prototype chain</a></small></p>
+        </section>
+        <section>
+          <h3>Module Pattern & Private Variable</h3>
+          <p>Module Pattern use scope to make a private variable</p>
+          <pre><code class="javascript">
+function Counter(start) {
+    var count = start;
+    return {
+        increment: function() {
+            count++;
+        },
+
+        get: function() {
+            return count;
+        }
+    }
+}
+
+var foo = Counter(4);
+foo.increment();
+foo.get(); // 5
+foo.count // undefined ... outsider can't access count directly
+          </code></pre>
+
+          <p class="see-also"><small><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Using_the_Object.create_method">Using <code>Object.create</code></a></small></p>
+        </section>
+        <!-- <section>
+          <h3>Prototype</h3>
+          <p>You can also modify existing objects.</p>
+          <pre><code class="javascript">
+[1,2,3].getLength() // TypeError
+Array.prototype.getLength = function(){ return this.length; };
+[1,2,3].getLength() // 3
+          </code></pre>
+        </section> -->
         <section>
           <h3>=== and ==</h3>
           <ul>
@@ -767,32 +1120,94 @@ null == undefined   // true
           <small>See also: http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons</small>
         </section>
         <section>
-          <h3>Read more</h3>
+          <h3>Javascript: <a href="">DOM</a></h3>
+          <p>
+            As mentioned earlier, DOM provided javascript API.
+            You should at least know about:
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/document"><code>Document</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/window"><code>Window</code></a> Objects</li>
+
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document.getElementById"><code>document.getElementById</code></a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document.createElement"><code>document.createElement</code></a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document.createNode"><code>document.createNode</code></a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document.querySelector"><code>document.querySelector</code></a>,
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document.querySelectorAll"><code>document.querySelectorAll</code></a></li>
+            </ul>
+          </p>
+        </section>
+        <section>
+          <h3>JSON</h3>
+          <h4>Javascript Object Notation</h4>
+          <p>Derived from Javascript as an XML alternative for storing data.</p>
+          <iframe src="example/barley.json" width="100%" height="350"></iframe>
+        </section>
+        <section>
+          <h3>JSON</h3>
+          <h4>Javascript Object Notation</h4>
           <ul>
-            <li><a href="http://bonsaiden.github.io/JavaScript-Garden/">Javascript Garden</a></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>JSON requires have double quote(") around keys</li>
+            <li>JSON doesn't support <code>undefined</code>, expressions, functions, and comments</li>
+          </ul>
+          <pre><code class="javascript">
+JSON.parse('{"a":null}'); // {a:null}
+JSON.parse('{"a":undefined}'); // SyntaxError: Unexpected token u
+JSON.parse('{"a":function(){return 'a';}}'); // SyntaxError: Unexpected identifier
+          </code></pre>
+        </section>
+        <section>
+          <h3>Syntax Alternatives</h3>
+          <p>
+            Some people like syntax alternative that compile into javascript such as <a href="http://coffeescript.org/">Coffeescript</a>, <a href="http://www.typescriptlang.org/">MS TypeScript</a>.
+          </p>
+        </section>
+        <section data-markdown>
+          ### Libraries
+
+          * *[Lo-Dash](http://lodash.com)* – Utility library (arguably a better fork of [Underscore](http://underscorejs.org/)) – See a [tutorial](http://tech.pro/tutorial/1611/functional-javascript)
+
+          * *[jQuery](http://jquery.com/)* – easy DOM element selections, traversal and manipulation.
+            * However, less useful for visualization since d3 offers similar features
+
+          * [MVC](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) Frameworks: [Backbone.js](http://backbonejs.org), [Angular.js](http://angularjs.org), [Meteor.js](http://meteor.com)
+        </section>
+        <section>
+          <h3>Javascript: Learn More</h3>
+          <ul>
+            <li>Basics:
+              <b><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Javascript</a></b> – Mozilla Developer Network
+            </li>
+            <li>Refresher: <b><a href="http://bonsaiden.github.io/JavaScript-Garden/">Javascript Garden</a></b></li>
+
+            <li>More in <a href="http://courses.cs.washington.edu/courses/cse512/14wi/resources.html#javascript">cse512 resources</a></li>
           </ul>
         </section>
       </section>
       <section>
-        <section>
+        <section >
           <h3>Workflow & Tools</h3>
-        </section>
-        <section>
-          <h3>Reduce the gulf</h3>
-          <p>
-            Use Live Reload
-          </p>
+          <ul>
+            <li>Learn to use
+              <strong><a href="http://jtaby.com/blog/2012/04/23/modern-web-development-part-1">the Webkit Inspector</a>
+              </strong>(or Firebug if you’re a firefox fan.)
+            </li>
+            <li>Good Text Editor GUI? – <a href="http://sublimetext.com">Sublime Text</a>
+              <ul>
+                <li>Also use <a href="emmet.io">Emmet</a> for faster HTML authoring</li>
+              </ul>
+            </li>
+            <li>Use <a href="http://www.jshint.com/">JSHint</a> – <a href="http://www.tungbb.info/install-jshint-for-sublime-text-3">Sublime Plugin</a></li>
+            <li>Reduce the gulf of execution and evaluation with <a href="http://livereload.com">LiveReload</a></li>
+            <li>Like IDE and willing to pay? <a href="http://www.jetbrains.com/webstorm/">Webstorm</a> is a good option.</li>
+            <li>
+              <a href="http://kapeli.com/dash">Dash</a> is great for quick documentation look up in Mac.</li>
+            <li>Scaffolding Tool – <a href="http://yeoman.io/">yeoman</a></li>
+            <li><a href="https://medium.com/mac-osx-toolbelt/b538e12a608d">Tips for Mac Color Picker</a></li>
+          </ul>
         </section>
       </section>
       <section>
         <h3>Q&A</h3>
       </section>
-
-
 
       <!-- <section>
         <section>

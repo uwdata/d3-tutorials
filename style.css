@@ -5,17 +5,19 @@ iframe {
 .left{
   float:left;
   width:50%;
+  text-align: center;
 }
 .right{
   float:left;
   width:50%;
+  text-align: center;
 }
 
-.reveal .left pre{
+.reveal .left pre, .reveal .right pre{
   margin: 0;
 }
 
-.reveal .left pre code{
+.reveal .left pre code, .reveal .right pre code{
   padding:3px;
 }
 
@@ -39,3 +41,4 @@ pre .typeparam{
 .overflow-y{
    overflow-y: scroll;
 }
+
