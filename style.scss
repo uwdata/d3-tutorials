@@ -1,0 +1,48 @@
+iframe {
+  background-color: white;
+}
+
+.left{
+  float:left;
+  width:50%;
+  text-align: center;
+}
+.right{
+  float:left;
+  width:50%;
+  text-align: center;
+}
+
+.reveal .left pre, .reveal .right pre{
+  margin: 0;
+}
+
+.reveal .left pre code, .reveal .right pre code{
+  padding:3px;
+}
+
+.reveal pre code{
+  word-wrap: break-word;
+  max-height: 500px;
+}
+
+pre .typeparam{
+  color: #fcba8f;
+}
+
+.right iframe{
+  width:100%;
+}
+
+.see-also{
+  font-size: 50%;
+}
+
+.overflow-y{
+   overflow-y: scroll;
+}
+
+.block, .reveal small.block{
+  display: block;
+}
+
