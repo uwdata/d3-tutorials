@@ -27,7 +27,7 @@
   </script>
 
   <script src="jquery.js"></script>
-
+  <script src="js/d3.js"></script>
 
 
 
@@ -43,30 +43,757 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
       <section>
-        <section>
-          <h3>d3.js</h3>
-        </section>
-
-      </section>
-
-      <!-- <section>
-        <section>
-          <h3>data-* attributes</h3>
-          <p>Developers can use
-            <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">
-              <code>data-*</code>attributes</a>to add extra information without polluting the class name.</p>
-        </section>
-      </section> -->
-
-      <!-- <section>
-        <h1>Q&A</h1>
-
+        <h1>
+          <small>D3.js Tutorial</small>
+        </h1>
+        <br/>
         <p>
           <small>
-            http://chimera.labs.oreilly.com/books/1230000000345/ch03.html#_the_web
+            by <a href="http://hakim.se">Kanit "Ham" Wongsuphasawat</a>
           </small>
         </p>
-      </section> -->
+        <p>
+          <small>
+            <a href="http://idl.cs.washington.edu">Interactive Data Lab</a>,
+            <a href="http://uw.edu">University of Washington</a>
+          </small>
+        </p>
+        <p>
+          <small>
+            <a href="http://twitter.com/kanitw">@kanitw</a>
+            /
+            <a href="http://kanitw.yellowpigz.com">kanitw.yellowpigz.com</a>
+          </small>
+        </p>
+        <p><small><small>(Based on <a href="http://vadim.ogievetsky.com/IntroD3">Vadim Ogievetsky</a> and <a href="alignedleft.com/tutorials/d3/">Scott Murray</a>'s work)</small></small></p>
+      </section>
+      <section data-markdown>
+        ## Outline
+
+        * Examples
+        * Selections & Data
+        * Transitions
+        * Nested Selections
+        * Interactions
+        * Scales & Axes
+        * Tips e.g. Importing Data
+        * Layouts & Maps
+        * More Examples
+
+      </section>
+      <section>
+        <h3>Show Reels</h3>
+        <img src="img/d3.png" style="max-width: 600px; max-height: 400px;">
+        <p>
+          <a href="http://vis.stanford.edu/jheer/talks/VisWeek2012/#1">See</a>
+        </p>
+      </section>
+      <section>
+        <h2>Data-Driven Documents</h2>
+        <ul>
+        <li>Visualizing Data with Web Standards (HTML/SVG)</li>
+        <li>Data ↦ Elements – constructing a DOM from Data</li>
+        <li>In visualization, each data point has a corresponding element (graphical marks).  D# helps you maintain this mapping!</li>
+        </ul>
+      </section>
+      <section>
+        <section>
+          <h2>Selection</h2>
+        </section>
+        <section>
+          <h3><code>.select() + .append()</code></h3>
+          <p>d3 use <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors">CSS Selector</a></p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="dLofq" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/dLofq'>dLofq</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="dLofq" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/dLofq'>dLofq</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p>Note: <code>.append()</code> return a new selection–containing the appended object(s) </p>
+          <footer class="source"><small><small>Source: http://alignedleft.com/tutorials/d3/chaining-methods</small></small></footer>
+        </section>
+        <section>
+          <h3><code>.select()</code> + <code>.attr()</code>, <code>.style()</code></h3>
+          <p>Select and modify elements's properties</p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kfwdp" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kfwdp'>kfwdp</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kfwdp" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kfwdp'>kfwdp</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p><small>Note: notice chained syntax, object as argument</small></p>
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/</small></small></footer>
+        </section>
+        <section>
+          <h3>but <code>.select()</code> only selects one item!</h3>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="rLcBg" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/rLcBg'>rLcBg</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="rLcBg" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/rLcBg'>rLcBg</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#12</small></small></footer>
+        </section>
+        <section>
+          <h3><code>.selectAll()</code></h3>
+          <!-- <p><code>.attr()</code>'s value can accept <code>function</code> with arguments <code>data, index</code></p> -->
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Iruyi" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Iruyi'>Iruyi</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Iruyi" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Iruyi'>Iruyi</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <p class="see-also">
+            <small>See also: http://mbostock.github.io/d3/tutorial/circle.html</small>
+          </p>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2><code>.data()</code></h2>
+          <h4>Data ↦ Attributes</h4>
+        </section>
+        <section>
+          <h3><code>.data()</code></h3>
+          <p>Tell D3 that you want the selected elements to correspond to data!</p>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="pLAvt" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/pLAvt'>pLAvt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="pLAvt" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/pLAvt'>pLAvt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <footer class="source">
+          <p><small class="block">See in console that the selected rect selection object is an array of array that embed data in <code>__data__</code> property!</small></p>
+          <small><small>Modified from: http://vadim.ogievetsky.com/IntroD3/#14</small></small></footer>
+        </section>
+        <section>
+          <h3>Selection Object</h3>
+          <ul>
+            <li>An array of arrays</li>
+            <li>More precisely, subclass of array</li>
+            <li>if <code>.data()</code> is called, <code>__data__</code> of each element will contain the data mapped to that element.</li>
+          </ul>
+          <img src="img/__data__.png" height="60" width="155" alt="">
+          <p><small>You should have seen this from last slide!</small></p>
+
+        </section>
+        <section>
+          <h3><div class="code">.data()</div></h3>
+          <p>Data can be objects too!</p>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="pLAvt" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/pLAvt'>pLAvt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="pLAvt" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/pLAvt'>pLAvt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3><code>.data()</code></h3>
+          <h4>What if number of data doesn't match number of items selected?</h4>
+          <div class="left">
+            <p data-height="350" data-theme-id="0" data-slug-hash="nFwLt" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/nFwLt'>nFwLt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="350" data-theme-id="0" data-slug-hash="nFwLt" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/nFwLt'>nFwLt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>Thinking with Join</h3>
+          <style>
+            #join-svg circle {
+            fill: none;
+            fill-opacity: .6;
+            stroke: black;
+            stroke-width: 1.5px;
+            }
+            #join-svg text{
+              font-size: 20px;
+              fill:white;
+            }
+
+          </style>
+          <br/><br/>
+          <svg id="join-svg" width="720" height="240"><g transform="translate(0,128)"><g transform="translate(300)"><circle r="110" style="fill: #318be1;"></circle><text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Data</text><text x="-50" dy=".35em" text-anchor="middle">Enter</text></g><text x="360" dy=".35em" text-anchor="middle">Update</text><g transform="translate(420)"><circle r="110" style="fill: #FF7A00;"></circle><text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Elements</text><text x="50" dy=".35em" text-anchor="middle">Exit</text></g></g></svg>
+
+          <p>Calling <code>.data()</code> create three arrays – <code>enter</code>, <code>update</code>, <code>exit</code>.  <code>.data()</code> returns the update.</p>
+          <br/><br/>
+          <p class="see-also">
+            <small>Source: http://bost.ocks.org/mike/join/</small>
+          </p>
+        </section>
+        <section>
+          <h3><code>.enter()</code></h3>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Fawcj" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Fawcj'>Fawcj</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Fawcj" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Fawcj'>Fawcj</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#20</small></small></footer>
+        </section>
+        <section>
+          <h3><code>.enter()</code></h3>
+          <p>Shorter: append, then update all together!</p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kvCjf'>kvCjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kvCjf'>kvCjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#21</small></small></footer>
+        </section>
+        <section>
+          <h3><code>.enter()</code> from scratch</h3>
+          <p>This is a common way that people build visualization in D3!</p>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kvCjf'>kvCjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kvCjf'>kvCjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#22</small></small></footer>
+        </section>
+
+        <section>
+          <h3><code>.exit()</code></h3>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="maGjx" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/maGjx'>maGjx</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="maGjx" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/maGjx'>maGjx</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Transitions</h2>
+        </section>
+        <section>
+          <h3><code>.transition()</code></h3>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="tqaDj" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/tqaDj'>tqaDj</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="tqaDj" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/tqaDj'>tqaDj</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p><small>Note: Transitions in D3 use <i>cubic-in-out</i> as default easing functions.  But there are <a href="https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease">others.</a></small></p>
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#27</small></small></footer>
+        </section>
+        <section>
+          <h3>Nested <code>.transition()</code> & <code>.delay()</code></h3>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="ouIvC" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/ouIvC'>ouIvC</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="ouIvC" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/ouIvC'>ouIvC</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>Mapping Data to Elements</h3>
+          <p>The default is index mapping.</p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="DwyLs" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/DwyLs'>DwyLs</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="DwyLs" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/DwyLs'>DwyLs</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>Join key – <code>.data(...,key)</code></h3>
+          <p>A key should be a unique string.</p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="FHtjf" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/FHtjf'>FHtjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="FHtjf" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/FHtjf'>FHtjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p class="see-also">
+            <small>http://bost.ocks.org/mike/selection/#key</small>
+          </p>
+        </section>
+        <section>
+          <h3>Join key</h3>
+          <p>New Data?</p>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="GsKnv" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/GsKnv'>GsKnv</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="GsKnv" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/GsKnv'>GsKnv</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p class="see-also"><small>See even better <a href="http://mbostock.github.io/d3/tutorial/bar-2.html">bars transition</a>.</small></p>
+        </section>
+
+        <!-- <section>
+          <h3>Join key</h3>
+          <p>Better one..</p>
+
+          <p class="see-also">
+            <small>1</small>
+          </p>
+        </section> -->
+        <!-- <section>
+          <h3>Some Things Cannot Be Interpolated</h3>
+          <p>Selection methods related to data joins (data, enter, exit) and creating elements (append, insert) can only be performed on selections</p>
+          <pre><code class="javascript">
+var bar = svg.selectAll(".bar")
+    .data(data, function(d) { return d.key; });
+
+bar.enter().append("rect")
+    .attr("class", "bar")
+    … // initialize entering bars
+
+bar.transition()
+    … // transition entering + updating bars
+
+bar.exit().transition()
+    … // transition exiting bars
+    .remove();
+          </code></pre>
+          <p class="see-also">
+            <small>See also: http://bost.ocks.org/mike/transition/</small>
+          </p>
+        </section> -->
+        <section>
+          <h3>See also</h3>
+
+          <ul>
+            <li>
+              General Update Pattern <a href="http://bl.ocks.org/mbostock/3808218">I</a>, <a href="http://bl.ocks.org/mbostock/3808221">II</a>, <a href="http://bl.ocks.org/3808234">III</a></h4>
+            </li>
+            <li>
+              <a href="http://mbostock.github.io/d3/tutorial/circle.html">Three Little Circles</a>
+            </li>
+            <li><a href="http://bost.ocks.org/mike/transition/">Working with Transitions</a></li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Nested Selections</h2>
+        </section>
+        <section>
+          <h3>Nested Selections</h3>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="CuFJz" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/CuFJz'>CuFJz</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="CuFJz" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/CuFJz'>CuFJz</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#33</small></small></footer>
+        </section>
+        <section>
+          <h4>See also: <a href="http://bost.ocks.org/mike/selection/">How Selection Works</a></h4>
+          <iframe src="http://bost.ocks.org/mike/selection/" width="100%" height='450'></iframe>
+        </section>
+
+        <section>
+          <h3>"<a href="http://prcweb.co.uk/lab/selection/">Two Tables</a>"</h3>
+          <iframe src="http://prcweb.co.uk/lab/selection/" width="100%" height='400'></iframe>
+        </section>
+        <section>
+          More examples
+
+          http://bost.ocks.org/mike/miserables/
+          http://bl.ocks.org/mbostock/3887051
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Interactions</h2>
+        </section>
+        <section>
+          <h3>Event Listeners</h3>
+          <p>
+            <code>.on('mouseover',...), .on('click',...)</code>
+          </p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="yziKj" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/yziKj'>yziKj</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="yziKj" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/yziKj'>yziKj</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p><small>Note 1: <code>:hover</code> pseudo-selector also works with svg!</small></p>
+          <p><small>Note 2: To remove a <i>listener</i>, pass null as the <i>listener</i>. To remove all listeners for a particular event type, pass null as the <i>listener</i>, and .type as the type, e.g. <code>selection.on(".foo", null)</code>.</small></p>
+        </section>
+        <section>
+          <h3>SVG Tooltips</h3>
+          <p><a href="http://localhost:8000/fundamental.html#/5/6">Last week</a>, we did it in svg.</p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Dbuhd" data-user="kanitw" data-default-tab="html" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Dbuhd'>Dbuhd</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Dbuhd" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Dbuhd'>Dbuhd</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>SVG Tooltips</h3>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="mkgqD" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/mkgqD'>mkgqD</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="mkgqD" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/mkgqD'>mkgqD</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>HTML Tooltips</h3>
+          <iframe src="http://examples.oreilly.com/0636920026938/chapter_10/14_div_tooltip.html" width="100%" height="400"></iframe>
+          <p class="see-also">
+            <small>See "<a href="http://chimera.labs.oreilly.com/books/1230000000345/ch10.html#_html_div_tooltips">Div Tooltip HTML</a>" in Murray</small>
+          </p>
+        </section>
+        <section>
+          <h3>Brushing - <code>d3.svg.brush()</code></h3>
+          <iframe src="http://bl.ocks.org/mbostock/raw/4063663/" frameborder="0" width="100%" height="450"></iframe>
+          <p><small>From http://bl.ocks.org/mbostock/4063663.  See also <a href="http://bl.ocks.org/mbostock/1667367">Focus+Context</a></small></p>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Scale</h2>
+          <h4>Domain ↦ Range</h4>
+        </section>
+        <section>
+          <h3><code>.linear()</code></h3>
+          <p>
+            <img src="img/d3scale1.png" height="200" width="587" alt="">
+          </p>
+
+          <pre><code class="javascript">
+var x = d3.scale.linear().domain([0, 10]).range([0,100]);
+console.log(x(-1),x(0), x(4.4), x(10), x(11)); //-10 0 44 100 110 with some rounding errors
+console.log(x.clamp()(-1), x.clamp()(11); // 0 100
+          </code></pre>
+
+          <footer class="source"><small><small>Source: http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/</small></small></footer>
+        </section>
+        <section >
+          <h3>Scale methods</h3>
+          <ul>
+          <li><code>.nice()</code> round domain to nicer numbers e.g. from <code>[0.2014, 0.9966]</code> to <code>[0.2, 1]</code>
+            <pre><code class="javascript">
+d3.scale.linear().domain([0.2014,0.9966]).nice().domain() // [0.1,1]
+            </code></pre>
+          </li>
+          <li><code>.rangeRound()</code> output range in integers – better for positioning marks on the screen
+            <pre><code class="javascript">
+d3.scale.linear().domain([0, 10]).range([0,100])(0.1234)// 1.234
+d3.scale.linear().domain([0, 10]).rangeRound([0,100])(0.1234)// 1
+            </code></pre></li>
+          <li><code>.invert()</code>
+            <pre><code class="javascript">
+ d3.scale.linear().domain([0, 10]).range([0,100]).invert(50); //5
+            </code></pre>
+          </li>
+          <li><code>.ticks()</code> return uniformly spaced ticks for your axes.  (See <a href="https://github.com/mbostock/d3/wiki/SVG-Axes">Axes</a> for examples)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Ordinal Scales</h3>
+          <p><code>d3.scale.ordinal()</code></p>
+
+          <p>
+            <small><code>ordinal.rangePoints(interval[, padding])</code> – e.g. Plots</small>
+          </p>
+          <img src="img/range-point.png" height="112" width="476"/>
+          <p>
+            <small><code>ordinal.rangeBands(interval[, padding[, outerPadding]])</code> - e.g. Bar Chart</small>
+          </p>
+          <img src="img/range-bands.png" height="172" width="540"/>
+        </section>
+
+        <section>
+          <h3>Categorical Color Scale</h3>
+          <p>
+            <code>.category10()</code>
+          </p>
+          <p>
+            <small><font color="#1f77b4">#1f77b4</font>
+              <font color="#ff7f0e">#ff7f0e</font>
+              <font color="#2ca02c">#2ca02c</font>
+              <font color="#d62728">#d62728</font>
+              <font color="#9467bd">#9467bd</font>
+              <font color="#8c564b">#8c564b</font>
+              <font color="#e377c2">#e377c2</font>
+              <font color="#7f7f7f">#7f7f7f</font>
+              <font color="#bcbd22">#bcbd22</font>
+              <font color="#17becf">#17becf</font></small>
+          </p>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="zpKuv" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/zpKuv'>zpKuv</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="zpKuv" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/zpKuv'>zpKuv</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+        </section>
+        <section>
+
+          <p class="see-also">
+            <small>http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/</small>
+          </p>
+        </section>
+      </section>
+      <section>
+         <section data-markdown>
+          ## [SVG Axes](https://github.com/mbostock/d3/wiki/SVG-Axes)
+        </section>
+        <section>
+          <h3></h3>
+        </section>
+         <section data-markdown>
+          ## [More SVG Axes](https://github.com/mbostock/d3/wiki/SVG-Axes)
+
+          [![6186172](http://bl.ocks.org/mbostock/raw/6186172/thumbnail.png)](http://bl.ocks.org/mbostock/6186172)
+          [![5537697](http://bl.ocks.org/mbostock/raw/5537697/thumbnail.png)](http://bl.ocks.org/mbostock/5537697)
+          [![4573883](http://bl.ocks.org/mbostock/raw/4573883/thumbnail.png)](http://bl.ocks.org/mbostock/4573883)
+          [![4403522](http://bl.ocks.org/mbostock/raw/4403522/thumbnail.png)](http://bl.ocks.org/mbostock/4403522)
+          [![4349486](http://bl.ocks.org/mbostock/raw/4349486/thumbnail.png)](http://bl.ocks.org/mbostock/4349486)
+          [![3892919](http://bl.ocks.org/mbostock/raw/3892919/thumbnail.png)](http://bl.ocks.org/mbostock/3892919)
+        </section>
+         <section data-markdown>
+          ## [More SVG Axes](https://github.com/mbostock/d3/wiki/SVG-Axes)
+
+          [![3371592](http://bl.ocks.org/mbostock/raw/3371592/thumbnail.png)](http://bl.ocks.org/mbostock/3371592)
+          [![3259783](http://bl.ocks.org/mbostock/raw/3259783/thumbnail.png)](http://bl.ocks.org/mbostock/3259783)
+          [![3212294](http://bl.ocks.org/mbostock/raw/3212294/thumbnail.png)](http://bl.ocks.org/mbostock/3212294)
+          [![2983699](http://bl.ocks.org/mbostock/raw/2983699/thumbnail.png)](http://bl.ocks.org/mbostock/2983699)
+          [![2996766](http://bl.ocks.org/mbostock/raw/2996766/thumbnail.png)](http://bl.ocks.org/mbostock/2996766)
+          [![2996785](http://bl.ocks.org/mbostock/raw/2996785/thumbnail.png)](http://bl.ocks.org/mbostock/2996785)
+          [![1849162](http://bl.ocks.org/mbostock/raw/1849162/thumbnail.png)](http://bl.ocks.org/mbostock/1849162)
+          [![4323929](http://bl.ocks.org/mbostock/raw/4323929/thumbnail.png)](http://bl.ocks.org/mbostock/4323929)
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Layouts & Maps</h2>
+        </section>
+        <section>
+          <h3>Pie</h3>
+          <p>Many layouts are just modifier</p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="IjqLt" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/IjqLt'>IjqLt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="IjqLt" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/IjqLt'>IjqLt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <footer class="source"><small><small>Source: <a href="http://chimera.labs.oreilly.com/books/1230000000345/ch11.html">Chapter 11</a> in Interactive Data Visualization for the Web by Murray</small></small></footer>
+        </section>
+        <section>
+          <h3>Force Directed</h3>
+          ....
+        </section>
+        <section>
+          <h3>More Layouts</h3>
+          <ul>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Bundle-Layout">Bundle</a> - apply Holten's <em>hierarchical bundling algorithm</em> to edges.</li>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Chord-Layout">Chord</a> - produce a chord diagram from a matrix of relationships.</li>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Cluster-Layout">Cluster</a> - cluster entities into a dendrogram.</li>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Force-Layout">Force</a> - position linked nodes using physical simulation.</li>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Hierarchy-Layout">Hierarchy</a> - derive a custom hierarchical layout implementation.</li>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Histogram-Layout">Histogram</a> - compute the distribution of data using quantized bins.</li>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Pack-Layout">Pack</a> - produce a hierarchical layout using recursive circle-packing.</li>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Partition-Layout">Partition</a> - recursively partition a node tree into a sunburst or icicle.</li>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Pie-Layout">Pie</a> - compute the start and end angles for arcs in a pie or donut chart.</li>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Stack-Layout">Stack</a> - compute the baseline for each series in a stacked bar or area chart.</li>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Tree-Layout">Tree</a> - position a tree of nodes tidily.</li>
+            <li>
+            <a class="internal present" href="/mbostock/d3/wiki/Treemap-Layout">Treemap</a> - use recursive spatial subdivision to display a tree of nodes.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Maps</h2>
+        </section>
+        <section>
+
+          http://bost.ocks.org/mike/map/
+        </section>
+      </section>
+      <section>
+        <section>
+          <h3><code>d3.csv(), d3.tsv()</code></h3>
+          <p>Implemented Using <a href="http://www.w3.org/TR/XMLHttpRequest/">XMLHttpRequest</a></p>
+          <pre><code>
+var format = d3.time.format("%b %Y");
+
+d3.csv("stocks.csv", function(stocks) {
+  stocks.forEach(function(d) {
+    d.price = +d.price;
+    d.date = format.parse(d.date);
+  });
+});
+          </code></pre>
+          <p><small>Note: A web server is required when loading external data.  Use <code>python -m SimpleHTTPServer 8888</code> is one easy way.</small></p>
+          <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#61</small></small></footer>
+        </section>
+        <section>
+          <h3>importing data</h3>
+          <p><code>d3.json()</code></p>
+          <pre><code class="javascript">
+var format = d3.time.format("%b %Y");
+
+d3.json("stocks.json", function(stocks) {
+  stocks.forEach(function(d) {
+    d.date = format.parse(d.date);
+  });
+});
+          </code></pre>
+          <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#65</small></small></footer>
+        </section>
+      </section>
+      <section>
+        <section>
+            <h2>Useful Tips</h2>
+        </section>
+        <section data-markdown>
+          ### Useful Helpers
+
+          * `max()`, `min()`, `range()`, `extent()`, `mean()`, `median()`
+          * `keys()`, `values()`
+          * [Arrays](https://github.com/mbostock/d3/wiki/Arrays) – Learn to use Javascript built-in + D3's [Arrays Helpers](https://github.com/mbostock/d3/wiki/Arrays)!
+          * [SVG Helpers](https://github.com/mbostock/d3/wiki/SVG) e.g. `d3.svg.area()`
+        </section>
+        <section>
+          <section>
+            <h3>Reusable d3.</h3>
+            <p>Repeatable, Modifiable, Configurable, Extensible</p>
+            <ul>
+              <li>
+                Mike Bostock's <a href="http://bost.ocks.org/mike/chart/">Towards Reusable Charts</a>
+              </li>
+              <li>
+                Mike Pennisi  <a href="http://weblog.bocoup.com/reusability-with-d3/">Exploring Reusability with D3.js
+                </a>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>Need in memory database?</h3>
+            <a href="https://github.com/StanfordHCI/datavore">Datavore</a>
+            <a href="http://square.github.io/crossfilter/">Crossfilter</a>
+          </section>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>More Examples</h2>
+        </section>
+        <section>
+          <h3>Scatter Plots</h3>
+          <iframe src="http://bl.ocks.org/mbostock/raw/3887118/" width='100%' height="400"></iframe>
+          <footer class="source"><small>Source: http://bl.ocks.org/mbostock/3887118</small></footer>
+        </section>
+        <section>
+          <h3>Focus + Context Brush</h3>
+          <iframe src="http://bl.ocks.org/mbostock/raw/1667367/" width='100%' height="400"></iframe>
+          <footer class="source"><small>Source: http://bl.ocks.org/mbostock/1667367</small></footer>
+        </section>
+        <section data-markdown>
+          ### More Examples
+          * https://github.com/mbostock/d3/wiki/Gallery
+          * http://mbostock.github.io/d3/talk/20111018/
+          * http://bost.ocks.org/mike/map/
+          * http://christopheviau.com/d3list/gallery.html
+        </section>
+      </section>
+
+      <section>
+        <h1>Q&A</h1>
+
+        <p> Acknowledgement: This tutorial combines contents from Mike Bostock, Vadim Ogievetsky, Scott Murray and Jerome Cukier. </p>
+      </section>
     </div>
 
   </div>
