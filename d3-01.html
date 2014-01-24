@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>d3 Tutorial</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Hakim El Hattab">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/idl.css" id="theme">
+
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+  <script>
+  document.write('<link rel="stylesheet" href="reveal.js/css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+  </script>
+
+  <script src="jquery.js"></script>
+  <script src="js/d3.js"></script>
+
+
+
+  <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section>
+        <h1>
+          <small>D3.js Tutorial</small>
+        </h1>
+        <h4>First Part</h4>
+        <br/>
+        <p>
+          <small>
+            by <a href="http://hakim.se">Kanit "Ham" Wongsuphasawat</a>
+          </small>
+        </p>
+        <p>
+          <small>
+            <a href="http://idl.cs.washington.edu">Interactive Data Lab</a>,
+            <a href="http://uw.edu">University of Washington</a>
+          </small>
+        </p>
+        <p>
+          <small>
+            <a href="http://twitter.com/kanitw">@kanitw</a>
+            /
+            <a href="http://kanitw.yellowpigz.com">kanitw.yellowpigz.com</a>
+          </small>
+        </p>
+        <p><small><small>(Based on <a href="http://vadim.ogievetsky.com/IntroD3">Vadim Ogievetsky</a> and <a href="alignedleft.com/tutorials/d3/">Scott Murray</a>'s work)</small></small></p>
+      </section>
+      <section data-markdown>
+        ## Outline
+
+        * Examples
+        * Selections & Data
+        * Transitions
+        * Nested Selections
+        * Interactions
+        * Scales & Axes
+        * Tips e.g. Importing Data
+        * Layouts & Maps
+        * More Examples
+
+      </section>
+      <section>
+        <h3>Show Reels</h3>
+        <img src="img/d3.png" style="max-width: 600px; max-height: 400px;">
+        <p>
+          <a href="http://vis.stanford.edu/jheer/talks/VisWeek2012/#1">See</a>
+        </p>
+      </section>
+      <section>
+        <h2>Data-Driven Documents</h2>
+        <ul>
+        <li>Visualizing Data with Web Standards (HTML/SVG)</li>
+        <li>Data ↦ Elements – constructing a DOM from Data</li>
+        <li>In visualization, each data point has a corresponding element (graphical marks).  D3 helps you maintain this mapping!</li>
+        </ul>
+      </section>
+      <section>
+        <section>
+          <h2>Selection</h2>
+        </section>
+        <section>
+          <h3><code>.select() + .append()</code></h3>
+          <p>d3 use <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors">CSS Selector</a></p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="dLofq" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/dLofq'>dLofq</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="dLofq" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/dLofq'>dLofq</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p>Note: <code>.append()</code> return a new selection–containing the appended object(s) </p>
+          <footer class="source"><small><small>Source: http://alignedleft.com/tutorials/d3/chaining-methods</small></small></footer>
+        </section>
+        <section>
+          <h3><code>.select()</code> + <code>.attr()</code>, <code>.style()</code></h3>
+          <p>Select and modify elements's properties</p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kfwdp" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kfwdp'>kfwdp</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kfwdp" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kfwdp'>kfwdp</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p><small>Note: notice chained syntax, object as argument</small></p>
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/</small></small></footer>
+        </section>
+        <section>
+          <h3>but <code>.select()</code> only selects one item!</h3>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="rLcBg" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/rLcBg'>rLcBg</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="rLcBg" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/rLcBg'>rLcBg</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#12</small></small></footer>
+        </section>
+        <section>
+          <h3><code>.selectAll()</code></h3>
+          <!-- <p><code>.attr()</code>'s value can accept <code>function</code> with arguments <code>data, index</code></p> -->
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Iruyi" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Iruyi'>Iruyi</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Iruyi" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Iruyi'>Iruyi</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <p class="see-also">
+            <small>See also: http://mbostock.github.io/d3/tutorial/circle.html</small>
+          </p>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2><code>.data()</code></h2>
+          <h4>Data ↦ Attributes</h4>
+        </section>
+        <section>
+          <h3><code>.data()</code></h3>
+          <p>Tell D3 that you want the selected elements to correspond to data!</p>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="HFBCl" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/HFBCl'>HFBCl</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="HFBCl" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/HFBCl'>HFBCl</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <footer class="source">
+          <p><small class="block">See in console that the selected rect selection object is an array of array that embed data in <code>__data__</code> property!</small></p>
+          <small><small>Modified from: http://vadim.ogievetsky.com/IntroD3/#14</small></small></footer>
+        </section>
+        <section>
+          <h3>Selection Object</h3>
+          <ul>
+            <li>An array of arrays</li>
+            <li>More precisely, subclass of array</li>
+            <li>if <code>.data()</code> is called, <code>__data__</code> of each element will contain the data mapped to that element.</li>
+          </ul>
+          <img src="img/__data__.png" height="60" width="155" alt="">
+          <p><small>You should have seen this from last slide!</small></p>
+
+        </section>
+        <section>
+          <h3><div class="code">.data()</div></h3>
+          <p>Data can be objects too!</p>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="pLAvt" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/pLAvt'>pLAvt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="pLAvt" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/pLAvt'>pLAvt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3><code>.data()</code></h3>
+          <h4>What if number of data doesn't match number of items selected?</h4>
+          <div class="left">
+            <p data-height="350" data-theme-id="0" data-slug-hash="nFwLt" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/nFwLt'>nFwLt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="350" data-theme-id="0" data-slug-hash="nFwLt" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/nFwLt'>nFwLt</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>Thinking with Join</h3>
+          <style>
+            #join-svg circle {
+            fill: none;
+            fill-opacity: .6;
+            stroke: black;
+            stroke-width: 1.5px;
+            }
+            #join-svg text{
+              font-size: 20px;
+              fill:white;
+            }
+
+          </style>
+          <br/><br/>
+          <svg id="join-svg" width="720" height="240"><g transform="translate(0,128)"><g transform="translate(300)"><circle r="110" style="fill: #318be1;"></circle><text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Data</text><text x="-50" dy=".35em" text-anchor="middle">Enter</text></g><text x="360" dy=".35em" text-anchor="middle">Update</text><g transform="translate(420)"><circle r="110" style="fill: #FF7A00;"></circle><text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Elements</text><text x="50" dy=".35em" text-anchor="middle">Exit</text></g></g></svg>
+
+          <p>Calling <code>.data()</code> create three arrays – <code>enter</code>, <code>update</code>, <code>exit</code>.  <code>.data()</code> returns the update.</p>
+          <br/><br/>
+          <p class="see-also">
+            <small>Source: http://bost.ocks.org/mike/join/</small>
+          </p>
+        </section>
+        <section>
+          <h3><code>.enter()</code></h3>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Fawcj" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Fawcj'>Fawcj</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="Fawcj" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/Fawcj'>Fawcj</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#20</small></small></footer>
+        </section>
+        <section>
+          <h3><code>.enter()</code></h3>
+          <p>Shorter: append, then update all together!</p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kvCjf'>kvCjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kvCjf'>kvCjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#21</small></small></footer>
+        </section>
+        <section>
+          <h3><code>.enter()</code> from scratch</h3>
+          <p>This is a common way that people build visualization in D3!</p>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kvCjf'>kvCjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/kvCjf'>kvCjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#22</small></small></footer>
+        </section>
+
+        <section>
+          <h3><code>.exit()</code></h3>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="maGjx" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/maGjx'>maGjx</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="maGjx" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/maGjx'>maGjx</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Transitions</h2>
+        </section>
+        <section>
+          <h3><code>.transition()</code></h3>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="tqaDj" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/tqaDj'>tqaDj</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="tqaDj" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/tqaDj'>tqaDj</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p><small>Note: Transitions in D3 use <i>cubic-in-out</i> as default easing functions.  But there are <a href="https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease">others.</a></small></p>
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#27</small></small></footer>
+        </section>
+        <section>
+          <h3>Nested <code>.transition()</code> & <code>.delay()</code></h3>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="ouIvC" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/ouIvC'>ouIvC</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="ouIvC" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/ouIvC'>ouIvC</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>Mapping Data to Elements</h3>
+          <p>The default is index mapping.</p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="DwyLs" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/DwyLs'>DwyLs</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="DwyLs" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/DwyLs'>DwyLs</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>Join key – <code>.data(...,key)</code></h3>
+          <p>A key should be a unique string.</p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="FHtjf" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/FHtjf'>FHtjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="FHtjf" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/FHtjf'>FHtjf</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p class="see-also">
+            <small>http://bost.ocks.org/mike/selection/#key</small>
+          </p>
+        </section>
+        <section>
+          <h3>Join key – <code>.data(...,key)</code></h3>
+          <p>Notice how you can save lines of code with <code>selection.call()</code></p>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="bqosD" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/bqosD'>bqosD</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="bqosD" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/bqosD'>bqosD</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p class="see-also">
+            <small>http://bost.ocks.org/mike/selection/#key</small>
+          </p>
+        </section>
+        <section>
+          <h3>Join key</h3>
+          <p>New Data?</p>
+
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="GsKnv" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/GsKnv'>GsKnv</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="GsKnv" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/GsKnv'>GsKnv</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <p class="see-also"><small>See even better <a href="http://mbostock.github.io/d3/tutorial/bar-2.html">bars transition</a>.</small></p>
+        </section>
+
+        <!-- <section>
+          <h3>Join key</h3>
+          <p>Better one..</p>
+
+          <p class="see-also">
+            <small>1</small>
+          </p>
+        </section> -->
+        <!-- <section>
+          <h3>Some Things Cannot Be Interpolated</h3>
+          <p>Selection methods related to data joins (data, enter, exit) and creating elements (append, insert) can only be performed on selections</p>
+          <pre><code class="javascript">
+var bar = svg.selectAll(".bar")
+    .data(data, function(d) { return d.key; });
+
+bar.enter().append("rect")
+    .attr("class", "bar")
+    … // initialize entering bars
+
+bar.transition()
+    … // transition entering + updating bars
+
+bar.exit().transition()
+    … // transition exiting bars
+    .remove();
+          </code></pre>
+          <p class="see-also">
+            <small>See also: http://bost.ocks.org/mike/transition/</small>
+          </p>
+        </section> -->
+        <section>
+          <h3>See also</h3>
+
+          <ul>
+            <li>
+              General Update Pattern <a href="http://bl.ocks.org/mbostock/3808218">I</a>, <a href="http://bl.ocks.org/mbostock/3808221">II</a>, <a href="http://bl.ocks.org/3808234">III</a></h4>
+            </li>
+            <li>
+              <a href="http://mbostock.github.io/d3/tutorial/circle.html">Three Little Circles</a>
+            </li>
+            <li><a href="http://bost.ocks.org/mike/transition/">Working with Transitions</a></li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2>Nested Selections</h2>
+        </section>
+        <section>
+          <h3>Nested Selections</h3>
+          <div class="left">
+            <p data-height="400" data-theme-id="0" data-slug-hash="CuFJz" data-user="kanitw" data-default-tab="js" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/CuFJz'>CuFJz</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="CuFJz" data-user="kanitw" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/kanitw/pen/CuFJz'>CuFJz</a> by Kanit Wongsuphasawat (<a href='http://codepen.io/kanitw'>@kanitw</a>) on <a href='http://codepen.io'>CodePen</a>
+            </p>
+          </div>
+          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#33</small></small></footer>
+        </section>
+        <section>
+          <h4>See also: <a href="http://bost.ocks.org/mike/selection/">How Selection Works</a></h4>
+          <iframe src="http://bost.ocks.org/mike/selection/" width="100%" height='450'></iframe>
+        </section>
+
+        <section>
+          <h3>"<a href="http://prcweb.co.uk/lab/selection/">Two Tables</a>"</h3>
+          <iframe src="http://prcweb.co.uk/lab/selection/" width="100%" height='400'></iframe>
+        </section>
+        <section>
+          More examples
+
+          http://bost.ocks.org/mike/miserables/
+          http://bl.ocks.org/mbostock/3887051
+        </section>
+      </section>
+    </div>
+
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.min.js"></script>
+
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Parallax scrolling
+    // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    // parallaxBackgroundSize: '2100px 900px',
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [{
+      src: 'reveal.js/lib/js/classList.js',
+      condition: function() {
+        return !document.body.classList;
+      }
+    }, {
+      src: 'reveal.js/plugin/markdown/marked.js',
+      condition: function() {
+        return !!document.querySelector('[data-markdown]');
+      }
+    }, {
+      src: 'reveal.js/plugin/markdown/markdown.js',
+      condition: function() {
+        return !!document.querySelector('[data-markdown]');
+      }
+    }, {
+      src: 'reveal.js/plugin/highlight/highlight.js',
+      async: true,
+      callback: function() {
+        hljs.initHighlightingOnLoad();
+      }
+    }, {
+      src: 'reveal.js/plugin/zoom-js/zoom.js',
+      async: true,
+      condition: function() {
+        return !!document.body.classList;
+      }
+    }, {
+      src: 'reveal.js/plugin/notes/notes.js',
+      async: true,
+      condition: function() {
+        return !!document.body.classList;
+      }
+    }]
+  });
+  </script>
+  <script async src="//codepen.io/assets/embed/ei.js"></script>
+  <!-- <script src="http://static.jsbin.com/js/embed.js"></script> -->
+</body>
+
+</html>
