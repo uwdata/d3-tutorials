@@ -711,10 +711,14 @@ d3.csv("stocks.csv", function(stocks) {
     d.price = +d.price;
     d.date = format.parse(d.date);
   });
+  //visualization code here...
 });
           </code></pre>
           <p><small>Note: A web server is required when loading external data.  Use <code>python -m SimpleHTTPServer 8888</code> is one easy way.</small></p>
           <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#61</small></small></footer>
+        </section>
+        <section>
+          <iframe src="http://bost.ocks.org/mike/d3/workshop/area-chart.html" frameborder="0" width="100%" height="400"></iframe>
         </section>
         <section>
           <h3>importing data</h3>
@@ -726,6 +730,7 @@ d3.json("stocks.json", function(stocks) {
   stocks.forEach(function(d) {
     d.date = format.parse(d.date);
   });
+  //visualization code here...
 });
           </code></pre>
           <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#65</small></small></footer>
