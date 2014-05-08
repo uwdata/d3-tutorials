@@ -1,3 +1,5 @@
 [submodule "reveal.js"]
   path = reveal.js
-  url = git://foo.com/git/lib.git
+  url = https://github.com/kanitw/reveal.js.git
+
+
