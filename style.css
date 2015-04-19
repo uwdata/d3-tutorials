@@ -1,37 +1,72 @@
+/* Theme */
+
+.reveal {
+  font-size: 30px;
+  font-family: Avenir, Helvetica Neue, Helvetica, Arial;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  font-family: Avenir, Helvetica Neue, Helvetica, Arial;
+  text-transform: none;
+}
+
+/* Code */
+
+.reveal pre {
+  margin: 0;
+  box-shadow: none;
+  width: 100%;
+}
+
+.reveal pre code {
+  color: #E0E2E4;
+  background: #282B2E;
+}
+
 iframe {
-  background-color: white; }
+  background-color: #222;
+}
 
-.left {
-  float: left;
-  width: 50%;
-  text-align: center; }
+.left{
+  float:left;
+  width:50%;
+  text-align: center;
+}
+.right{
+  float:left;
+  width:50%;
+  text-align: center;
+}
 
-.right {
-  float: left;
-  width: 50%;
-  text-align: center; }
+.reveal .left pre, .reveal .right pre{
+  margin: 0;
+}
 
-.reveal .left pre, .reveal .right pre {
-  margin: 0; }
-
-.reveal .left pre code, .reveal .right pre code {
-  padding: 3px; }
+.reveal .left pre code, .reveal .right pre code{
+  padding:3px;
+}
 
 .reveal pre code {
   word-wrap: break-word;
-  max-height: 500px; }
+  max-height: 500px;
+}
 
-pre .typeparam {
-  color: #fcba8f; }
+pre .typeparam{
+  color: #fcba8f;
+}
 
-.right iframe {
-  width: 100%; }
+.right iframe{
+  width:100%;
+}
 
-.see-also {
-  font-size: 50%; }
+.see-also{
+  font-size: 50%;
+}
 
-.overflow-y {
-  overflow-y: scroll; }
+.overflow-y{
+   overflow-y: scroll;
+}
 
-.block, .reveal small.block {
-  display: block; }
+.block, .reveal small.block{
+  display: block;
+}

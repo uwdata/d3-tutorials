@@ -14,19 +14,19 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <link rel="stylesheet" href="reveal.js/css/reveal.min.css">
-  <link rel="stylesheet" href="reveal.js/css/theme/idl.css" id="theme">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="style.css">
 
   <!-- For syntax highlighting -->
-  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="highlight.js/src/styles/obsidian.css" id="highlight-theme">
 
   <!-- If the query includes 'print-pdf', use the PDF print sheet -->
   <script>
   document.write('<link rel="stylesheet" href="reveal.js/css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
   </script>
 
-  <script src="jquery.js"></script>
+  <script src="js/jquery.js"></script>
   <script src="js/d3.js"></script>
 
   <script>
@@ -61,7 +61,7 @@
         <br/>
         <p>
           <small>
-            by <a href="http://hakim.se">Kanit "Ham" Wongsuphasawat</a>
+            A tutorial by <a href="http://homes.cs.washington.edu/~domoritz/">Dominik Moritz</a> (<a href="http://twitter.com/domoritz">@domoritz</a>) and <a href="http://kanitw.yellowpigz.com/">Kanit "Ham" Wongsuphasawat</a> (<a href="http://twitter.com/kanitw">@kanitw</a>)
           </small>
         </p>
         <p>
@@ -70,28 +70,20 @@
             <a href="http://uw.edu">University of Washington</a>
           </small>
         </p>
-        <p>
-          <small>
-            <a href="http://twitter.com/kanitw">@kanitw</a>
-            /
-            <a href="http://kanitw.yellowpigz.com">kanitw.yellowpigz.com</a>
-          </small>
-        </p>
-        <p><small><small>(Based on <a href="http://vadim.ogievetsky.com/IntroD3">Vadim Ogievetsky</a> and <a href="alignedleft.com/tutorials/d3/">Scott Murray</a>'s work)</small></small></p>
+        <p><small><small>(Based on <a href="http://vadim.ogievetsky.com/IntroD3">Vadim Ogievetsky</a> and <a href="http://alignedleft.com/tutorials/d3/">Scott Murray</a>'s work)</small></small></p>
       </section>
       <section data-markdown>
-        ## Outline
+## Outline
 
-        * Examples
-        * Selections & Data
-        * Transitions
-        * Nested Selections
-        * Interactions
-        * Scales & Axes
-        * Tips e.g. Importing Data
-        * Layouts & Maps
-        * More Examples
-
+* Examples
+* Selections & Data
+* Transitions
+* Nested Selections
+* Interactions
+* Scales & Axes
+* Tips e.g. Importing Data
+* Layouts & Maps
+* More Examples
       </section>
       <section>
         <h3>Show Reels</h3>
@@ -492,7 +484,7 @@ bar.exit().transition()
   </div>
 
   <script src="reveal.js/lib/js/head.min.js"></script>
-  <script src="reveal.js/js/reveal.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
 
   <script>
   // Full list of configuration options available here:
@@ -502,9 +494,11 @@ bar.exit().transition()
     progress: true,
     history: true,
     center: true,
+    slideNumber: true,
+    transitionSpeed: 'fast',
 
     theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+    transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
 
     // Parallax scrolling
     // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',

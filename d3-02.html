@@ -14,19 +14,19 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <link rel="stylesheet" href="reveal.js/css/reveal.min.css">
-  <link rel="stylesheet" href="reveal.js/css/theme/idl.css" id="theme">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="style.css">
 
   <!-- For syntax highlighting -->
-  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="highlight.js/src/styles/obsidian.css" id="highlight-theme">
 
   <!-- If the query includes 'print-pdf', use the PDF print sheet -->
   <script>
   document.write('<link rel="stylesheet" href="reveal.js/css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
   </script>
 
-  <script src="jquery.js"></script>
+  <script src="js/jquery.js"></script>
   <script src="js/d3.js"></script>
 
   <script>
@@ -61,7 +61,7 @@
         <br/>
         <p>
           <small>
-            by <a href="http://hakim.se">Kanit "Ham" Wongsuphasawat</a>
+            A tutorial by <a href="http://homes.cs.washington.edu/~domoritz/">Dominik Moritz</a> (<a href="http://twitter.com/domoritz">@domoritz</a>) and <a href="http://kanitw.yellowpigz.com/">Kanit "Ham" Wongsuphasawat</a> (<a href="http://twitter.com/kanitw">@kanitw</a>)
           </small>
         </p>
         <p>
@@ -70,14 +70,7 @@
             <a href="http://uw.edu">University of Washington</a>
           </small>
         </p>
-        <p>
-          <small>
-            <a href="http://twitter.com/kanitw">@kanitw</a>
-            /
-            <a href="http://kanitw.yellowpigz.com">kanitw.yellowpigz.com</a>
-          </small>
-        </p>
-        <p><small><small>(Based on <a href="http://vadim.ogievetsky.com/IntroD3">Vadim Ogievetsky</a> and <a href="alignedleft.com/tutorials/d3/">Scott Murray</a>'s work)</small></small></p>
+        <p><small><small>(Based on <a href="http://vadim.ogievetsky.com/IntroD3">Vadim Ogievetsky</a> and <a href="http://alignedleft.com/tutorials/d3/">Scott Murray</a>'s work)</small></small></p>
       </section>
       <section>
         <section>
@@ -278,26 +271,26 @@ svg.append("g")
           <p>See <a href="http://bl.ocks.org/mbostock/3885304">Bar Chart</a> example</p>
         </section>
          <section data-markdown>
-          ## [More SVG Axes](https://github.com/mbostock/d3/wiki/SVG-Axes)
+## [More SVG Axes](https://github.com/mbostock/d3/wiki/SVG-Axes)
 
-          [![6186172](http://bl.ocks.org/mbostock/raw/6186172/thumbnail.png)](http://bl.ocks.org/mbostock/6186172)
-          [![5537697](http://bl.ocks.org/mbostock/raw/5537697/thumbnail.png)](http://bl.ocks.org/mbostock/5537697)
-          [![4573883](http://bl.ocks.org/mbostock/raw/4573883/thumbnail.png)](http://bl.ocks.org/mbostock/4573883)
-          [![4403522](http://bl.ocks.org/mbostock/raw/4403522/thumbnail.png)](http://bl.ocks.org/mbostock/4403522)
-          [![4349486](http://bl.ocks.org/mbostock/raw/4349486/thumbnail.png)](http://bl.ocks.org/mbostock/4349486)
-          [![3892919](http://bl.ocks.org/mbostock/raw/3892919/thumbnail.png)](http://bl.ocks.org/mbostock/3892919)
+[![6186172](http://bl.ocks.org/mbostock/raw/6186172/thumbnail.png)](http://bl.ocks.org/mbostock/6186172)
+[![5537697](http://bl.ocks.org/mbostock/raw/5537697/thumbnail.png)](http://bl.ocks.org/mbostock/5537697)
+[![4573883](http://bl.ocks.org/mbostock/raw/4573883/thumbnail.png)](http://bl.ocks.org/mbostock/4573883)
+[![4403522](http://bl.ocks.org/mbostock/raw/4403522/thumbnail.png)](http://bl.ocks.org/mbostock/4403522)
+[![4349486](http://bl.ocks.org/mbostock/raw/4349486/thumbnail.png)](http://bl.ocks.org/mbostock/4349486)
+[![3892919](http://bl.ocks.org/mbostock/raw/3892919/thumbnail.png)](http://bl.ocks.org/mbostock/3892919)
         </section>
          <section data-markdown>
-          ## [More SVG Axes](https://github.com/mbostock/d3/wiki/SVG-Axes)
+## [More SVG Axes](https://github.com/mbostock/d3/wiki/SVG-Axes)
 
-          [![3371592](http://bl.ocks.org/mbostock/raw/3371592/thumbnail.png)](http://bl.ocks.org/mbostock/3371592)
-          [![3259783](http://bl.ocks.org/mbostock/raw/3259783/thumbnail.png)](http://bl.ocks.org/mbostock/3259783)
-          [![3212294](http://bl.ocks.org/mbostock/raw/3212294/thumbnail.png)](http://bl.ocks.org/mbostock/3212294)
-          [![2983699](http://bl.ocks.org/mbostock/raw/2983699/thumbnail.png)](http://bl.ocks.org/mbostock/2983699)
-          [![2996766](http://bl.ocks.org/mbostock/raw/2996766/thumbnail.png)](http://bl.ocks.org/mbostock/2996766)
-          [![2996785](http://bl.ocks.org/mbostock/raw/2996785/thumbnail.png)](http://bl.ocks.org/mbostock/2996785)
-          [![1849162](http://bl.ocks.org/mbostock/raw/1849162/thumbnail.png)](http://bl.ocks.org/mbostock/1849162)
-          [![4323929](http://bl.ocks.org/mbostock/raw/4323929/thumbnail.png)](http://bl.ocks.org/mbostock/4323929)
+[![3371592](http://bl.ocks.org/mbostock/raw/3371592/thumbnail.png)](http://bl.ocks.org/mbostock/3371592)
+[![3259783](http://bl.ocks.org/mbostock/raw/3259783/thumbnail.png)](http://bl.ocks.org/mbostock/3259783)
+[![3212294](http://bl.ocks.org/mbostock/raw/3212294/thumbnail.png)](http://bl.ocks.org/mbostock/3212294)
+[![2983699](http://bl.ocks.org/mbostock/raw/2983699/thumbnail.png)](http://bl.ocks.org/mbostock/2983699)
+[![2996766](http://bl.ocks.org/mbostock/raw/2996766/thumbnail.png)](http://bl.ocks.org/mbostock/2996766)
+[![2996785](http://bl.ocks.org/mbostock/raw/2996785/thumbnail.png)](http://bl.ocks.org/mbostock/2996785)
+[![1849162](http://bl.ocks.org/mbostock/raw/1849162/thumbnail.png)](http://bl.ocks.org/mbostock/1849162)
+[![4323929](http://bl.ocks.org/mbostock/raw/4323929/thumbnail.png)](http://bl.ocks.org/mbostock/4323929)
         </section>
       </section>
       <section>
@@ -423,12 +416,12 @@ d3.json("stocks.json", function(stocks) {
             <h2>Useful Tips</h2>
         </section>
         <section data-markdown>
-          ### Useful Helpers
+### Useful Helpers
 
-          * `max()`, `min()`, `range()`, `extent()`, `mean()`, `median()`
-          * `keys()`, `values()`
-          * [Arrays](https://github.com/mbostock/d3/wiki/Arrays) – Learn to use Javascript built-in + D3's [Arrays Helpers](https://github.com/mbostock/d3/wiki/Arrays)!
-          * [SVG Helpers](https://github.com/mbostock/d3/wiki/SVG) e.g. `d3.svg.area()`
+* `max()`, `min()`, `range()`, `extent()`, `mean()`, `median()`
+* `keys()`, `values()`
+* [Arrays](https://github.com/mbostock/d3/wiki/Arrays) – Learn to use Javascript built-in + D3's [Arrays Helpers](https://github.com/mbostock/d3/wiki/Arrays)!
+* [SVG Helpers](https://github.com/mbostock/d3/wiki/SVG) e.g. `d3.svg.area()`
         </section>
         <section>
           <h3>Reusable d3.</h3>
@@ -466,25 +459,19 @@ d3.json("stocks.json", function(stocks) {
           <footer class="source"><small>Source: http://bl.ocks.org/mbostock/1667367</small></footer>
         </section> -->
         <section data-markdown>
-          ### More Examples
-          * https://github.com/mbostock/d3/wiki/Gallery
-          * http://mbostock.github.io/d3/talk/20111018/
-          * http://bost.ocks.org/mike/map/
-          * http://christopheviau.com/d3list/gallery.html
+### More Examples
+* https://github.com/mbostock/d3/wiki/Gallery
+* http://mbostock.github.io/d3/talk/20111018/
+* http://bost.ocks.org/mike/map/
+* http://christopheviau.com/d3list/gallery.html
         </section>
-      </section>
-
-      <section>
-        <h1>Q&A</h1>
-
-        <p><small>Acknowledgement: This tutorial borrows some contents from Mike Bostock, Vadim Ogievetsky, Scott Murray and Jerome Cukier.</small></p>
       </section>
     </div>
 
   </div>
 
   <script src="reveal.js/lib/js/head.min.js"></script>
-  <script src="reveal.js/js/reveal.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
 
   <script>
   // Full list of configuration options available here:
@@ -494,9 +481,11 @@ d3.json("stocks.json", function(stocks) {
     progress: true,
     history: true,
     center: true,
+    slideNumber: true,
+    transitionSpeed: 'fast',
 
     theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+    transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
 
     // Parallax scrolling
     // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
