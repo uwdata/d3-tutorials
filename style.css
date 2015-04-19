@@ -14,6 +14,10 @@
   background-color: white;
 }
 
+.red {
+  color: rgb(255, 150, 150);
+}
+
 /* Code */
 .reveal pre {
   margin: 0;
