@@ -638,17 +638,13 @@ nav {
         <section>
           <h3>Client-side Javascript: Inline/Include</h3>
           <p>Inline</p>
-          <pre><code class="html">
-<script>
+          <pre><code class="html"><script>
 //Put Javascript code here
-</script>
-          </code></pre>
+</script></code></pre>
 
           <p>Include</p>
 
-          <pre><code class="html">
-<script src="main.js"></script>
-          </code></pre>
+          <pre><code class="html"><script src="main.js"></script></code></pre>
         </section>
         <section>
           <h3>Data Types</h3>
@@ -675,29 +671,24 @@ nav {
         </section>
         <section>
           <h3>Variables</h3>
-          <pre><code class="javascript">
-var a;
+          <pre><code class="javascript">var a;
 console.log("The value of a is " + a); // logs "The value of a is undefined"
 console.log("The value of b is " + b); // throws ReferenceError exception
 b = 5 // declare global variable  ... equivalent to window.b = 5
-console.log(b, window.b) // 5, 5
-          </code></pre>
+console.log(b, window.b) // 5, 5</code></pre>
+
           <p>Javascript uses dynamic typing.</p>
           <pre>
-            <code id="js-dynamic" class="javascript">
-x = "The answer is " + 42; // "The answer is 42"
+            <code id="js-dynamic" class="javascript">x = "The answer is " + 42; // "The answer is 42"
 "37" - 7; // 30
 "37" + 7; // "377"
 "1.1" + "1.1"; //= "1.11.1"
 (+"1.1") + (+"1.1"); // 2.2
-+"1.1" // 1.1 "+" operator converts string to number
-            </code>
++"1.1" // 1.1 "+" operator converts string to number</code>
           </pre>
           <p><small>Tips: operator can return Object too.</small></p>
-          <pre><code class="javascript">
-y = null || "String"
-y // "String"
-          </code></pre>
+          <pre><code class="javascript">y = null || "String"
+y // "String"</code></pre>
         </section>
 
         <section>
