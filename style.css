@@ -15,11 +15,6 @@
 }
 
 /* Code */
-
-pre:first-line {
-    line-height: 0px;
-}
-
 .reveal pre {
   margin: 0;
   box-shadow: none;

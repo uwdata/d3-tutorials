@@ -120,35 +120,7 @@
               Tags must be closed
             </aside>
           </div>
-          <!-- <iframe width="100%" height="500">
-            <b> source </b>
-          </iframe> -->
-          <!-- <a class="jsbin-embed" href="http://jsbin.com/OHeDaTu/6/embed?html,output">JS Bin</a> -->
-          <!-- <iframe width="100%" height="300" src="http://jsfiddle.net/kanitw/8gG7R/1/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe> -->
         </section>
-        <!-- <section>
-          <h3>HTML: Link</h3>
-          <p>
-            <code>&lt;a href="//url"&gt;link text&lt;/a&gt;</code>
-          </p>
-
-          <div class="left">
-            <pre>
-              <code id="html-link"></code>
-            </pre>
-          </div>
-
-          <script>
-          $("#html-link").load('example/html-link.html');
-          </script>
-
-          <div class="right">
-            <iframe src="example/html-link.html" height="100"></iframe>
-          </div> -->
-
-        <!-- <iframe src="http://jsbin.com/ejeduPIR/6/embed?html,output" width="100%" height="500"></iframe> -->
-        <!-- <a class="jsbin-embed" href="http://jsbin.com/ejeduPIR/6/embed?html,output">JS Bin</a> -->
-        <!-- </section> -->
 
         <section>
           <h3>HTML: div, span + ID, Class</h3>
@@ -165,31 +137,12 @@
             <p data-height="450" data-theme-id="0" data-slug-hash="jAHsK" data-user="kanitw" data-default-tab="result" class='codepen'>
             </p>
           </div>
-          <!-- <iframe src="http://jsbin.com/OnIweJOb/1/embed?html,output" width="100%" height="500"></iframe> -->
-          <!-- <a class="jsbin-embed" href="http://jsbin.com/OnIweJOb/1/embed?html,output">JS Bin</a> -->
         </section>
-
-        <!-- <section>
-          <h3>HTML: List</h3>
-          <p>
-            <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">&lt;ul&gt;</a>
-            </code>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol">&lt;ol&gt;</a>
-          </p>
-          <div class="left">
-            <p data-height="450" data-theme-id="0" data-slug-hash="BKwLI" data-user="kanitw" data-default-tab="html" class='codepen'>en</a>
-            </p>
-          </div>
-          <div class="right">
-            <p data-height="450" data-theme-id="0" data-slug-hash="BKwLI" data-user="kanitw" data-default-tab="result" class='codepen'>en</a>
-            </p>
-          </div>
-        </section> -->
 
         <section>
           <h3>More Tags</h3>
           <li>list (<code>ul, ol, li</code>),
-          <code>
-          hr, br, form, input, select, iframe</code>
+          <code>hr, br, form, input, select, iframe</code>
           </li>
           <!-- <p>&lt;table&gt;, -->
           <li class="see-also">
@@ -206,20 +159,20 @@
           <h3>DOM</h3>
           <ul>
             <li>A convention for representing and interacting with objects in HTML, XHTML and XML documents.</li>
-            <li>Nodes of every document are organized in a tree structure, called the DOM tree
+            <li>Nodes of every document are organized in a <strong>tree structure</strong>, called the DOM tree
               <ul>
                 <li>For example, use inspector to see this file's source.</li>
               </ul>
 
             </li>
-            <li>Provides API for modify its content using language such as Javascript</li>
+            <li>Provides API to modify its content using language such as Javascript</li>
           </ul>
         </section>
       </section>
       <section>
         <section data-markdown>
 ### CSS
-#### Cascading Stylesheet
+#### Cascading Style Sheets
         </section>
         <section>
           <h3>CSS Selectors</h3>
@@ -332,7 +285,7 @@
           <h3>CSS: Short Form</h3>
           <p>
             <pre>
-              <code class="css">
+              <code class="css" data-trim>
 background-color: #000; background-image: url(images/bg.gif); background-repeat: no-repeat; background-position: top right;
               </code>
             </pre>
@@ -340,7 +293,7 @@ background-color: #000; background-image: url(images/bg.gif); background-repeat:
           <p>Can be shortened to:</p>
           <p>
             <pre>
-              <code class="css">
+              <code class="css" data-trim>
 background: #000 url(images/bg.gif) no-repeat top right;
               </code>
             </pre>
@@ -358,7 +311,7 @@ background: #000 url(images/bg.gif) no-repeat top right;
 </style></code>
             </pre>
             <pre>
-              <code class="html">
+              <code class="html" data-trim>
 <div style="/* put css in style attribute of any tag */">
 ...
 </div>
@@ -369,7 +322,7 @@ background: #000 url(images/bg.gif) no-repeat top right;
           </p>
           <p>
             <pre>
-              <code>
+              <code class="html" data-trim>
 <link rel="stylesheet" href="style.css"></code>
             </pre>
           </p>
@@ -394,7 +347,7 @@ background: #000 url(images/bg.gif) no-repeat top right;
           <p>
             <b>Variable</b>, <b>Nesting</b>, Partials, Import, <b>Mixins</b>, Inheritance, <b>Operators</b>
             <div style="height: 350px;" class="overflow-y">
-            <pre><code class="scss">
+            <pre><code class="scss" data-trim>
 /* variable, operator */
 
 $font-stack:    Helvetica, sans-serif;
@@ -432,7 +385,8 @@ nav {
           border-radius: $radius;
 }
 
-.box { @include border-radius(10px); }</code>
+.box { @include border-radius(10px); }
+              </code>
             </pre></div>
           </p>
           <p class="see-also"><small><a href="http://lesscss.org/">Less</a> is a another option.</small></p>
@@ -443,7 +397,7 @@ nav {
           <h4>a collection of reusable mixins for designers</h4>
           <p>Example: inline-block</p>
 
-          <pre><code class="scss">
+          <pre><code class="scss" data-trim>
 @mixin inline-block($alignment: $inline-block-alignment) {
   @if $legacy-support-for-mozilla {
     display: -moz-inline-stack;
@@ -457,8 +411,8 @@ nav {
     zoom: 1;
     *display: inline;
   }
-}</code></pre>
-
+}
+          </code></pre>
         </section>
         <section>
           <h3>CSS: Learn more!</h3>
@@ -638,14 +592,15 @@ nav {
         <section>
           <h3>Client-side Javascript: Inline/Include</h3>
           <p>Inline</p>
-          <pre><code class="html">
+          <pre><code class="html" data-trim>
 <script>
 //Put Javascript code here
-</script></code></pre>
+</script>
+          </code></pre>
 
           <p>Include</p>
 
-          <pre><code class="html">
+          <pre><code class="html" data-trim>
 <script src="main.js"></script>
           </code></pre>
         </section>
@@ -674,32 +629,35 @@ nav {
         </section>
         <section>
           <h3>Variables</h3>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var a;
 console.log("The value of a is " + a); // logs "The value of a is undefined"
 console.log("The value of b is " + b); // throws ReferenceError exception
 b = 5 // declare global variable  ... equivalent to window.b = 5
-console.log(b, window.b) // 5, 5</code></pre>
+console.log(b, window.b) // 5, 5
+          </code></pre>
           <p>Javascript uses dynamic typing.</p>
           <pre>
-            <code id="js-dynamic" class="javascript">
+            <code id="js-dynamic" class="javascript" data-trim>
 x = "The answer is " + 42; // "The answer is 42"
 "37" - 7; // 30
 "37" + 7; // "377"
 "1.1" + "1.1"; //= "1.11.1"
 (+"1.1") + (+"1.1"); // 2.2
-+"1.1" // 1.1 "+" operator converts string to number</code>
++"1.1" // 1.1 "+" operator converts string to number
+            </code>
           </pre>
           <p><small>Tips: operator can return Object too.</small></p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 y = null || "String"
-y // "String"</code></pre>
+y // "String"
+          </code></pre>
         </section>
 
         <section>
           <h3>Control Flow</h3>
           <p>C-Style `for`, `while`, `continue`, `break`, `if`/`else`, `switch/case`</p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 for(i=0; i<10; i++){
   if (condition) {
       statement_1_runs_if_condition_is_true();
@@ -708,7 +666,8 @@ for(i=0; i<10; i++){
       statement_2_runs_if_condition_is_false();
       continue;
   }
-}</code></pre>
+}
+            </code></pre>
           <p><small>(I'm not showing <code>while</code>, <code>switch/case</code> here for brevity.)</small></p>
         </section>
         <section data-markdown>
@@ -723,7 +682,8 @@ for(i=0; i<10; i++){
         </section>
         <section>
           <h3>Objects: Literals & new</h3>
-          <pre><code class="javascript">//create object using an object literal
+          <pre><code class="javascript" data-trim>
+//create object using an object literal
 var apple = {
   // quotes not required for a property name
   state: "CA",
@@ -740,7 +700,8 @@ apple.getCity(); // "Cupertino"
 apple['getCity'](); // "Cupertino"
 apple.boards.CEO // "Tim Cook"
 </code></pre>
-          <pre><code class="javascript">//create object using new instead
+          <pre><code class="javascript" data-trim>
+//create object using new instead
 var microsoft = new Object();
 microsoft.state = "WA";
 microsoft['famous founder'] = "Bill Gates";
@@ -750,7 +711,7 @@ microsoft.getCity = function(){ return "Redmond";};
         <section>
           <h3><code>for .. in</code></h3>
           <p>Careful: use <code>hasOwnProperty</code> to check</p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var obj = {a:1, b:2, c:3}, key;
 Object.prototype.crazy = 4;
 for(key in obj){
@@ -762,7 +723,7 @@ for(key in obj){
         </section>
         <section>
           <h3>Arrays</h3>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var numbers = [ 5, 10, 15, 20, 25];
 numbers[1] // 10
 numbers[2] // 15
@@ -773,7 +734,7 @@ numbers.a = 5 // Array is an object
 numbers.a // 5
 'a' in numbers // true
           </code></pre>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var numbers = [ 5, 10, , 20, 25, , ];
 numbers[1] // 10
 numbers[2] // undefined
@@ -781,7 +742,7 @@ numbers.length //6 last empty comma is automatically ignored
           </code></pre>
 
           <pre>
-          <code>
+          <code data-trim>
 // array with multiple types of values
 var mashup = [ 1,3, 4.5, 5.6, "string", null, undefined, true ];
             </code>
@@ -790,26 +751,26 @@ var mashup = [ 1,3, 4.5, 5.6, "string", null, undefined, true ];
         <section>
           <h3>Function</h3>
           <p>First class object...</p>
-          <pre><code class="javascript">
-            function foo(a1, a2){
-              // code
-              console.log(a1+a2);
-            }
+          <pre><code class="javascript" data-trim>
+function foo(a1, a2){
+  // code
+  console.log(a1+a2);
+}
 
           </code></pre>
           <small>same as</small>
-          <pre><code class="javascript">
-            var foo = function(a1, a2){
-              // code
-              console.log(a1+a2);
-            };
+          <pre><code class="javascript" data-trim>
+var foo = function(a1, a2){
+  // code
+  console.log(a1+a2);
+};
           </code></pre>
-          <pre><code class="javascript">
-            foo(a1,a2); // call
+          <pre><code class="javascript" data-trim>
+foo(a1,a2); // call
           </code></pre>
-          <pre><code class="javascript">
-            function g(f){ f(1,2); }
-            g(foo) // 3
+          <pre><code class="javascript" data-trim>
+function g(f){ f(1,2); }
+g(foo) // 3
           </code></pre>
           <p class="see-also"><small>
             See also:
@@ -822,15 +783,15 @@ var mashup = [ 1,3, 4.5, 5.6, "string", null, undefined, true ];
             <li>Javascript has function level scope, not block level scope.</li>
             <li>The inner function full access to all the variables and functions defined inside the outer function.  But the converse is not true.</li>
           </ul>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var name = "Andy"
 var pet = function(name) {      // The outer function defines a variable called "name"
-      var getName = function() {
-        return name;            // The inner function has access to the "name" variable of the outer function, which is "Vivie" in this case.
-      }
+  var getName = function() {
+    return name;            // The inner function has access to the "name" variable of the outer function, which is "Vivie" in this case.
+  }
 
-      return getName;           // Return the inner function, thereby exposing it to outer scopes
-    };
+  return getName;           // Return the inner function, thereby exposing it to outer scopes
+};
 var myPet = pet("Vivie");
 myPet();                        // Returns "Vivie"
 console.log(name);              // "Andy"
@@ -840,7 +801,7 @@ console.log(name);              // "Andy"
         <section>
           <h3>Scope</h3>
           <p>Javascript has function level scope, <b>not block level scope</b>.</p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var x = 1;
 {
   var x = 2;
@@ -850,12 +811,12 @@ alert(x); // outputs 2
         </section>
         <section>
           <h3>Scope: Hoisting</h3>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim >
 console.log(x === undefined); // logs "true"
 var x = 3;
           </code></pre>
           <p>is equivalent to</p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var x;
 console.log(x === undefined); // logs "true"
 x = 3;
@@ -867,7 +828,7 @@ x = 3;
           <div>
             <div class="left">
               <p>
-                <pre><code class="javascript">
+                <pre><code class="javascript" data-trim>
 var elems = document.getElementsByTagName( 'a' );
 
 for ( var i = 0; i < elems.length; i++ ) {
@@ -887,7 +848,7 @@ for ( var i = 0; i < elems.length; i++ ) {
             </div>
             <div class="right fragment">
               <p>
-                <pre><code class="javascript">
+                <pre><code class="javascript" data-trim>
 var elems = document.getElementsByTagName( 'a' );
 
 for ( var i = 0; i < elems.length; i++ ) {
@@ -915,7 +876,7 @@ for ( var i = 0; i < elems.length; i++ ) {
         <section>
           <h3>IIFE: Anonymous Namespaces</h3>
           <p>Use IIFE to avoid namespace clashing!</p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 (function() {
     // a self contained "namespace"
 
@@ -932,7 +893,7 @@ for ( var i = 0; i < elems.length; i++ ) {
         </section>
         <section>
           <h3><code>this</code></h3>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var test = {};
 this; // this = global object aka window
 foo(); // this = global object again
@@ -940,7 +901,7 @@ test.foo(); // this = test
 new foo(); // this = newly created object
           </code></pre>
           <p>Explicity Setting of <code>this</code></p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 function foo(a, b, c) {
   // this = bar here when foo is called from apply and call below
 }
@@ -953,7 +914,7 @@ foo.call(bar, 1, 2, 3); // results in a = 1, b = 2, c = 3
         </section>
         <section>
           <h3>"<code>that</code>"</h3>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 Foo = {a:1};
 Foo.method = function() {
     var that = this;
@@ -988,7 +949,7 @@ person1.sayHello(); // hello
         <section>
           <h3>OOP in Javascript: Inheritance</h3>
           <p>Extend Person</p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 function Person(gender) {
   this.gender = gender;
 }
@@ -996,7 +957,7 @@ Person.prototype.sayHello = function(){
   alert ('hello');
 };
         </code></pre>
-        <pre><code class="javascript">
+        <pre><code class="javascript" data-trim>
 // inherit Person
 Student.prototype = new Person();
 
@@ -1017,7 +978,7 @@ alert(student1 instanceof Student); // true
         </section>
         <section>
           <h3>Prototypal Inheritance</h3>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var o = {a: 1};
 
 // The newly created object o has Object.prototype as its [[Prototype]]
@@ -1044,7 +1005,7 @@ function f(){
         <section>
           <h3>Module Pattern & Private Variable</h3>
           <p>Module Pattern use scope to make a private variable</p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 function Counter(start) {
     var count = start;
     return {
@@ -1127,7 +1088,29 @@ null == undefined   // true
           <h3>JSON</h3>
           <h4>Javascript Object Notation</h4>
           <p>Derived from Javascript as an XML alternative for storing data.</p>
-          <iframe src="example/barley.json" width="100%" height="350"></iframe>
+          <pre><code class="json" data-trim>
+[{
+    "yield": 27,
+    "variety": "Manchuria",
+    "year": 1931,
+    "site": "University Farm"
+}, {
+    "yield": 48.86667,
+    "variety": "Manchuria",
+    "year": 1931,
+    "site": "Waseca"
+}, {
+    "yield": 39.93333,
+    "variety": "Manchuria",
+    "year": 1931,
+    "site": "Crookston"
+}, {
+    "yield": 32.96667,
+    "variety": "Manchuria",
+    "year": 1931,
+    "site": "Grand Rapids"
+}]
+          </code></pre>
         </section>
         <section>
           <h3>JSON</h3>
@@ -1136,7 +1119,7 @@ null == undefined   // true
             <li>JSON requires double quote (<code>"</code>) around keys</li>
             <li>JSON doesn't support <code>undefined</code>, expressions, functions, and comments</li>
           </ul>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 JSON.parse('{"a":null}'); // {a:null}
 JSON.parse('{"a":undefined}'); // SyntaxError: Unexpected token u
 JSON.parse('{"a":function(){return 'a';}}'); // SyntaxError: Unexpected identifier
@@ -1156,7 +1139,7 @@ JSON.parse('{"a":function(){return 'a';}}'); // SyntaxError: Unexpected identifi
 * *[jQuery](http://jquery.com/)* – easy DOM element selections, traversal and manipulation.
   * However, less useful for visualization since d3 offers similar features
 
-* [MVC](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) Frameworks: [Backbone.js](http://backbonejs.org), [Angular.js](http://angularjs.org), [Meteor.js](http://meteor.com)
+* [MVC](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) / MVW / * Frameworks: [Backbone.js](http://backbonejs.org), [Angular.js](http://angularjs.org), [Meteor.js](http://meteor.com), [React.js](https://facebook.github.io/react/)
         </section>
         <section>
           <h3>Javascript: Learn More</h3>
@@ -1177,7 +1160,7 @@ JSON.parse('{"a":function(){return 'a';}}'); // SyntaxError: Unexpected identifi
             <li>Learn to use the <a href="https://developer.mozilla.org/en-US/docs/Tools">Firefox developer tools</a> or
               <a href="http://jtaby.com/blog/2012/04/23/modern-web-development-part-1">the Webkit Inspector</a>
             </li>
-            <li>Good Text Editor GUI? – <a href="http://sublimetext.com">Sublime Text</a> (See <a href="http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/">NetTuts article</a>)
+            <li>Good Text Editor GUI? – <a href="http://atom.io">Atom</a> or <a href="http://sublimetext.com">Sublime Text</a>
               <ul>
                 <li>Also use <a href="emmet.io">Emmet</a> for faster HTML authoring</li>
               </ul>
@@ -1185,10 +1168,7 @@ JSON.parse('{"a":function(){return 'a';}}'); // SyntaxError: Unexpected identifi
             <li>Use <a href="http://www.jshint.com/">JSHint</a> – <a href="http://www.tungbb.info/install-jshint-for-sublime-text-3">Sublime Plugin</a></li>
             <li>Reduce the gulf of execution and evaluation with <a href="http://livereload.com">LiveReload</a></li>
             <li>Like IDE and willing to pay (unless you are a student)? <a href="http://www.jetbrains.com/webstorm/">Webstorm</a> is a good option.</li>
-            <li>
-              <a href="http://kapeli.com/dash">Dash</a> is great for quick documentation look up in Mac.</li>
             <li>Scaffolding Tool – <a href="http://yeoman.io/">yeoman</a> (See Paul Irish's <a href="http://www.youtube.com/watch?v=vDbbz-BdyYc">talk</a>)</li>
-            <li><a href="https://medium.com/mac-osx-toolbelt/b538e12a608d">Tips for Mac Color Picker</a></li>
           </ul>
         </section>
       </section>
