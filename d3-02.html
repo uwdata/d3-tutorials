@@ -120,14 +120,14 @@
         </section>
         <section>
           <h3>HTML Tooltips</h3>
-          <iframe src="http://examples.oreilly.com/0636920026938/chapter_10/14_div_tooltip.html" width="100%" height="400"></iframe>
+          <iframe src="http://examples.oreilly.com/0636920026938/chapter_10/14_div_tooltip.html" class="white" width="100%" height="400"></iframe>
           <p class="see-also">
             <small>See "<a href="http://chimera.labs.oreilly.com/books/1230000000345/ch10.html#_html_div_tooltips">Div Tooltip HTML</a>" in Murray</small>
           </p>
         </section>
         <section>
           <h3>Brushing - <code>d3.svg.brush()</code></h3>
-          <iframe src="http://bl.ocks.org/mbostock/raw/4063663/" frameborder="0" width="100%" height="450"></iframe>
+          <iframe src="http://bl.ocks.org/mbostock/raw/4063663/" class="white" frameborder="0" width="100%" height="450"></iframe>
           <p><small>From http://bl.ocks.org/mbostock/4063663.  See also <a href="http://bl.ocks.org/mbostock/1667367">Focus+Context</a></small></p>
         </section>
       </section>
@@ -258,16 +258,14 @@ var xAxis = d3.svg.axis()
 svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis); //rendering axis with call
-          </code></pre>
+      .call(xAxis); //rendering axis with call</code></pre>
           <p>Need customization!</p>
           <pre><code class="javascript">
 .axis path, .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
-}
-          </code></pre>
+}</code></pre>
           <p>See <a href="http://bl.ocks.org/mbostock/3885304">Bar Chart</a> example</p>
         </section>
          <section data-markdown>
@@ -313,7 +311,7 @@ svg.append("g")
         </section>
         <section>
           <h3><a href="http://bl.ocks.org/mbostock/4062045">Force Directed</a></h3>
-          <iframe src="http://bl.ocks.org/kanitw/8593822" frameborder="0" width="100%" height="500"></iframe>
+          <iframe class="white" src="http://bl.ocks.org/kanitw/8593822" frameborder="0" width="100%" height="500"></iframe>
         </section>
         <section>
           <h3><a href="http://mbostock.github.io/d3/talk/20111018/pack.html">Pack</a></h3>
@@ -388,8 +386,7 @@ d3.csv("stocks.csv", function(stocks) {
     d.price = +d.price;
     d.date = format.parse(d.date);
   });
-});
-          </code></pre>
+});</code></pre>
           <p><small>Note: A web server is required when loading external data.  Use <code>python -m SimpleHTTPServer 8888</code> is one easy way.</small></p>
           <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#61</small></small></footer>
         </section>
@@ -406,8 +403,7 @@ d3.json("stocks.json", function(stocks) {
   stocks.forEach(function(d) {
     d.date = format.parse(d.date);
   });
-});
-          </code></pre>
+});</code></pre>
           <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#65</small></small></footer>
         </section>
       </section>

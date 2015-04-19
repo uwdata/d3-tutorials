@@ -219,7 +219,7 @@
           <h3><code>.data()</code></h3>
           <h4>What if number of data doesn't match number of items selected?</h4>
           <div class="left">
-            <p data-height="350" data-theme-id="0" data-slug-hash="nFwLt" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="450" data-theme-id="0" data-slug-hash="nFwLt" data-user="kanitw" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
@@ -232,10 +232,10 @@
           <h3>Thinking with Join</h3>
           <style>
             #join-svg circle {
-            fill: none;
-            fill-opacity: .6;
-            stroke: black;
-            stroke-width: 1.5px;
+              fill: none;
+              fill-opacity: .6;
+              stroke: black;
+              stroke-width: 1.5px;
             }
             #join-svg text{
               font-size: 20px;
@@ -246,10 +246,10 @@
           <br/><br/>
           <svg id="join-svg" width="720" height="240"><g transform="translate(0,128)"><g transform="translate(300)"><circle r="110" style="fill: #318be1;"></circle><text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Data</text><text x="-50" dy=".35em" text-anchor="middle">Enter</text></g><text x="360" dy=".35em" text-anchor="middle">Update</text><g transform="translate(420)"><circle r="110" style="fill: #FF7A00;"></circle><text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Elements</text><text x="50" dy=".35em" text-anchor="middle">Exit</text></g></g></svg>
 
-          <p>Calling <code>.data()</code> create three arrays – <code>enter</code>, <code>update</code>, <code>exit</code>.  <code>.data()</code> returns the update.</p>
+          <p>Calling <code>.data()</code> creates three arrays – <code>enter</code>, <code>update</code>, <code>exit</code>.  <code>.data()</code> returns the update.</p>
           <br/><br/>
           <p class="see-also">
-            <small>Source: http://bost.ocks.org/mike/join/</small>
+            <small><a href="http://bost.ocks.org/mike/join/">http://bost.ocks.org/mike/join/</a></small>
           </p>
         </section>
         <section>
@@ -402,36 +402,6 @@
           <p class="see-also"><small>See even better <a href="http://mbostock.github.io/d3/tutorial/bar-2.html">bars transition</a>.</small></p>
         </section>
 
-        <!-- <section>
-          <h3>Join key</h3>
-          <p>Better one..</p>
-
-          <p class="see-also">
-            <small>1</small>
-          </p>
-        </section> -->
-        <!-- <section>
-          <h3>Some Things Cannot Be Interpolated</h3>
-          <p>Selection methods related to data joins (data, enter, exit) and creating elements (append, insert) can only be performed on selections</p>
-          <pre><code class="javascript">
-var bar = svg.selectAll(".bar")
-    .data(data, function(d) { return d.key; });
-
-bar.enter().append("rect")
-    .attr("class", "bar")
-    … // initialize entering bars
-
-bar.transition()
-    … // transition entering + updating bars
-
-bar.exit().transition()
-    … // transition exiting bars
-    .remove();
-          </code></pre>
-          <p class="see-also">
-            <small>See also: http://bost.ocks.org/mike/transition/</small>
-          </p>
-        </section> -->
         <section>
           <h3>See also</h3>
 
@@ -470,13 +440,13 @@ bar.exit().transition()
 
         <section>
           <h3>"<a href="http://prcweb.co.uk/lab/selection/">Two Tables</a>"</h3>
-          <iframe src="http://prcweb.co.uk/lab/selection/" width="100%" height='400'></iframe>
+          <iframe class="white" src="http://prcweb.co.uk/lab/selection/" width="100%" height='400'></iframe>
         </section>
-        <section>
-          More examples
+        <section data-markdown>
+### More examples
 
-          http://bost.ocks.org/mike/miserables/
-          http://bl.ocks.org/mbostock/3887051
+* [bl.ocks.org/mbostock/3887051](http://bl.ocks.org/mbostock/3887051)
+* [bost.ocks.org/mike/miserables/](http://bost.ocks.org/mike/miserables/)
         </section>
       </section>
     </div>
