@@ -18,6 +18,10 @@
   color: rgb(255, 150, 150);
 }
 
+.source {
+  opacity: 0.7;
+}
+
 /* Code */
 .reveal pre {
   margin: 0;

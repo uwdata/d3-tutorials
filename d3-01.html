@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>d3 Tutorial</title>
+  <title>D3 Tutorial</title>
 
   <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
   <meta name="author" content="Hakim El Hattab">
@@ -120,61 +120,57 @@
         <section>
           <h2>Selection</h2>
         </section>
+
         <section>
-          <h3><code>.select() + .append()</code></h3>
-          <p>d3 uses <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors">CSS Selector</a></p>
+          <h3><code>.select()</code></h3>
+          <p>D3 uses <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors">CSS Selectors</a></p>
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="dLofq" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="400" data-theme-id="0" data-slug-hash="GJKxYZ" data-user="domoritz" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
           <div class="right">
-            <p data-height="400" data-theme-id="0" data-slug-hash="dLofq" data-user="kanitw" data-default-tab="result" class='codepen'>
+            <p data-height="400" data-theme-id="0" data-slug-hash="GJKxYZ" data-user="domoritz" data-default-tab="result" class='codepen'>
             </p>
           </div>
-          <p>Note: <code>.append()</code> return a new selection–containing the appended object(s) </p>
-          <footer class="source"><small><small>Source: http://alignedleft.com/tutorials/d3/chaining-methods</small></small></footer>
         </section>
         <section>
           <h3><code>.select()</code> + <code>.attr()</code>, <code>.style()</code></h3>
-          <p>Select and modify elements's properties</p>
+          <p>Select and modify element properties</p>
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="kfwdp" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="LVPdgK" data-user="domoritz" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
           <div class="right">
-            <p data-height="400" data-theme-id="0" data-slug-hash="kfwdp" data-user="kanitw" data-default-tab="result" class='codepen'>
+            <p data-height="400" data-theme-id="0" data-slug-hash="LVPdgK" data-user="domoritz" data-default-tab="result" class='codepen'>
             </p>
           </div>
-          <p><small>Note: notice chained syntax, object as argument</small></p>
-          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/</small></small></footer>
+          <p><small>Note: notice chained syntax, object as argument</small></p></footer>
         </section>
         <section>
           <h3>but <code>.select()</code> only selects one item!</h3>
 
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="rLcBg" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="RPbMdr" data-user="domoritz" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
           <div class="right">
-            <p data-height="400" data-theme-id="0" data-slug-hash="rLcBg" data-user="kanitw" data-default-tab="result" class='codepen'>
+            <p data-height="400" data-theme-id="0" data-slug-hash="RPbMdr" data-user="domoritz" data-default-tab="result" class='codepen'>
             </p>
           </div>
-
-          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#12</small></small></footer>
         </section>
         <section>
           <h3><code>.selectAll()</code></h3>
           <!-- <p><code>.attr()</code>'s value can accept <code>function</code> with arguments <code>data, index</code></p> -->
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="Iruyi" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="XbrEOy" data-user="domoritz" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
           <div class="right">
-            <p data-height="400" data-theme-id="0" data-slug-hash="Iruyi" data-user="kanitw" data-default-tab="result" class='codepen'>
+            <p data-height="400" data-theme-id="0" data-slug-hash="XbrEOy" data-user="domoritz" data-default-tab="result" class='codepen'>
             </p>
           </div>
 
@@ -192,19 +188,21 @@
           <h3><code>.data()</code></h3>
           <p>Tell D3 that you want the selected elements to correspond to data!</p>
 
-          <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="HFBCl" data-user="kanitw" data-default-tab="js" class='codepen'>
-            </p>
+          <div class="leftright">
+            <div class="left">
+              <p data-height="500" data-theme-id="0" data-slug-hash="bdbvJr" data-user="domoritz" data-default-tab="js" class='codepen'>
+              </p>
+            </div>
+
+            <div class="right">
+              <p data-height="400" data-theme-id="0" data-slug-hash="bdbvJr" data-user="domoritz" data-default-tab="result" class='codepen'>
+              </p>
+            </div>
           </div>
 
-          <div class="right">
-            <p data-height="400" data-theme-id="0" data-slug-hash="HFBCl" data-user="kanitw" data-default-tab="result" class='codepen'>
-            </p>
+          <div class="note">
+            <small>See in console that the selected rect selection object is an array of array that embed data in <code>__data__</code> property!</small>
           </div>
-
-          <footer class="source">
-          <p><small class="block">See in console that the selected rect selection object is an array of array that embed data in <code>__data__</code> property!</small></p>
-          <small><small>Modified from: http://vadim.ogievetsky.com/IntroD3/#14</small></small></footer>
         </section>
         <section>
           <h3>Selection Object</h3>
@@ -222,12 +220,12 @@
           <p>Data can be objects too!</p>
 
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="pLAvt" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="510" data-theme-id="0" data-slug-hash="jPNzRZ" data-user="domoritz" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
           <div class="right">
-            <p data-height="400" data-theme-id="0" data-slug-hash="pLAvt" data-user="kanitw" data-default-tab="result" class='codepen'>
+            <p data-height="400" data-theme-id="0" data-slug-hash="jPNzRZ" data-user="domoritz" data-default-tab="result" class='codepen'>
             </p>
           </div>
         </section>
@@ -235,12 +233,12 @@
           <h3><code>.data()</code></h3>
           <h4>What if number of data doesn't match number of items selected?</h4>
           <div class="left">
-            <p data-height="450" data-theme-id="0" data-slug-hash="nFwLt" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="510" data-theme-id="0" data-slug-hash="JdPLwq" data-user="domoritz" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
           <div class="right">
-            <p data-height="350" data-theme-id="0" data-slug-hash="nFwLt" data-user="kanitw" data-default-tab="result" class='codepen'>
+            <p data-height="400" data-theme-id="0" data-slug-hash="JdPLwq" data-user="domoritz" data-default-tab="result" class='codepen'>
             </p>
           </div>
         </section>
@@ -262,8 +260,14 @@
           <br/><br/>
           <svg id="join-svg" width="720" height="240"><g transform="translate(0,128)"><g transform="translate(300)"><circle r="110" style="fill: #318be1;"></circle><text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Data</text><text x="-50" dy=".35em" text-anchor="middle">Enter</text></g><text x="360" dy=".35em" text-anchor="middle">Update</text><g transform="translate(420)"><circle r="110" style="fill: #FF7A00;"></circle><text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Elements</text><text x="50" dy=".35em" text-anchor="middle">Exit</text></g></g></svg>
 
-          <p>Calling <code>.data()</code> creates three arrays – <code>enter</code>, <code>update</code>, <code>exit</code>.  <code>.data()</code> returns the update.</p>
-          <br/><br/>
+          <p>Calling <code>.data()</code> creates three arrays:</p>
+          <ul>
+            <li><code>enter</code> (Data without corresponding DOM elements)</li>
+            <li><code>update</code> (DOM elements mapped to data)</li>
+            <li><code>exit</code> (DOM elements now missing data)</li>
+          </ul>
+          </p><code>.data()</code> returns the update.</p>
+          <br/>
           <p class="see-also">
             <small><a href="http://bost.ocks.org/mike/join/">http://bost.ocks.org/mike/join/</a></small>
           </p>
@@ -271,7 +275,7 @@
         <section>
           <h3><code>.enter()</code></h3>
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="Fawcj" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="510" data-theme-id="0" data-slug-hash="Fawcj" data-user="kanitw" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
@@ -279,14 +283,12 @@
             <p data-height="400" data-theme-id="0" data-slug-hash="Fawcj" data-user="kanitw" data-default-tab="result" class='codepen'>
             </p>
           </div>
-
-          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#20</small></small></footer>
         </section>
         <section>
           <h3><code>.enter()</code></h3>
           <p>Shorter: append, then update all together!</p>
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
@@ -294,15 +296,13 @@
             <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="result" class='codepen'>
             </p>
           </div>
-
-          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#21</small></small></footer>
         </section>
         <section>
           <h3><code>.enter()</code> from scratch</h3>
           <p>This is a common way that people build visualization in D3!</p>
 
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
@@ -310,15 +310,13 @@
             <p data-height="400" data-theme-id="0" data-slug-hash="kvCjf" data-user="kanitw" data-default-tab="result" class='codepen'>
             </p>
           </div>
-
-          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#22</small></small></footer>
         </section>
 
         <section>
           <h3><code>.exit()</code></h3>
 
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="maGjx" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="maGjx" data-user="kanitw" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
@@ -335,20 +333,19 @@
         <section>
           <h3><code>.transition()</code></h3>
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="tqaDj" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="tqaDj" data-user="kanitw" data-default-tab="js" class='codepen'>
             </p>
           </div>
           <div class="right">
             <p data-height="400" data-theme-id="0" data-slug-hash="tqaDj" data-user="kanitw" data-default-tab="result" class='codepen'>
             </p>
           </div>
-          <p><small>Note: Transitions in D3 use <i>cubic-in-out</i> as default easing functions.  But there are <a href="https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease">others.</a></small></p>
-          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#27</small></small></footer>
+          <p><small>Note: Transitions in D3 use <i>cubic-in-out</i> as default easing functions. But there are <a href="https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease">others</a>.</small></p>
         </section>
         <section>
           <h3>Nested <code>.transition()</code> & <code>.delay()</code></h3>
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="ouIvC" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="ouIvC" data-user="kanitw" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
@@ -361,7 +358,7 @@
           <h3>Mapping Data to Elements</h3>
           <p>The default is index mapping.</p>
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="DwyLs" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="DwyLs" data-user="kanitw" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
@@ -390,12 +387,12 @@
           <h3>Join key – <code>.data(...,key)</code></h3>
           <p>Notice how you can save lines of code with <code>selection.call()</code></p>
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="bqosD" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="mJbxGV" data-user="domoritz" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
           <div class="right">
-            <p data-height="400" data-theme-id="0" data-slug-hash="bqosD" data-user="kanitw" data-default-tab="result" class='codepen'>
+            <p data-height="400" data-theme-id="0" data-slug-hash="mJbxGV" data-user="domoritz" data-default-tab="result" class='codepen'>
             </p>
           </div>
           <p class="see-also">
@@ -447,7 +444,6 @@
             <p data-height="400" data-theme-id="0" data-slug-hash="CuFJz" data-user="kanitw" data-default-tab="result" class='codepen'>
             </p>
           </div>
-          <footer class="source"><small><small>Source: http://vadim.ogievetsky.com/IntroD3/#33</small></small></footer>
         </section>
         <section>
           <h4>See also: <a href="http://bost.ocks.org/mike/selection/">How Selection Works</a></h4>
