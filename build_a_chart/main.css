@@ -1,0 +1,25 @@
+body {
+  font-family: sans-serif;
+}
+
+.big-year {
+  font-size: 100px;
+  fill: #808080;
+  fill-opacity: 0.25;
+}
+
+.country {
+  fill: #4682B4;
+  fill-opacity: 0.5;
+}
+
+.country-label {
+  fill: #666;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #666;
+  shape-rendering: crispEdges;
+}
