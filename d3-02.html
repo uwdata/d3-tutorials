@@ -82,7 +82,7 @@
             <code>.on('mouseover',...), .on('click',...)</code>
           </p>
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="yziKj" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="yziKj" data-user="kanitw" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
@@ -135,14 +135,19 @@
         <section>
           <h2>Scale</h2>
           <h4>Domain ↦ Range</h4>
+
+          <p class="see-also">
+            <small><a href="http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/">http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/</a></small>
+          </p>
         </section>
+
         <section>
           <h3><code>.linear()</code></h3>
           <p>
             <img src="img/d3scale1.png" height="200" width="587" alt="">
           </p>
 
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var x = d3.scale.linear().domain([0, 10]).range([0,100]);
 console.log(x(-1),x(0), x(4.4), x(10), x(11)); //-10 0 44 100 110 with some rounding errors
 console.log(x.clamp()(-1), x.clamp()(11); // 0 100
@@ -154,28 +159,29 @@ console.log(x.clamp()(-1), x.clamp()(11); // 0 100
           <h3>Scale methods</h3>
           <ul>
           <li><code>.nice()</code> round domain to nicer numbers e.g. from <code>[0.2014, 0.9966]</code> to <code>[0.2, 1]</code>
-            <pre><code class="javascript">
+            <pre><code class="javascript" data-trim>
 d3.scale.linear().domain([0.2014,0.9966]).nice().domain() // [0.1,1]
             </code></pre>
           </li>
           <li><code>.rangeRound()</code> output range in integers – better for positioning marks on the screen
-            <pre><code class="javascript">
+            <pre><code class="javascript" data-trim>
 d3.scale.linear().domain([0, 10]).range([0,100])(0.1234)// 1.234
 d3.scale.linear().domain([0, 10]).rangeRound([0,100])(0.1234)// 1
             </code></pre></li>
           <li><code>.invert()</code>
-            <pre><code class="javascript">
+            <pre><code class="javascript" data-trim>
  d3.scale.linear().domain([0, 10]).range([0,100]).invert(50); //5
             </code></pre>
           </li>
           <li><code>.ticks()</code> return uniformly spaced ticks for your axes.  (See <a href="https://github.com/mbostock/d3/wiki/SVG-Axes">Axes</a> for examples)</li>
+          <li><code>.clamp()</code> limit output to range if an input outside the domain is provided</li>
           </ul>
         </section>
 
         <section>
-          <h3>Scales supports various interpolator!</h3>
+          <h3>Scales supports various interpolations!</h3>
           <p>Color</p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var x = d3.scale.linear()
     .domain([12, 24])
     .range(["steelblue", "brown"]);
@@ -183,7 +189,7 @@ x(16); // #666586
 x.interpolate(d3.interpolateHsl)(16); //#3cb05f
           </code></pre>
           <p>Size</p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var x = d3.scale.linear()
     .domain([12, 24])
     .range(["0px", "720px"]);
@@ -239,17 +245,11 @@ x(16); // 240px
           </div>
 
         </section>
-        <section>
-
-          <p class="see-also">
-            <small>http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/</small>
-          </p>
-        </section>
       </section>
       <section>
          <section>
           <h3><a href="https://github.com/mbostock/d3/wiki/SVG-Axes">SVG Axes</a></h3>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 //Create an axis for a given scale, and configure as desired.
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -260,12 +260,13 @@ svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis); //rendering axis with call</code></pre>
           <p>Need customization!</p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 .axis path, .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
-}</code></pre>
+}
+</code></pre>
           <p>See <a href="http://bl.ocks.org/mbostock/3885304">Bar Chart</a> example</p>
         </section>
          <section data-markdown>
@@ -299,44 +300,52 @@ svg.append("g")
           <h3>Pie</h3>
           <p><small>Many layouts are just data generators/modifier.</small></p>
           <div class="left">
-            <p data-height="400" data-theme-id="0" data-slug-hash="IjqLt" data-user="kanitw" data-default-tab="js" class='codepen'>
+            <p data-height="500" data-theme-id="0" data-slug-hash="xGKzbg" data-user="domoritz" data-default-tab="js" class='codepen'>
             </p>
           </div>
 
           <div class="right">
-            <p data-height="400" data-theme-id="0" data-slug-hash="IjqLt" data-user="kanitw" data-default-tab="result" class='codepen'>
+            <p data-height="400" data-theme-id="0" data-slug-hash="xGKzbg" data-user="domoritz" data-default-tab="result" class='codepen'>
             </p>
           </div>
-          <footer class="source"><small><small>Source: <a href="http://chimera.labs.oreilly.com/books/1230000000345/ch11.html">Chapter 11</a> in Interactive Data Visualization for the Web by Murray</small></small></footer>
+          <p><small>Source: <a href="http://chimera.labs.oreilly.com/books/1230000000345/ch11.html">Chapter 11</a> in Interactive Data Visualization for the Web by Murray</small></p>
         </section>
+
         <section>
           <h3><a href="http://bl.ocks.org/mbostock/4062045">Force Directed</a></h3>
           <iframe class="white" src="http://bl.ocks.org/kanitw/8593822" frameborder="0" width="100%" height="500"></iframe>
         </section>
+
         <section>
           <h3><a href="http://mbostock.github.io/d3/talk/20111018/pack.html">Pack</a></h3>
           <img src="img/pack.png" height="480" width="588" alt="">
         </section>
+
         <section>
           <h3><a href="http://mbostock.github.io/d3/talk/20111018/tree.html">Tree</a></h3>
           <img src="img/tree.png" height="480" width="492" alt="">
         </section>
+
         <section>
           <h3><a href="http://mbostock.github.io/d3/talk/20111018/treemap.html">Treemap</a></h3>
           <img src="img/treemap.png" height="480" width="510" alt="">
         </section>
+
         <section>
           <h3><a href="http://mbostock.github.io/d3/talk/20111018/partition.html">Partition</a></h3>
           <img src="img/partition.png" height="343" width="640" alt="">
         </section>
+
         <section>
           <h3><a href="http://mbostock.github.io/d3/talk/20111116/bundle.html">Bundle</a></h3>
           <img src="img/bundle.png" height="480" width="628" alt="">
         </section>
+
         <section>
           <h3><a href="http://mbostock.github.io/d3/talk/20111116/airports.html">Voronoi</a></h3>
           <img src="img/voronoi.png" height="384" width="640" alt="">
         </section>
+
         <!-- <section>
           <h3>More Layouts</h3>
           <ul>
@@ -378,7 +387,7 @@ svg.append("g")
         <section>
           <h3><code>d3.csv(), d3.tsv()</code></h3>
           <p>Implemented Using <a href="http://www.w3.org/TR/XMLHttpRequest/">XMLHttpRequest</a></p>
-          <pre><code>
+          <pre><code data-trim>
 var format = d3.time.format("%b %Y");
 
 d3.csv("stocks.csv", function(stocks) {
@@ -386,7 +395,8 @@ d3.csv("stocks.csv", function(stocks) {
     d.price = +d.price;
     d.date = format.parse(d.date);
   });
-});</code></pre>
+});
+</code></pre>
           <p><small>Note: A web server is required when loading external data.  Use <code>python -m SimpleHTTPServer 8888</code> is one easy way.</small></p>
           <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#61</small></small></footer>
         </section>
@@ -396,14 +406,16 @@ d3.csv("stocks.csv", function(stocks) {
         <section>
           <h3>importing data</h3>
           <p><code>d3.json()</code></p>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 var format = d3.time.format("%b %Y");
 
 d3.json("stocks.json", function(stocks) {
   stocks.forEach(function(d) {
     d.date = format.parse(d.date);
   });
-});</code></pre>
+});
+</code></pre>
+          <br>
           <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#65</small></small></footer>
         </section>
       </section>
@@ -418,6 +430,7 @@ d3.json("stocks.json", function(stocks) {
 * `keys()`, `values()`
 * [Arrays](https://github.com/mbostock/d3/wiki/Arrays) – Learn to use Javascript built-in + D3's [Arrays Helpers](https://github.com/mbostock/d3/wiki/Arrays)!
 * [SVG Helpers](https://github.com/mbostock/d3/wiki/SVG) e.g. `d3.svg.area()`
+* Use `window.onresize` event to resize your chart when the window is resized
         </section>
         <section>
           <h3>Reusable d3.</h3>
