@@ -51,9 +51,8 @@
 
   <div class="reveal">
 
-    <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
-      <section>
+      <section class="center">
         <h1>
           <small>D3.js Tutorial</small>
         </h1>
@@ -71,6 +70,15 @@
           </small>
         </p>
         <p><small><small>(Based on <a href="http://vadim.ogievetsky.com/IntroD3">Vadim Ogievetsky</a> and <a href="http://alignedleft.com/tutorials/d3/">Scott Murray</a>'s work)</small></small></p>
+      </section>
+       <section data-markdown>
+## Outline
+
+* Interactions
+* Scales & Axes
+* Tips e.g. Importing Data
+* Layouts & Maps
+* More Examples
       </section>
       <section>
         <section>
@@ -132,7 +140,7 @@
         </section>
       </section>
       <section>
-        <section>
+        <section class="center">
           <h2>Scale</h2>
           <h4>Domain ↦ Range</h4>
 
@@ -141,7 +149,7 @@
           </p>
         </section>
 
-        <section>
+        <section class="center">
           <h3><code>.linear()</code></h3>
           <p>
             <img src="img/d3scale1.png" height="200" width="587" alt="">
@@ -199,7 +207,7 @@ x(16); // 240px
 
         <section>
           <h3>Other Scales</h3>
-          <code>d3.scale.log(), d3.scale.pow(), d3.scale.quantile</code>
+          <code>d3.scale.log(), d3.scale.pow(), d3.scale.quantile()</code>
         </section>
 
         <section>
@@ -377,47 +385,27 @@ svg.append("g")
         </section> -->
         <section>
           <h2>Maps</h2>
-        </section>
-        <section>
 
-          http://bost.ocks.org/mike/map/
+          <a href="http://bost.ocks.org/mike/map/">http://bost.ocks.org/mike/map/</a>
         </section>
       </section>
       <section>
-        <section>
-          <h3><code>d3.csv(), d3.tsv()</code></h3>
-          <p>Implemented Using <a href="http://www.w3.org/TR/XMLHttpRequest/">XMLHttpRequest</a></p>
-          <pre><code data-trim>
+        <h3>Load data: <code>d3.csv(), d3.tsv(), d3.json()</code></h3>
+        <p>Implemented Using <a href="http://www.w3.org/TR/XMLHttpRequest/">XMLHttpRequest</a></p>
+        <pre><code data-trim>
 var format = d3.time.format("%b %Y");
 
-d3.csv("stocks.csv", function(stocks) {
-  stocks.forEach(function(d) {
-    d.price = +d.price;
-    d.date = format.parse(d.date);
-  });
+d3.csv("stocks.csv", function(d) {
+return {
+  price: +d.price,  // convert price to number
+  date : format.parse(d.date)
+};
+}, function(error, rows) {
+console.log(rows);
 });
 </code></pre>
-          <p><small>Note: A web server is required when loading external data.  Use <code>python -m SimpleHTTPServer 8888</code> is one easy way.</small></p>
-          <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#61</small></small></footer>
-        </section>
-        <section>
-          <p>See Mike's <a href="http://bost.ocks.org/mike/d3/workshop/area-chart.html">Simple Area Chart Example</a></p>
-        </section>
-        <section>
-          <h3>importing data</h3>
-          <p><code>d3.json()</code></p>
-          <pre><code class="javascript" data-trim>
-var format = d3.time.format("%b %Y");
-
-d3.json("stocks.json", function(stocks) {
-  stocks.forEach(function(d) {
-    d.date = format.parse(d.date);
-  });
-});
-</code></pre>
-          <br>
-          <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#65</small></small></footer>
-        </section>
+        <p><small>Note: A web server is required when loading external data. For example with <code>python -m SimpleHTTPServer</code></small></p>
+        <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#61</small></small></footer>
       </section>
       <section>
         <section>

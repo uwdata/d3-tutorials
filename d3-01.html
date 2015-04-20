@@ -40,8 +40,6 @@
 
   </script>
 
-
-
   <!--[if lt IE 9]>
     <script src="reveal.js/lib/js/html5shiv.js"></script>
     <![endif]-->
@@ -51,9 +49,8 @@
 
   <div class="reveal">
 
-    <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
-      <section>
+      <section class="center">
         <h1>
           <small>D3.js Tutorial</small>
         </h1>
@@ -79,11 +76,8 @@
 * Selections & Data
 * Transitions
 * Nested Selections
-* Interactions
-* Scales & Axes
-* Tips e.g. Importing Data
-* Layouts & Maps
-* More Examples
+
+Part 2: Interactions, scales, axes, data, layouts
       </section>
       <section>
         <section>
@@ -108,7 +102,7 @@
           </ul>
         </section>
 
-        <section>
+        <section class="center">
           <h3>Show Reels</h3>
           <img src="img/d3.png" style="max-width: 600px; max-height: 400px;">
           <p>
@@ -118,12 +112,29 @@
       </section>
       <section>
         <section>
-          <h2>Selection</h2>
+          <h2>Selections</h2>
+
+          <p>D3 uses <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors">CSS Selectors</a></p>
+
+          <small>Single selector:</small>
+          <pre><code class="css" data-trim>
+#foo        // <any id="foo"> </any>
+foo         // <foo> </foo>
+.foo        // <any class="foo"> </any>
+[foo=bar]   // <any foo="bar"> </any>
+foo bar     // <foo><bar> </foo></bar>
+          </code></pre>
+
+          <br>
+          <small>Multiple selectors:</small>
+          <pre><code class="css" data-trim>
+foo.bar     // <foo class="bar"> </foo>
+foo#bar     // <foo id="bar"> </foo>
+          </code></pre>
         </section>
 
         <section>
           <h3><code>.select()</code></h3>
-          <p>D3 uses <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors">CSS Selectors</a></p>
           <div class="left">
             <p data-height="400" data-theme-id="0" data-slug-hash="GJKxYZ" data-user="domoritz" data-default-tab="js" class='codepen'>
             </p>
@@ -208,7 +219,6 @@
           <h3>Selection Object</h3>
           <ul>
             <li>An array of arrays</li>
-            <li>More precisely, subclass of array</li>
             <li>if <code>.data()</code> is called, <code>__data__</code> of each element will contain the data mapped to that element.</li>
           </ul>
           <img src="img/__data__.png" height="60" width="155" alt="">
@@ -242,7 +252,7 @@
             </p>
           </div>
         </section>
-        <section>
+        <section class="center">
           <h3>Thinking with Join</h3>
           <style>
             #join-svg circle {
@@ -260,6 +270,7 @@
           <br/><br/>
           <svg id="join-svg" width="720" height="240"><g transform="translate(0,128)"><g transform="translate(300)"><circle r="110" style="fill: #318be1;"></circle><text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Data</text><text x="-50" dy=".35em" text-anchor="middle">Enter</text></g><text x="360" dy=".35em" text-anchor="middle">Update</text><g transform="translate(420)"><circle r="110" style="fill: #FF7A00;"></circle><text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Elements</text><text x="50" dy=".35em" text-anchor="middle">Exit</text></g></g></svg>
 
+          <div style="text-align: left">
           <p>Calling <code>.data()</code> creates three arrays:</p>
           <ul>
             <li><code>enter</code> (Data without corresponding DOM elements)</li>
@@ -271,6 +282,7 @@
           <p class="see-also">
             <small><a href="http://bost.ocks.org/mike/join/">http://bost.ocks.org/mike/join/</a></small>
           </p>
+          </div>
         </section>
         <section>
           <h3><code>.enter()</code></h3>
@@ -460,6 +472,10 @@
 * [bl.ocks.org/mbostock/3887051](http://bl.ocks.org/mbostock/3887051)
 * [bost.ocks.org/mike/miserables/](http://bost.ocks.org/mike/miserables/)
         </section>
+      </section>
+
+      <section>
+        <h2><a href="d3-02.html">2nd part of D3.js tutorial</a></h2>
       </section>
     </div>
 

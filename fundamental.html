@@ -59,11 +59,10 @@
 
   <div class="reveal">
 
-    <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
-      <section>
+      <section class="center">
         <h1>
-          Technology fundamentals for D3.js
+          Technology fundamentals for D3.js - HTML, CSS, SVG, Javascript
         </h1>
         <br/>
         <p>
@@ -636,7 +635,8 @@ console.log("The value of b is " + b); // throws ReferenceError exception
 b = 5 // declare global variable  ... equivalent to window.b = 5
 console.log(b, window.b) // 5, 5
           </code></pre>
-          <p>Javascript uses dynamic typing.</p>
+          <br>
+          Javascript uses dynamic typing.
           <pre>
             <code id="js-dynamic" class="javascript" data-trim>
 x = "The answer is " + 42; // "The answer is 42"
@@ -647,7 +647,7 @@ x = "The answer is " + 42; // "The answer is 42"
 +"1.1" // 1.1 "+" operator converts string to number
             </code>
           </pre>
-          <p><small>Tips: operator can return Object too.</small></p>
+          <small>Tips: operator can return Object too.</small>
           <pre><code class="javascript" data-trim>
 y = null || "String"
 y // "String"
@@ -929,7 +929,7 @@ Foo.method = function() {
         </section>
         <section>
           <h3>OOP in Javascript: using Constructor</h3>
-          <pre><code class="javascript">
+          <pre><code class="javascript" data-trim>
 function Person(gender) {
   this.gender = gender;
 }
@@ -1149,7 +1149,7 @@ JSON.parse('{"a":function(){return 'a';}}'); // SyntaxError: Unexpected identifi
             </li>
             <li>Refresher: <b><a href="http://bonsaiden.github.io/JavaScript-Garden/">Javascript Garden</a></b></li>
 
-            <li>More in <a href="http://courses.cs.washington.edu/courses/cse512/14wi/resources.html#javascript">cse512 resources</a></li>
+            <li>More in <a href="http://courses.cs.washington.edu/courses/cse512/15sp/resources.html#javascript">cse512 resources</a></li>
           </ul>
         </section>
       </section>

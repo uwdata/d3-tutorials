@@ -8,6 +8,7 @@
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
   font-family: Avenir, Helvetica Neue, Helvetica, Arial;
   text-transform: none;
+  text-align: center;
 }
 
 .white {
@@ -20,6 +21,14 @@
 
 .source {
   opacity: 0.7;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
 }
 
 /* Code */
