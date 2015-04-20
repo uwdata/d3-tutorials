@@ -31,6 +31,57 @@
   text-align: center;
 }
 
+.left-align {
+  text-align: left;
+}
+
+.chart {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.chart .background {
+  fill: none;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  fill: #fff;
+  font-size: 18px;
+}
+
+.axis.minor,
+.axis.minor text {
+  display: none;
+}
+
+.chart .bar,
+.chart .dot,
+.chart .line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.chart .bar,
+.chart .dot,
+.chart .area {
+  fill: #6baed6;
+}
+
+.interpolate.chart circle {
+  fill: #fd8d3c;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+
 /* Code */
 .reveal pre {
   margin: 0;

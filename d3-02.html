@@ -29,6 +29,8 @@
   <script src="js/jquery.js"></script>
   <script src="js/d3.js"></script>
 
+  <script src="js/chart.js"></script>
+
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -37,7 +39,6 @@
 
     ga('create', 'UA-55386037-1', 'auto');
     ga('send', 'pageview');
-
   </script>
 
 
@@ -77,8 +78,9 @@
 * Interactions
 * Scales & Axes
 * Tips e.g. Importing Data
+* Path Generators & Line Interpolators
 * Layouts & Maps
-* More Examples
+* Let's Build a Chart & More Examples
       </section>
       <section>
         <section>
@@ -143,6 +145,16 @@
         <section class="center">
           <h2>Scale</h2>
           <h4>Domain ↦ Range</h4>
+
+          <br>
+          <div class="left-align">
+            <small>So you don't have to write:</small>
+          <pre><code class="js" data-trim>
+function x(d) {
+  return d * 42 + "px";
+}
+          </code></pre>
+          </div>
 
           <p class="see-also">
             <small><a href="http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/">http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/</a></small>
@@ -300,6 +312,48 @@ svg.append("g")
 [![4323929](http://bl.ocks.org/mbostock/raw/4323929/thumbnail.png)](http://bl.ocks.org/mbostock/4323929)
         </section>
       </section>
+
+      <section>
+        <section>
+          <h2>Path Generators & Line Interpolators</h2>
+
+          Charts from <a href="http://bost.ocks.org/mike/d3/workshop/#124">http://bost.ocks.org/mike/d3/workshop/#124</a>
+        </section>
+
+        <section>
+          <h3><code>d3.svg.line(), d3.svg.area()</code></h3>
+          <div class="left">
+            <p data-height="500" data-theme-id="0" data-slug-hash="qdWKyx" data-user="domoritz" data-default-tab="js" class='codepen'>
+            </p>
+          </div>
+
+          <div class="right">
+            <p data-height="400" data-theme-id="0" data-slug-hash="qdWKyx" data-user="domoritz" data-default-tab="result" class='codepen'>
+            </p>
+          </div>
+        </section>
+
+<section id="interpolate-linear-chart">
+<h3>Linear Interpolation</h3>
+<script>d3.select("#interpolate-linear-chart").call(interpolateChart())</script>
+</section>
+
+<section id="interpolate-step-chart">
+<h3>Step Interpolation</h3>
+
+<small>Step-before and step-after interpolation are handy for bar charts, and for visualizing step functions (values that change instantaneously rather than gradually).</small>
+<script>d3.select("#interpolate-step-chart").call(interpolateChart().interpolate("step-after"))</script>
+<aside></aside>
+</section>
+
+<section id="interpolate-basis-chart">
+<h3>Basis Interpolation</h3>
+<small>Note that with basis interpolation, the line doesn’t always go through the control point. D3 also provides cardinal and cubic monotone interpolation; the latter is generally preferred to avoid misleading.</small>
+<script>d3.select("#interpolate-basis-chart").call(interpolateChart().interpolate("basis"))</script>
+</section>
+
+      </section>
+
       <section>
         <section>
           <h2>Layouts & Maps</h2>
@@ -407,6 +461,7 @@ console.log(rows);
         <p><small>Note: A web server is required when loading external data. For example with <code>python -m SimpleHTTPServer</code></small></p>
         <footer class="source"><small><small>Source: http://bost.ocks.org/mike/d3/workshop/#61</small></small></footer>
       </section>
+
       <section>
         <section>
             <h2>Useful Tips</h2>
@@ -443,18 +498,20 @@ console.log(rows);
       </section>
       <section>
         <section>
-          <h2>More Examples</h2>
+          <h2>Let's Build a Chart!</h2>
         </section>
-        <!-- <section>
-          <h3>Scatter Plots</h3>
-          <iframe src="http://bl.ocks.org/mbostock/raw/3887118/" width='100%' height="400"></iframe>
-          <footer class="source"><small>Source: http://bl.ocks.org/mbostock/3887118</small></footer>
+
+      <section>
+        <h2>Use transforms to define a new origin.</h2>
+
+        <p>It's always a good idea to sketch the transforms before you start.</p>
+
+        <svg width="1200" height="500" style="zoom: 0.7"><g transform="translate(80,80); scale(0.1)"><defs><marker id="triangle-start" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="-8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" style="fill: rgb(255, 255, 255);"></path></marker><marker id="triangle-end" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" style="fill: rgb(255, 255, 255);"></path></marker></defs><rect width="1120" height="480" style="fill: none; stroke: rgb(255, 255, 255); stroke-width: 2px;"></rect><g transform="translate(80,80)"><rect width="960" height="320" style="stroke-dasharray: 8px, 12px; fill: none; stroke: rgb(255, 255, 255); stroke-width: 2px;"></rect><text y="-12" style="fill: rgb(255, 255, 255);">translate(left,top)</text></g><line x2="80" y2="80" marker-end="url(#triangle-end)" style="fill: none; stroke: rgb(255, 255, 255); stroke-width: 2px;"></line><line x1="560" x2="560" y2="80" marker-end="url(#triangle-end)" style="fill: none; stroke: rgb(255, 255, 255); stroke-width: 2px;"></line><line x1="560" x2="560" y1="400" y2="480" marker-start="url(#triangle-start)" style="fill: none; stroke: rgb(255, 255, 255); stroke-width: 2px;"></line><line x1="0" x2="80" y1="280" y2="280" marker-end="url(#triangle-end)" style="fill: none; stroke: rgb(255, 255, 255); stroke-width: 2px;"></line><line x1="1120" x2="1040" y1="280" y2="280" marker-end="url(#triangle-end)" style="fill: none; stroke: rgb(255, 255, 255); stroke-width: 2px;"></line><text y="-12" style="fill: rgb(255, 255, 255);">origin</text><circle r="6" style="fill: rgb(255, 255, 255);"></circle></g></svg>
+
+        <small class="">From <a href="http://bost.ocks.org/mike/d3/workshop/#107">http://bost.ocks.org/mike/d3/workshop/#107</a></small>
+
         </section>
-        <section>
-          <h3>Focus + Context Brush</h3>
-          <iframe src="http://bl.ocks.org/mbostock/raw/1667367/" width='100%' height="400"></iframe>
-          <footer class="source"><small>Source: http://bl.ocks.org/mbostock/1667367</small></footer>
-        </section> -->
+
         <section data-markdown>
 ### More Examples
 * https://github.com/mbostock/d3/wiki/Gallery
