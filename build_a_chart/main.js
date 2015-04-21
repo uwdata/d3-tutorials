@@ -64,7 +64,11 @@ var countryLabel = svg.append("text")
   .style({opacity: 0});
 
 // load data
-d3.json("countries.json", function(error, data) {
+d3.csv("countries.csv", function(d) {
+  d.fertility = +d.fertility;
+  d.life_expect = +d.life_expect;
+  return d;
+}, function(error, data) {
   var nested = d3.nest()
     .key(function(d) { return d.country; })
     .entries(data);
@@ -82,7 +86,9 @@ d3.json("countries.json", function(error, data) {
 
   var draw = function() {
     var country = svg.selectAll(".country")
-      .data(nested);
+      .data(nested, function(d) {
+        return d.key;
+      });
 
     yearLabel.text(currentYear);
 

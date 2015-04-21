@@ -23,3 +23,7 @@ body {
   stroke: #666;
   shape-rendering: crispEdges;
 }
+
+.source {
+  font-size: 6pt;
+}
