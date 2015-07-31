@@ -1,5 +1,5 @@
 # d3-tutorials
 
-D3 Tutorials for CSE512 Data Visualization Course at University of Washington by @kanitw and @domoritz at @uwdata.
+D3 Tutorials for CSE512 Data Visualization Course at University of Washington by [@kanitw](https://twitter.com/kanitw) and [@domoritz](https://twitter.com/domoritz) at [@uwdata](https://twitter.com/uwdata).
 
-If you find these tutorial useful, please tweet to us at @uwdata.  
+If you find these tutorial useful, please tweet to us at [@uwdata](https://twitter.com/uwdata).  
