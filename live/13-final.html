@@ -236,12 +236,13 @@ function update(data){
   .domain([0,data.length-1])
   .range([35,490]);
   
+  scatter.attr("stroke-width","5px");
   
   //ENTER
   scatter.enter().append("circle")
     .attr("fill-opacity",0.85)
     .attr("r",function(d){ return 5;})
-    .attr("stroke-width","0px")
+    .attr("stroke",function(d){ return s(d.survived)})
     .on("mouseover", function(d){ d3.select(this).transition().attr("stroke-width", "5px").attr("r", r(d.fare));})
     .on("mouseout", function(){ d3.select(this).transition().delay(1000).attr("stroke-width","0px").attr("r",5);})
     .append("svg:title")
@@ -252,7 +253,8 @@ function update(data){
     .attr("cx",function(d,i){ return x(i); })
     .attr("cy",function(d){ return y(d.age);})
     .attr("fill",function(d){ return c(d.sex)})
-    .attr("stroke",function(d){ return s(d.survived)});
+    .attr("stroke",function(d){ return s(d.survived)})
+    .attr("stroke-width","0px");
   
     
   //EXIT
