@@ -134,12 +134,6 @@ function makeChart(data){
   y = d3.scale.linear()
     .domain([d3.min(sampleData,function(d){ return d.age}),d3.max(sampleData,function(d){ return d.age})])
     .range([465,10]);
-    
-  // radius
-  r = d3.scale.linear()
-    .domain([0,d3.max(sampleData,function(d){ return d.fare})])
-    .range([5,10]);
-  
       
   // x position
     x = d3.scale.linear()
