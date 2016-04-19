@@ -137,24 +137,24 @@ function makeChart(data){
     .range([465,10]);
       
   // x position
-    x = d3.scale.linear()
+  x = d3.scale.linear()
       .domain([0,data.length-1])
       .range([60,440]);
       
-    var scatter = d3.select(".chart").selectAll("circle")
+  var scatter = d3.select(".chart").selectAll("circle")
       .data(data);
     
   // make marks
-    scatter.enter().append("circle")
-      .attr("fill-opacity",0.85)
-      .attr("r",function(d){ return 5;})
-      .attr("stroke-width","0px")
-      .append("svg:title")
-        .text(function(d){ return d.name;});
+  scatter.enter().append("circle")
+    .attr("fill-opacity",0.85)
+    .attr("r",function(d){ return 5;})
+    .attr("stroke-width","0px")
+    .append("svg:title")
+      .text(function(d){ return d.name;});
     
-     scatter
-      .attr("cx",function(d,i){ return x(i); })
-      .attr("cy",function(d){ return y(d.age);});
+  scatter
+    .attr("cx",function(d,i){ return x(i); })
+    .attr("cy",function(d){ return y(d.age);});
 
 }
 

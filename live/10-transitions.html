@@ -179,29 +179,28 @@ function makeChart(data){
   
       
   // x position
-    x = d3.scale.linear()
-      .domain([0,data.length-1])
-      .range([60,440]);
-      
-    var scatter = d3.select(".chart").selectAll("circle")
-      .data(data);
+  x = d3.scale.linear()
+    .domain([0,data.length-1])
+    .range([60,440]);
     
-  // make marks
-    scatter.enter().append("circle")
-      .attr("fill-opacity",0.85)
-      .attr("r",function(d){ return 5;})
-      .attr("stroke-width","0px")
-      .on("mouseover", function(d){ d3.select(this).transition().attr("stroke-width", "5px").attr("r", r(d.fare));})
-      .on("mouseout", function(){ d3.select(this).transition().delay(1000).attr("stroke-width","0px").attr("r",5);})
-      .append("svg:title")
-        .text(function(d){ return d.name;});
-    
-     scatter.transition().duration(1000)
-      .attr("cx",function(d,i){ return x(i); })
-      .attr("cy",function(d){ return y(d.age);})
-      .attr("fill",function(d){ return c(d.sex)})
-      .attr("stroke",function(d){ return s(d.survived)});
+  var scatter = d3.select(".chart").selectAll("circle")
+    .data(data);
   
+  // make marks
+  scatter.enter().append("circle")
+    .attr("fill-opacity",0.85)
+    .attr("r",function(d){ return 5;})
+    .attr("stroke-width","0px")
+    .on("mouseover", function(d){ d3.select(this).transition().attr("stroke-width", "5px").attr("r", r(d.fare));})
+    .on("mouseout", function(){ d3.select(this).transition().delay(1000).attr("stroke-width","0px").attr("r",5);})
+    .append("svg:title")
+      .text(function(d){ return d.name;});
+  
+   scatter.transition().duration(1000)
+    .attr("cx",function(d,i){ return x(i); })
+    .attr("cy",function(d){ return y(d.age);})
+    .attr("fill",function(d){ return c(d.sex)})
+    .attr("stroke",function(d){ return s(d.survived)});
   
   xAxis = d3.svg.axis()
     .scale(x)
