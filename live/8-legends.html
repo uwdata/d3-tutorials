@@ -1,0 +1,303 @@
+<html>
+
+<meta charset="utf-8" />
+<head>
+<title>D3 Example</title>
+<style>
+h1 { 
+     font-family: sans-serif;
+     text-align: center;
+}
+
+svg {
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     border: 1px solid black;
+}
+
+svg text {
+  font-size: 11px;
+  font-family: sans-serif;
+  text-anchor: middle;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+</style>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+<h1>D3 Example</h1>
+<svg class="chart"></svg>
+<script>
+var chartWidth = 500;
+var chartHeight = 500;
+
+/********
+ * Data *
+ ********/
+
+var sampleData = [
+            {
+            "pclass": 1,
+            "survived": 1,
+            "name": "Allen, Miss. Elisabeth Walton",
+            "sex": "female",
+            "age": 29,
+            "sibsp": 0,
+            "parch": 0,
+            "ticket": 24160,
+            "fare": 211.3375,
+            "cabin": "B5",
+            "embarked": "S",
+            "boat": 2,
+            "body": 0,
+            "home.dest": "St Louis, MO"
+            },
+            {
+            "pclass": 1,
+            "survived": 1,
+            "name": "Allison, Master. Hudson Trevor",
+            "sex": "male",
+            "age": 0.92,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 11,
+            "body": 0,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            },
+            {
+            "pclass": 1,
+            "survived": 0,
+            "name": "Allison, Miss. Helen Loraine",
+            "sex": "female",
+            "age": 2,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 0,
+            "body": 0,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            },
+            {
+            "pclass": 1,
+            "survived": 0,
+            "name": "Allison, Mr. Hudson Joshua Creighton",
+            "sex": "male",
+            "age": 30,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 0,
+            "body": 135,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            },
+            {
+            "pclass": 1,
+            "survived": 0,
+            "name": "Allison, Mrs. Hudson J C (Bessie Waldo Daniels)",
+            "sex": "female",
+            "age": 25,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 0,
+            "body": 0,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            }
+            ];
+            
+
+/**********
+ * Scales *
+ **********/
+var x,y,c,s,r;
+
+
+/********
+ * Axes *
+ ********/
+
+var xAxis;
+var yAxis;
+
+/**************
+ * Make Chart *
+ **************/
+
+function makeChart(data){
+  
+  var canvas = d3.select(".chart")
+  .attr("width",chartWidth)
+  .attr("height",chartHeight);
+
+  // y position
+  y = d3.scale.linear()
+    .domain([d3.min(sampleData,function(d){ return d.age}),d3.max(sampleData,function(d){ return d.age})])
+    .range([465,10]);
+  
+  // color
+  c = d3.scale.ordinal()
+    .domain(["male","female"])
+    .range(["#a6cee3","#fb9a99"]);
+  
+  // stroke
+  s = d3.scale.ordinal()
+    .domain(["0","1"])
+    .range(["#e31a1c","#1f78b4"]);
+  
+  // radius
+  r = d3.scale.linear()
+    .domain([0,d3.max(sampleData,function(d){ return d.fare})])
+    .range([5,10]);
+  
+      
+  // x position
+    x = d3.scale.linear()
+      .domain([0,data.length-1])
+      .range([60,440]);
+      
+    var scatter = d3.select(".chart").selectAll("circle")
+      .data(data);
+    
+  // make marks
+    scatter.enter().append("circle")
+      .attr("fill-opacity",0.85)
+      .attr("r",function(d){ return 5;})
+      .attr("stroke-width","2px")
+      .append("svg:title")
+        .text(function(d){ return d.name;});
+    
+     scatter
+      .attr("cx",function(d,i){ return x(i); })
+      .attr("cy",function(d){ return y(d.age);})
+      .attr("fill",function(d){ return c(d.sex)})
+      .attr("stroke",function(d){ return s(d.survived)});
+  
+  
+  xAxis = d3.svg.axis()
+    .scale(x)
+    .ticks(0)
+    .orient("bottom");
+  
+  yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+  
+  canvas.append("g")
+    .attr("class","axis")
+    .attr("transform","translate(25,0)")
+    .call(yAxis)
+  .append("text")
+    .text("Passenger Age")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 15)
+    .attr("dx", -10)
+    .style("text-anchor", "end");
+  
+  canvas.append("g")
+    .attr("class","axis")
+    .attr("transform","translate(0,"+(chartHeight-25)+")")
+    .call(xAxis)
+  .append("text")
+    .text("Passengers")
+    .attr("x", chartHeight-65)
+    .attr("dy", 12)
+    .style("text-anchor", "end");
+
+  genderLegend();
+  survivedLegend();
+
+}
+
+makeChart(sampleData);
+
+/**********
+ * Legend *
+ **********/
+
+function genderLegend() {
+  // Draw the gender legend
+  var legend = d3.select(".chart").selectAll(".legend")
+      .data(c.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("x", 475)
+      .attr("y", 9)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", c);
+
+  legend.append("text")
+      .attr("x", 465)
+      .attr("y", 18)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d.charAt(0).toUpperCase()+d.slice(1); });
+}
+
+function survivedLegend() {
+
+  var group = d3.select(".chart").append("g")
+      .attr("class", "legend-group");
+
+  group.append("text")
+      .text("Passenger survived?")
+      .attr("x", 493)
+      .attr("y", 59)
+      .style("font-weight", "bold")
+      .style("text-anchor", "end");
+
+  var legend = group.selectAll(".legend")
+      .data(s.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  legend.append("rect")
+      .attr("x", 475)
+      .attr("y", 65)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", s);
+
+  legend.append("text")
+      .attr("x", 465)
+      .attr("y", 73)
+      .attr("dy", ".35em")
+      .style("text-anchor", "end")
+      .text(function(d) { return d; });
+
+}
+
+</script>
+</body>
+</html>

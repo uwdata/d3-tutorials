@@ -1,0 +1,105 @@
+<html>
+<head>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+<style>
+iframe {
+  width:100%;
+  height: 120%;
+  position: absolute;
+  margin-left: -25%;
+  border: none; 
+}
+
+.left {
+  left: 5%;
+}
+
+.right {
+  position: absolute;
+  height: 70%;
+  width: 40%;
+  left: 55%;
+  top: 2em;
+  border: 1px solid black;
+  overflow: scroll;
+}
+
+.nav {
+  position: absolute;
+  width: 40%;
+  left: 55%;
+  top: 80%;
+  text-align: center;
+}
+</style>
+
+<script>
+var names = 
+[
+"index.html",
+"1-begin.html",
+"2-svg.html",
+"3-selection.html",
+"4-binding.html",
+"5-scales1.html",
+"6-scales2.html",
+"7-axes.html",
+"8-legends.html",
+"9-events.html",
+"10-transitions.html",
+"11-csv.html",
+"12-exit.html",
+"13-final.html"
+];
+
+var index = 0;
+
+String.prototype.replaceAll = function(target,replacement){
+  return this.split(target).join(replacement);
+};
+
+
+function left(){
+  index--;
+  if(index<0){ index = names.length-1;}
+  fillContainers();
+}
+
+function right(){
+  index++;
+  index=index%names.length;
+  fillContainers();
+}
+
+function fillContainers(){
+  document.getElementById("left").src=names[index];
+  document.getElementById("leftBtn").title = index==0 ? names[names.length-1] : names[index-1];
+  document.getElementById("rightBtn").title = index==names.length-1 ? names[0] : names[index+1]; 
+}
+
+function loadSrc(){
+  var contents = document.getElementById("left").contentWindow.document.documentElement.innerHTML.toString();
+  contents = contents.replaceAll("<","&lt;");
+  contents = contents.replaceAll(">","&gt;");
+  document.getElementById("right").innerHTML = "<pre><code>"+contents+"</code></pre>";
+  document.getElementById("right").src="view-source:"+names[index];
+  document.getElementById("index").innerHTML = "<a href="+names[index]+" target=\"_blank\">"+names[index]+"</a>";
+  hljs.highlightBlock(document.getElementById("right"));
+}
+
+</script>
+</head>
+
+<body>
+<iframe id="left" class="left" onload="loadSrc()" src="index.html"></iframe>
+<span id="right" class="right"></span>
+<div class="nav">
+<button id="leftBtn" onclick="left()" type="button">&lt;&lt;</button><span id="index" class="index">index.html</span>
+<button id="rightBtn" onclick="right()" type="button">&gt;&gt;</button>
+</div>
+
+</body>
+
+</html>

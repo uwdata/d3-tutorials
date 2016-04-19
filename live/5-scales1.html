@@ -1,0 +1,170 @@
+<html>
+
+<meta charset="utf-8" />
+<head>
+<title>D3 Example</title>
+<style>
+h1 { 
+     font-family: sans-serif;
+     text-align: center;
+}
+
+svg {
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     border: 1px solid black;
+}
+
+</style>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+<h1>D3 Example</h1>
+<svg class="chart"></svg>
+<script>
+var chartWidth = 500;
+var chartHeight = 500;
+
+/********
+ * Data *
+ ********/
+
+var sampleData = [
+            {
+            "pclass": 1,
+            "survived": 1,
+            "name": "Allen, Miss. Elisabeth Walton",
+            "sex": "female",
+            "age": 29,
+            "sibsp": 0,
+            "parch": 0,
+            "ticket": 24160,
+            "fare": 211.3375,
+            "cabin": "B5",
+            "embarked": "S",
+            "boat": 2,
+            "body": 0,
+            "home.dest": "St Louis, MO"
+            },
+            {
+            "pclass": 1,
+            "survived": 1,
+            "name": "Allison, Master. Hudson Trevor",
+            "sex": "male",
+            "age": 0.92,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 11,
+            "body": 0,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            },
+            {
+            "pclass": 1,
+            "survived": 0,
+            "name": "Allison, Miss. Helen Loraine",
+            "sex": "female",
+            "age": 2,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 0,
+            "body": 0,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            },
+            {
+            "pclass": 1,
+            "survived": 0,
+            "name": "Allison, Mr. Hudson Joshua Creighton",
+            "sex": "male",
+            "age": 30,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 0,
+            "body": 135,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            },
+            {
+            "pclass": 1,
+            "survived": 0,
+            "name": "Allison, Mrs. Hudson J C (Bessie Waldo Daniels)",
+            "sex": "female",
+            "age": 25,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 0,
+            "body": 0,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            }
+            ];
+            
+
+/**********
+ * Scales *
+ **********/
+var x,y,r;
+
+/**************
+ * Make Chart *
+ **************/
+
+function makeChart(data){
+  
+  var canvas = d3.select(".chart")
+  .attr("width",chartWidth)
+  .attr("height",chartHeight);
+
+  // y position
+  y = d3.scale.linear()
+    .domain([d3.min(sampleData,function(d){ return d.age}),d3.max(sampleData,function(d){ return d.age})])
+    .range([465,10]);
+    
+  // radius
+  r = d3.scale.linear()
+    .domain([0,d3.max(sampleData,function(d){ return d.fare})])
+    .range([5,10]);
+  
+      
+  // x position
+    x = d3.scale.linear()
+      .domain([0,data.length-1])
+      .range([60,440]);
+      
+    var scatter = d3.select(".chart").selectAll("circle")
+      .data(data);
+    
+  // make marks
+    scatter.enter().append("circle")
+      .attr("fill-opacity",0.85)
+      .attr("r",function(d){ return 5;})
+      .attr("stroke-width","0px")
+      .append("svg:title")
+        .text(function(d){ return d.name;});
+    
+     scatter
+      .attr("cx",function(d,i){ return x(i); })
+      .attr("cy",function(d){ return y(d.age);});
+
+}
+
+makeChart(sampleData);
+
+</script>
+</body>
+</html>

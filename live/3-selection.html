@@ -1,0 +1,148 @@
+<html>
+
+<meta charset="utf-8" />
+<head>
+<title>D3 Example</title>
+<style>
+h1 { 
+     font-family: sans-serif;
+     text-align: center;
+}
+
+svg {
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     border: 1px solid black;
+}
+
+
+</style>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+<h1>D3 Example</h1>
+<svg class="chart"></svg>
+<script>
+var chartWidth = 500;
+var chartHeight = 500;
+
+/********
+ * Data *
+ ********/
+
+var sampleData = [
+            {
+            "pclass": 1,
+            "survived": 1,
+            "name": "Allen, Miss. Elisabeth Walton",
+            "sex": "female",
+            "age": 29,
+            "sibsp": 0,
+            "parch": 0,
+            "ticket": 24160,
+            "fare": 211.3375,
+            "cabin": "B5",
+            "embarked": "S",
+            "boat": 2,
+            "body": 0,
+            "home.dest": "St Louis, MO"
+            },
+            {
+            "pclass": 1,
+            "survived": 1,
+            "name": "Allison, Master. Hudson Trevor",
+            "sex": "male",
+            "age": 0.92,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 11,
+            "body": 0,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            },
+            {
+            "pclass": 1,
+            "survived": 0,
+            "name": "Allison, Miss. Helen Loraine",
+            "sex": "female",
+            "age": 2,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 0,
+            "body": 0,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            },
+            {
+            "pclass": 1,
+            "survived": 0,
+            "name": "Allison, Mr. Hudson Joshua Creighton",
+            "sex": "male",
+            "age": 30,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 0,
+            "body": 135,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            },
+            {
+            "pclass": 1,
+            "survived": 0,
+            "name": "Allison, Mrs. Hudson J C (Bessie Waldo Daniels)",
+            "sex": "female",
+            "age": 25,
+            "sibsp": 1,
+            "parch": 2,
+            "ticket": 113781,
+            "fare": 151.55,
+            "cabin": "C22 C26",
+            "embarked": "S",
+            "boat": 0,
+            "body": 0,
+            "home.dest": "Montreal, PQ / Chesterville, ON"
+            }
+            ];
+
+/**************
+ * Make Chart *
+ **************/
+
+function makeChart(data){
+  
+  var canvas = d3.select(".chart")
+  .attr("width",chartWidth)
+  .attr("height",chartHeight);
+
+      
+  var scatter = d3.select(".chart");
+  
+  // make marks
+
+  for(var i in sampleData){
+    scatter.append("circle")
+      .attr("r",5)
+      .attr("cx",(380*i/sampleData.length)+ 60)
+      .attr("cy",465-((sampleData[i].age-2.5)*(430/27.5)))
+      .append("svg:title")
+            .text(sampleData[i].name);
+  }
+
+}
+
+makeChart(sampleData);
+
+</script>
+</body>
+</html>
