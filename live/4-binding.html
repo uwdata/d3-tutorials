@@ -128,8 +128,8 @@ var sampleData = [
 function makeChart(data){
   
   var canvas = d3.select(".chart")
-  .attr("width",chartWidth)
-  .attr("height",chartHeight);
+  .style("width",chartWidth)
+  .style("height",chartHeight);
 
       
   var scatter = d3.select(".chart").selectAll("circle")

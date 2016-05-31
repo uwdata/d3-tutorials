@@ -128,8 +128,8 @@ var x,y,c,s,r;
 function makeChart(data){
   
   var canvas = d3.select(".chart")
-  .attr("width",chartWidth)
-  .attr("height",chartHeight);
+  .style("width",chartWidth)
+  .style("height",chartHeight);
 
   // y position
   y = d3.scale.linear()

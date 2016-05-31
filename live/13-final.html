@@ -118,8 +118,8 @@ function makeChart(data){
     .range([5,50]);
   
   var canvas = d3.select(".chart")
-      .attr("width",chartWidth)
-      .attr("height",chartHeight);
+      .style("width",chartWidth)
+      .style("height",chartHeight);
       
   update(data);
   
