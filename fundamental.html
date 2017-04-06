@@ -67,7 +67,11 @@
         <br/>
         <p>
           <small>
-            A tutorial by <a href="http://homes.cs.washington.edu/~domoritz/">Dominik Moritz</a> (<a href="http://twitter.com/domoritz">@domoritz</a>) and <a href="http://kanitw.yellowpigz.com/">Kanit "Ham" Wongsuphasawat</a> (<a href="http://twitter.com/kanitw">@kanitw</a>)
+            A tutorial by
+            <a href="http://kanitw.yellowpigz.com/">Kanit "Ham" Wongsuphasawat</a> (<a href="http://twitter.com/kanitw">@kanitw</a>),
+            <a href="https://homes.cs.washington.edu/~jhoffs/#CurriculumVitae">Jane Hoffswell</a>,
+            and
+            <a href="http://homes.cs.washington.edu/~domoritz/">Dominik Moritz</a> (<a href="http://twitter.com/domoritz">@domoritz</a>)
           </small>
         </p>
         <p>
@@ -388,9 +392,20 @@ nav {
               </code>
             </pre></div>
           </p>
+          <p class="see-also"><small><a href="http://compass-style.org/">Compass</a> is a collection of reusable mixins for Sass.</small></p>
           <p class="see-also"><small><a href="http://lesscss.org/">Less</a> is a another option.</small></p>
         </section>
         <section>
+          <h3>Advanced CSS</h3>
+          <ul>
+            <li>
+              CSS <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox</a> and <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">grid</a> can be very useful for creating page layout.
+            </li>
+            <li> To make advanced CSS work with older browser, you can easily add <a href="https://github.com/postcss/autoprefixer">autoprefixer</a> if you use a build system such as <a href="https://github.com/postcss/autoprefixer#webpack">Webpack</a>.
+            </li>
+          </ul>
+        </section>
+        <!-- <section>
           <h3><a href="http://compass-style.org/">Compass</a>
           </h3>
           <h4>a collection of reusable mixins for designers</h4>
@@ -412,7 +427,7 @@ nav {
   }
 }
           </code></pre>
-        </section>
+        </section> -->
         <section>
           <h3>CSS: Learn more!</h3>
           <p>
@@ -587,8 +602,18 @@ nav {
 * C style syntax but got inspiration from Functional programming
   * `for`, `while`, `continue`, `break`, `if`/`else`, `switch` are similar to C
   * operators (`+`,`-`,`*`,`/`,`%`) are also similar (except `==`,`!=`,`||`)
-        </section>
+  * include function operations such as `map`, `reduce`, `forEach`.
 
+        </section>
+        <section data-markdown>
+### Note
+
+* Javascript world is [moving extremely fast](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4) with new standards and tools introduced all the time.
+  * Javascript Next include versions of new syntax release annually (ES2015, ES2016, and ES2017).  To use these new syntax, take a look at [Babel](https://babeljs.io/).
+  * [Typescript](https://www.typescriptlang.org/) is a version of Javascript with static typing, built by Microsoft.
+* For this tutorial, we will only cover classic Javascript (ES5).
+  * See our [wiki](https://github.com/uwdata/d3-tutorials/wiki) for more resources.
+        </section>
         <section>
           <h3>Client-side Javascript: Inline/Include</h3>
           <p>Inline</p>
@@ -615,7 +640,7 @@ nav {
                 <code>null</code>
               </li>
               <li>
-                <code>undefined</code>
+                <code>undefined</code>* - Yes. <code>undefined</code> is not <code>null</code>!
               </li>
               <li>
                 <code>Objects</code>
@@ -659,7 +684,7 @@ y // "String"
           <h3>Control Flow</h3>
           <p>C-Style `for`, `while`, `continue`, `break`, `if`/`else`, `switch/case`</p>
           <pre><code class="javascript" data-trim>
-for(i=0; i<10; i++){
+for (i=0; i<10; i++) {
   if (condition) {
       statement_1_runs_if_condition_is_true();
       break;
@@ -715,7 +740,7 @@ microsoft.getCity = function(){ return "Redmond";};
           <pre><code class="javascript" data-trim>
 var obj = {a:1, b:2, c:3}, key;
 Object.prototype.crazy = 4;
-for(key in obj){
+for (key in obj) {
   if(obj.hasOwnProperty(key)){ //avoid the inherited obj.crazy=4
     console.log(key, obj[key]); // "a, 1" "b, 2", "c, 3"
   }
@@ -781,7 +806,7 @@ g(foo) // 3
         <section>
           <h3>Scope</h3>
           <ul>
-            <li>Javascript has function level scope, not block level scope.</li>
+            <li>Javascript has function level scope, not block level scope*.</li>
             <li>The inner function full access to all the variables and functions defined inside the outer function.  But the converse is not true.</li>
           </ul>
           <pre><code class="javascript" data-trim>
@@ -797,11 +822,11 @@ var myPet = pet("Vivie");
 myPet();                        // Returns "Vivie"
 console.log(name);              // "Andy"
           </code></pre>
-
+          <p class="see-also"><small>*ES2016 and TypeScript include block-level scoping.</small></p>
         </section>
         <section>
           <h3>Scope</h3>
-          <p>Javascript has function level scope, <b>not block level scope</b>.</p>
+          <p>Javascript has function level scope, <b>not block level scope*</b>.</p>
           <pre><code class="javascript" data-trim>
 var x = 1;
 {
@@ -809,6 +834,7 @@ var x = 1;
 }
 alert(x); // outputs 2
           </code></pre>
+          <p class="see-also"><small>*ES2016 and TypeScript include block-level scoping.</small></p>
         </section>
         <section>
           <h3>Scope: Hoisting</h3>
@@ -890,7 +916,7 @@ for ( var i = 0; i < elems.length; i++ ) {
 
 })(); // execute the function immediately
           </code></pre>
-          <p><small>For public namespace, use nested objects. See <a href="https://github.com/mbostock/d3/blob/master/d3.js">d3.js</a>, for example.</small></p>
+          <!-- <p><small>For public namespace, use nested objects. See <a href="https://github.com/mbostock/d3/blob/master/d3.js">d3.js</a>, for example.</small></p> -->
         </section>
         <section>
           <h3><code>this</code></h3>
@@ -1140,7 +1166,7 @@ JSON.parse('{"a":function(){return 'a';}}'); // SyntaxError: Unexpected identifi
 * *[jQuery](http://jquery.com/)* – easy DOM element selections, traversal and manipulation.
   * However, less useful for visualization since d3 offers similar features
 
-* [MVC](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) / MVW / * Frameworks: [Backbone.js](http://backbonejs.org), [Angular.js](http://angularjs.org), [Meteor.js](http://meteor.com), [React.js](https://facebook.github.io/react/)
+* Frameworks: [React.js](https://facebook.github.io/react/), [Angular.js](http://angularjs.org) are useful for developing applications (but maybe an overkill for projects in this class.)
         </section>
         <section>
           <h3>Javascript: Learn More</h3>
@@ -1161,15 +1187,15 @@ JSON.parse('{"a":function(){return 'a';}}'); // SyntaxError: Unexpected identifi
             <li>Learn to use the <a href="https://developer.mozilla.org/en-US/docs/Tools">Firefox developer tools</a> or
               <a href="http://jtaby.com/blog/2012/04/23/modern-web-development-part-1">the Webkit Inspector</a>
             </li>
-            <li>Good Text Editor GUI? – <a href="http://atom.io">Atom</a> or <a href="http://sublimetext.com">Sublime Text</a>
+            <li>Good Text Editor GUI? – <a href="https://code.visualstudio.com/">Visual Studio Code</a> or <a href="http://sublimetext.com">Sublime Text</a>
               <ul>
                 <li>Also use <a href="http://emmet.io">Emmet</a> for faster HTML authoring</li>
               </ul>
             </li>
-            <li>Use <a href="http://www.jshint.com/">JSHint</a> – <a href="http://www.tungbb.info/install-jshint-for-sublime-text-3">Sublime Plugin</a></li>
-            <li>Reduce the gulf of execution and evaluation with <a href="http://livereload.com">LiveReload</a></li>
+            <li>Use a Linter (e.g., ESLint, TSLint)</li>
+            <li>Reduce the gulf of execution and evaluation with <a href="http://livereload.com">LiveReload</a> or other similar tools.</li>
             <li>Like IDE and willing to pay (unless you are a student)? <a href="http://www.jetbrains.com/webstorm/">Webstorm</a> is a good option.</li>
-            <li>Scaffolding Tool – <a href="http://yeoman.io/">yeoman</a> (See Paul Irish's <a href="http://www.youtube.com/watch?v=vDbbz-BdyYc">talk</a>)</li>
+            <!-- <li>Scaffolding Tool – <a href="http://yeoman.io/">yeoman</a> (See Paul Irish's <a href="http://www.youtube.com/watch?v=vDbbz-BdyYc">talk</a>)</li> -->
           </ul>
         </section>
       </section>
