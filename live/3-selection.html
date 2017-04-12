@@ -5,19 +5,19 @@
 <title>D3 Example</title>
 <style>
 h1 { 
-     font-family: sans-serif;
-     text-align: center;
+  font-family: sans-serif;
+  text-align: center;
 }
 
 svg {
-     display: block;
-     margin-left: auto;
-     margin-right: auto;
-     border: 1px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
 }
 
 </style>
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -122,8 +122,8 @@ var sampleData = [
 function makeChart(data){
   
   var canvas = d3.select(".chart")
-  .style("width",chartWidth)
-  .style("height",chartHeight);
+      .style("width",chartWidth)
+      .style("height",chartHeight);
 
       
   var scatter = d3.select(".chart");
@@ -132,11 +132,11 @@ function makeChart(data){
 
   for(var i in sampleData){
     scatter.append("circle")
-      .attr("r",5)
-      .attr("cx",(380*i/sampleData.length)+ 60)
-      .attr("cy",465-((sampleData[i].age-2.5)*(430/27.5)))
+        .attr("r",5)
+        .attr("cx",(380*i/sampleData.length)+ 60)
+        .attr("cy",465-((sampleData[i].age-2.5)*(430/27.5)))
       .append("svg:title")
-            .text(sampleData[i].name);
+        .text(sampleData[i].name);
   }
 
 }

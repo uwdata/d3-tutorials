@@ -5,37 +5,26 @@
 <title>D3 Example</title>
 <style>
 h1 { 
-     font-family: sans-serif;
-     text-align: center;
+  font-family: sans-serif;
+  text-align: center;
 }
 
 svg {
-     display: block;
-     margin-left: auto;
-     margin-right: auto;
-     border: 1px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
 }
 
 svg text {
   font-size: 11px;
   font-family: sans-serif;
   text-anchor: middle;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: black;
-  shape-rendering: crispEdges;
-}
-
-.axis text {
-  font-family: sans-serif;
-  font-size: 10px;
+  fill: black;
 }
 
 </style>
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -59,20 +48,20 @@ var allData;
 var index = 0;
 
 d3.csv("titanic passenger list.csv",function(row,i){
-       return {
-         name: row.name,
-         survived: (row.survived==1) ? "Yes": "No",
-         sex: row.sex,
-         age: +row.age,
-         fare: +row.fare,
-       };
+  return {
+    name: row.name,
+    survived: (row.survived==1) ? "Yes": "No",
+    sex: row.sex,
+    age: +row.age,
+    fare: +row.fare,
+  };
 }, function(error,rows){
-       if(error){
-         console.log(error);
-       }
-       rows.sort(function(a,b) { return (a.name).localeCompare(b.name);});
-       allData = rows;
-       makeChart(rows.slice(index,index+10));
+  if(error){
+    console.log(error);
+  }
+  rows.sort(function(a,b) { return (a.name).localeCompare(b.name); });
+  allData = rows;
+  makeChart(rows.slice(index,index+10));
 });
 
 /**********
@@ -94,84 +83,97 @@ var yAxis;
 
 function makeChart(data){
   
-  var canvas = d3.select(".chart")
-  .style("width",chartWidth)
-  .style("height",chartHeight);
-
   // y position
-  y = d3.scale.linear()
-    .domain([d3.min(allData,function(d){ return d.age}),d3.max(allData,function(d){ return d.age})])
-    .range([465,10]);
+  y = d3.scaleLinear()
+      .domain(d3.extent(allData,function(d){ return d.age; }))
+      .range([465,10]);
+
+  // x position
+  x = d3.scaleLinear()
+      .domain([0,data.length-1])
+      .range([60,440]);
   
   // color
-  c = d3.scale.ordinal()
-    .domain(["male","female"])
-    .range(["#a6cee3","#fb9a99"]);
-  
+  c = d3.scaleOrdinal()
+      .domain(["male","female"])
+      .range(["#a6cee3","#fb9a99"]);
+    
   // stroke
-  s = d3.scale.ordinal()
-    .domain(["No","Yes"])
-    .range(["#e31a1c","#1f78b4"]);
+  s = d3.scaleOrdinal()
+      .domain(["No","Yes"])
+      .range(["#e31a1c","#1f78b4"]);
   
   // radius
-  r = d3.scale.linear()
-    .domain([0,d3.max(allData,function(d){ return d.fare})])
-    .range([5,50]);
+  r = d3.scaleLinear()
+      .domain([0,d3.max(allData,function(d){ return d.fare; })])
+      .range([5,50]);
   
-      
-  // x position
-  x = d3.scale.linear()
-    .domain([0,data.length-1])
-    .range([35,490]);
-    
+  var canvas = d3.select(".chart")
+      .style("width",chartWidth)
+      .style("height",chartHeight);
+
   var scatter = d3.select(".chart").selectAll("circle")
-    .data(data);
+      .data(data);
   
-  // make marks
-  scatter.enter().append("circle")
-    .attr("fill-opacity",0.85)
-    .attr("r",function(d){ return 5;})
-    .attr("stroke-width","0px")
-    .on("mouseover", function(d){ d3.select(this).transition().attr("stroke-width", "5px").attr("r", r(d.fare));})
-    .on("mouseout", function(){ d3.select(this).transition().delay(1000).attr("stroke-width","0px").attr("r",5);})
-    .append("svg:title")
-      .text(function(d){ return d.name;});
+  //ENTER
+  var enter = scatter.enter().append("circle")
+      .attr("fill-opacity",0.85)
+      .attr("r",function(d){ return 5;})
+      .attr("stroke-width","0px")
+    .on("mouseover", function(d){ 
+      d3.select(this).transition()
+          .attr("stroke-width", "5px")
+          .attr("r", r(d.fare));
+    })
+    .on("mouseout", function(){ 
+      d3.select(this).transition()
+          .delay(1000)
+          .attr("stroke-width","0px")
+          .attr("r",5);
+    });
+
+  // Add a title to the point (on mouseover)
+  enter.append("svg:title")
+      .text(function(d){ return d.name; });
+    
+  //ENTER + UPDATE
+  enter.merge(scatter).transition().duration(1000)
+      .attr("cx",function(d,i){ return x(i); })
+      .attr("cy",function(d){ return y(d.age);})
+      .attr("fill",function(d){ return c(d.sex); })
+      .attr("stroke",function(d){ return s(d.survived); });
   
-  scatter.transition().duration(1000)
-    .attr("cx",function(d,i){ return x(i); })
-    .attr("cy",function(d){ return y(d.age);})
-    .attr("fill",function(d){ return c(d.sex)})
-    .attr("stroke",function(d){ return s(d.survived)});
+  xAxis = d3.axisBottom()
+      .scale(x)
+      .ticks(0);
   
-  xAxis = d3.svg.axis()
-    .scale(x)
-    .ticks(0)
-    .orient("bottom");
+  yAxis = d3.axisLeft()
+      .scale(y);
   
-  yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
+  var yAxisGroup = canvas.append("g")
+      .attr("class","axis")
+      .attr("transform","translate(25,0)")
+      .call(yAxis);
+
+  yAxisGroup.selectAll("text")
+      .attr("transform", "translate(-5,0)");
+  
+  yAxisGroup.append("text")
+      .text("Passenger Age")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 15)
+      .attr("dx", -10)
+      .style("text-anchor", "end");
   
   canvas.append("g")
-    .attr("class","axis")
-    .attr("transform","translate(25,0)")
-    .call(yAxis)
-  .append("text")
-    .text("Passenger Age")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 15)
-    .attr("dx", -10)
-    .style("text-anchor", "end");
-  
-  canvas.append("g")
-    .attr("class","axis")
-    .attr("transform","translate(0,"+(chartHeight-25)+")")
-    .call(xAxis)
-  .append("text")
-    .text("Passengers")
-    .attr("x", chartHeight-15)
-    .attr("dy", 12)
-    .style("text-anchor", "end");
+      .attr("class","axis")
+      .attr("transform","translate(0,"+(chartHeight-25)+")")
+      .call(xAxis)
+    .append("text")
+      .text("Passengers")
+      .attr("x", chartHeight-65)
+      .attr("dy", 12)
+      .style("text-anchor", "end");
 
   genderLegend();
   survivedLegend();
@@ -187,56 +189,61 @@ function genderLegend() {
   var legend = d3.select(".chart").selectAll(".legend")
       .data(c.domain().slice().reverse())
     .enter().append("g")
-      .attr("class", "legend")
-      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+      .attr("class","legend")
+      .attr("transform",function(d,i) { 
+        return "translate(0," + i * 20 + ")"; 
+      });
 
   legend.append("rect")
-      .attr("x", 475)
-      .attr("y", 9)
-      .attr("width", 18)
-      .attr("height", 18)
-      .style("fill", c);
+      .attr("x",475)
+      .attr("y",9)
+      .attr("width",18)
+      .attr("height",18)
+      .style("fill",c);
 
   legend.append("text")
-      .attr("x", 465)
-      .attr("y", 18)
-      .attr("dy", ".35em")
-      .style("text-anchor", "end")
-      .text(function(d) { return d.charAt(0).toUpperCase()+d.slice(1); });
+      .attr("x",465)
+      .attr("y",18)
+      .attr("dy",".35em")
+      .style("text-anchor","end")
+      .text(function(d) { 
+        return d.charAt(0).toUpperCase()+d.slice(1); 
+      });
 }
 
 function survivedLegend() {
 
   var group = d3.select(".chart").append("g")
-      .attr("class", "legend-group");
+      .attr("class","legend-group");
 
   group.append("text")
       .text("Passenger survived?")
-      .attr("x", 493)
-      .attr("y", 59)
-      .style("font-weight", "bold")
-      .style("text-anchor", "end");
+      .attr("x",493)
+      .attr("y",59)
+      .style("font-weight","bold")
+      .style("text-anchor","end");
 
   var legend = group.selectAll(".legend")
       .data(s.domain().slice().reverse())
     .enter().append("g")
-      .attr("class", "legend")
-      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+      .attr("class","legend")
+      .attr("transform",function(d,i) { 
+        return "translate(0," + i * 20 + ")"; 
+      });
 
   legend.append("rect")
-      .attr("x", 475)
-      .attr("y", 65)
-      .attr("width", 18)
-      .attr("height", 18)
-      .style("fill", s);
+      .attr("x",475)
+      .attr("y",65)
+      .attr("width",18)
+      .attr("height",18)
+      .style("fill",s);
 
   legend.append("text")
-      .attr("x", 465)
-      .attr("y", 73)
-      .attr("dy", ".35em")
-      .style("text-anchor", "end")
+      .attr("x",465)
+      .attr("y",73)
+      .attr("dy",".35em")
+      .style("text-anchor","end")
       .text(function(d) { return d; });
-
 }
 
 </script>

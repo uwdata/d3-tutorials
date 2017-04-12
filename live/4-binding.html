@@ -5,25 +5,26 @@
 <title>D3 Example</title>
 <style>
 h1 { 
-     font-family: sans-serif;
-     text-align: center;
+  font-family: sans-serif;
+  text-align: center;
 }
 
 svg {
-     display: block;
-     margin-left: auto;
-     margin-right: auto;
-     border: 1px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
 }
 
 svg text {
   font-size: 11px;
   font-family: sans-serif;
   text-anchor: middle;
+  fill: black;
 }
 
 </style>
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -128,24 +129,27 @@ var sampleData = [
 function makeChart(data){
   
   var canvas = d3.select(".chart")
-  .style("width",chartWidth)
-  .style("height",chartHeight);
+      .style("width",chartWidth)
+      .style("height",chartHeight);
 
       
   var scatter = d3.select(".chart").selectAll("circle")
       .data(data);
     
-  // make marks
-    scatter.enter().append("circle")
+  //ENTER
+  var enter = scatter.enter().append("circle")
       .attr("fill-opacity",0.85)
-      .attr("r",function(d){ return 5;})
-      .attr("stroke-width","0px")
-      .append("svg:title")
-        .text(function(d){ return d.name;});
+      .attr("r",5)
+      .attr("stroke-width","0px");
+  
+  // Add a title to the point (on mouseover)
+  enter.append("svg:title")
+      .text(function(d){ return d.name; });
     
-     scatter
-     .attr("cx",function(d,i){ return (380*i/sampleData.length)+ 60; })
-     .attr("cy",function(d){ return 465-((d.age-2.5)*(430/27.5));});
+  //ENTER + UPDATE
+  enter.merge(scatter)
+      .attr("cx",function(d,i){ return (380*i/sampleData.length)+ 60; })
+      .attr("cy",function(d){ return 465-((d.age-2.5)*(430/27.5)); });
 
 }
 

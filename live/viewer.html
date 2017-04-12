@@ -6,7 +6,7 @@
 <style>
 iframe {
   width:100%;
-  height: 120%;
+  height: 95%;
   position: absolute;
   margin-left: -25%;
   border: none; 
@@ -18,40 +18,116 @@ iframe {
 
 .right {
   position: absolute;
-  height: 70%;
+  height: 75%;
   width: 40%;
   left: 55%;
   top: 2em;
-  border: 1px solid black;
+  margin-top: 42px;
   overflow: scroll;
 }
 
+.header {
+  height: 5%;
+  width: 100%;
+}
+
+.contents {
+  border: 1px solid darkgray;
+  overflow: hidden;
+  height: 88%;
+}
+
+.contents span {
+  height: 100%;
+}
+
+.tab {
+  display: inline-block;
+  padding: 4px;
+  min-width: 50px;
+  border: 1px solid darkgray;
+  background: #aaa;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+.tab.selected {
+  border-bottom: 1px solid #F0F0F0;
+  background: #F0F0F0;
+  color: black;
+}
+
 .nav {
-  position: absolute;
-  width: 40%;
+  padding-top: 5px;
   left: 55%;
-  top: 80%;
   text-align: center;
 }
+
+.contents div {
+  background-color: #F0F0F0;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.contents h1 {
+  margin: 5px;
+  font-family: sans-serif;
+  font-size: 16pt;
+}
+
+.contents .bold {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.contents .emph {
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+.contents p {
+  font-family: sans-serif;
+  margin: 5px;
+}
+
+.contents .hidden {
+  font-family: sans-serif;
+  margin: 5px;
+  color: #F0F0F0;
+}
+
+.contents p span {
+  font-family: monospace;
+}
+
+img {
+  width: 100%;
+}
+
 </style>
 
+<script src="info.js"></script>
 <script>
+
 var names = 
 [
-"index.html",
-"1-begin.html",
-"2-svg.html",
-"3-selection.html",
-"4-binding.html",
-"5-scales1.html",
-"6-scales2.html",
-"7-axes.html",
-"8-legends.html",
-"9-events.html",
-"10-transitions.html",
-"11-csv.html",
-"12-exit.html",
-"13-final.html"
+"index",
+"1-begin",
+"2-svg",
+"3-selection",
+"4-binding",
+"5-scales1",
+"6-scales2",
+"7-axes",
+"8-legends",
+"9-events",
+"10-transitions",
+"11-csv",
+"12-exit",
+"13-final"
 ];
 
 var index = 0;
@@ -73,10 +149,28 @@ function right(){
   fillContainers();
 }
 
+function showCode(){
+  document.getElementById("right").style.display = "inline-block";
+  document.getElementById("infobox").style.display = "none";
+
+  document.getElementById("code").className = "tab selected";
+  document.getElementById("info").className = "tab";
+}
+
+function showInfo(){
+  document.getElementById("right").style.display = "none";
+  document.getElementById("infobox").style.display = "inline-block";
+
+  document.getElementById("code").className = "tab";
+  document.getElementById("info").className = "tab selected";
+}
+
 function fillContainers(){
-  document.getElementById("left").src=names[index];
+  document.getElementById("left").src=names[index]+".html";
   document.getElementById("leftBtn").title = index==0 ? names[names.length-1] : names[index-1];
   document.getElementById("rightBtn").title = index==names.length-1 ? names[0] : names[index+1]; 
+
+  document.getElementById("infobox").innerHTML=infoText[names[index]];
 }
 
 function loadSrc(){
@@ -84,9 +178,11 @@ function loadSrc(){
   contents = contents.replaceAll("<","&lt;");
   contents = contents.replaceAll(">","&gt;");
   document.getElementById("right").innerHTML = "<pre><code>"+contents+"</code></pre>";
-  document.getElementById("right").src="view-source:"+names[index];
-  document.getElementById("index").innerHTML = "<a href="+names[index]+" target=\"_blank\">"+names[index]+"</a>";
+  document.getElementById("right").src="view-source:"+names[index]+".html";
+  document.getElementById("index").innerHTML = "<a href="+names[index]+".html target=\"_blank\">"+names[index]+".html</a>";
   hljs.highlightBlock(document.getElementById("right"));
+
+  document.getElementById("infobox").innerHTML=infoText[names[index]];
 }
 
 </script>
@@ -94,11 +190,21 @@ function loadSrc(){
 
 <body>
 <iframe id="left" class="left" onload="loadSrc()" src="index.html"></iframe>
-<span id="right" class="right"></span>
-<div class="nav">
-<button id="leftBtn" onclick="left()" type="button">&lt;&lt;</button><span id="index" class="index">index.html</span>
-<button id="rightBtn" onclick="right()" type="button">&gt;&gt;</button>
+<div class="right">
+  <div class="header">
+    <span id="code" class="tab selected" onclick="showCode()">Code</span>
+    <span id="info" class="tab" onclick="showInfo()">Info</span>
+  </div>
+  <div class="contents">
+    <span id="right"></span>
+    <div id="infobox"></div>
+  </div>
+  <div class="nav">
+    <button id="leftBtn" onclick="left()" type="button">&lt;&lt;</button><span id="index" class="index">index.html</span>
+    <button id="rightBtn" onclick="right()" type="button">&gt;&gt;</button>
+  </div>
 </div>
+
 
 </body>
 

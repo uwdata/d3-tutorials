@@ -5,37 +5,26 @@
 <title>D3 Example</title>
 <style>
 h1 { 
-     font-family: sans-serif;
-     text-align: center;
+  font-family: sans-serif;
+  text-align: center;
 }
 
 svg {
-     display: block;
-     margin-left: auto;
-     margin-right: auto;
-     border: 1px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
 }
 
 svg text {
   font-size: 11px;
   font-family: sans-serif;
   text-anchor: middle;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: black;
-  shape-rendering: crispEdges;
-}
-
-.axis text {
-  font-family: sans-serif;
-  font-size: 10px;
+  fill: black;
 }
 
 </style>
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -152,72 +141,75 @@ var yAxis;
  **************/
 
 function makeChart(data){
-  
-  var canvas = d3.select(".chart")
-  .style("width",chartWidth)
-  .style("height",chartHeight);
 
   // y position
-  y = d3.scale.linear()
-    .domain([d3.min(sampleData,function(d){ return d.age}),d3.max(sampleData,function(d){ return d.age})])
-    .range([465,10]);
+  y = d3.scaleLinear()
+      .domain(d3.extent(sampleData,function(d){ return d.age; }))
+      .range([465,10]);
+
+  // x position
+  x = d3.scaleLinear()
+      .domain([0,data.length-1])
+      .range([60,440]);
   
   // color
-  c = d3.scale.ordinal()
-    .domain(["male","female"])
-    .range(["#a6cee3","#fb9a99"]);
+  c = d3.scaleOrdinal()
+      .domain(["male","female"])
+      .range(["#a6cee3","#fb9a99"]);
   
   // stroke
-  s = d3.scale.ordinal()
-    .domain(["0","1"])
-    .range(["#e31a1c","#1f78b4"]);
+  s = d3.scaleOrdinal()
+      .domain(["0","1"])
+      .range(["#e31a1c","#1f78b4"]);
   
   // radius
-  r = d3.scale.linear()
-    .domain([0,d3.max(sampleData,function(d){ return d.fare})])
-    .range([5,10]);
+  r = d3.scaleLinear()
+      .domain([0,d3.max(sampleData,function(d){ return d.fare; })])
+      .range([5,10]);
   
-  
-  // x position
-  x = d3.scale.linear()
-    .domain([0,data.length-1])
-    .range([60,440]);
+  var canvas = d3.select(".chart")
+      .style("width",chartWidth)
+      .style("height",chartHeight);
     
   var scatter = d3.select(".chart").selectAll("circle")
-    .data(data);
+      .data(data);
   
-  // make marks
-  scatter.enter().append("circle")
-    .attr("fill-opacity",0.85)
-    .attr("r",function(d){ return r(d.fare);})
-    .attr("stroke-width","0px")
-    .append("svg:title")
-      .text(function(d){ return d.name;});
+  //ENTER
+  var enter = scatter.enter().append("circle")
+      .attr("fill-opacity",0.85)
+      .attr("r",function(d){ return 5; })
+      .attr("stroke-width","0px");
   
-   scatter
-    .attr("cx",function(d,i){ return x(i); })
-    .attr("cy",function(d){ return y(d.age);})
-    .attr("fill",function(d){ return c(d.sex)})
-    .attr("stroke",function(d){ return s(d.survived)});
+  // Add a title to the point (on mouseover)
+  enter.append("svg:title")
+      .text(function(d){ return d.name; });
+    
+  //ENTER + UPDATE
+  enter.merge(scatter)
+      .attr("cx",function(d,i){ return x(i); })
+      .attr("cy",function(d){ return y(d.age); })
+      .attr("fill",function(d){ return c(d.sex); })
+      .attr("stroke",function(d){ return s(d.survived); });
   
-  xAxis = d3.svg.axis()
-    .scale(x)
-    .ticks(0)
-    .orient("bottom");
+  xAxis = d3.axisBottom()
+      .scale(x)
+      .ticks(0);
   
-  yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
+  yAxis = d3.axisLeft()
+      .scale(y);
+  
+  var yAxisGroup = canvas.append("g")
+      .attr("class","axis")
+      .attr("transform","translate(25,0)")
+      .call(yAxis);
+  
+  yAxisGroup.selectAll("text")
+      .attr("transform", "translate(-5,0)");
   
   canvas.append("g")
-    .attr("class","axis")
-    .attr("transform","translate(25,0)")
-    .call(yAxis);
-  
-  canvas.append("g")
-    .attr("class","axis")
-    .attr("transform","translate(0,"+(chartHeight-25)+")")
-    .call(xAxis);
+      .attr("class","axis")
+      .attr("transform","translate(0,"+(chartHeight-25)+")")
+      .call(xAxis);
 
 }
 
