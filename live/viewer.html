@@ -9,7 +9,7 @@ iframe {
   height: 95%;
   position: absolute;
   margin-left: -25%;
-  border: none; 
+  border: none;
 }
 
 .left {
@@ -116,7 +116,7 @@ img {
 <script src="info.js"></script>
 <script>
 
-var names = 
+var names =
 [
 "index",
 "1-begin",
@@ -172,7 +172,7 @@ function showInfo(){
 function fillContainers(){
   document.getElementById("left").src=names[index]+".html";
   document.getElementById("leftBtn").title = index==0 ? names[names.length-1] : names[index-1];
-  document.getElementById("rightBtn").title = index==names.length-1 ? names[0] : names[index+1]; 
+  document.getElementById("rightBtn").title = index==names.length-1 ? names[0] : names[index+1];
 
   document.getElementById("infobox").innerHTML=infoText[names[index]];
 }

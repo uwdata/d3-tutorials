@@ -4,7 +4,7 @@
 <head>
 <title>D3 Example</title>
 <style>
-h1 { 
+h1 {
   font-family: sans-serif;
   text-align: center;
 }
@@ -24,7 +24,7 @@ svg text {
 }
 
 </style>
-<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -39,7 +39,7 @@ var chartHeight = 500;
  * Data *
  ********/
 
-var allData;
+var allData = [];
 
 /**************
  * Load Data  *
@@ -47,7 +47,7 @@ var allData;
 
 var index = 0;
 
-d3.csv("titanic passenger list.csv",function(row,i){
+d3.csv("titanic passenger list.csv", (row, i) => {
   return {
     name: row.name,
     survived: (row.survived==1) ? "Yes": "No",
@@ -56,13 +56,12 @@ d3.csv("titanic passenger list.csv",function(row,i){
     fare: +row.fare,
     key: i
   };
-},function(error,rows){
-  if(error){
-    console.log(error);
-  }
-  rows.sort(function(a,b) { return (a.name).localeCompare(b.name);});
+}).then(rows => {
+  rows.sort(function(a,b) { return (a.name).localeCompare(b.name); });
   allData = rows;
   makeChart(rows.slice(index,index+10));
+}).catch(error => {
+  console.log(error);
 });
 
 var key = function(d){ return d.key; };
@@ -90,35 +89,35 @@ function makeChart(data){
   y = d3.scaleLinear()
       .domain(d3.extent(allData,function(d){ return d.age; }))
       .range([465,10]);
-  
+
   // color
   c = d3.scaleOrdinal()
       .domain(["male","female"])
       .range(["#a6cee3","#fb9a99"]);
-    
+
   // stroke
   s = d3.scaleOrdinal()
       .domain(["No","Yes"])
       .range(["#e31a1c","#1f78b4"]);
-  
+
   // radius
   r = d3.scaleLinear()
       .domain([0,d3.max(allData,function(d){ return d.fare; })])
       .range([5,50]);
-  
+
   var canvas = d3.select(".chart")
       .style("width",chartWidth)
       .style("height",chartHeight);
-      
+
   update(data);
-  
+
   xAxis = d3.axisBottom()
       .scale(x)
       .ticks(0);
-  
+
   yAxis = d3.axisLeft()
       .scale(y);
-  
+
   var yAxisGroup = canvas.append("g")
       .attr("class","axis")
       .attr("transform","translate(25,0)")
@@ -126,14 +125,14 @@ function makeChart(data){
 
   yAxisGroup.selectAll("text")
       .attr("transform", "translate(-5,0)");
-  
+
   yAxisGroup.append("text")
       .text("Passenger Age")
       .attr("transform", "rotate(-90)")
       .attr("y", 15)
       .attr("dx", -10)
       .style("text-anchor", "end");
-  
+
   canvas.append("g")
       .attr("class","axis")
       .attr("transform","translate(0,"+(chartHeight-25)+")")
@@ -143,9 +142,9 @@ function makeChart(data){
       .attr("x", chartHeight-15)
       .attr("dy", 12)
       .style("text-anchor", "end");
-  
-  canvas.on("click",function(){ 
-    fetch(++index,index+10); 
+
+  canvas.on("click",function(){
+    dataFetch(++index,index+10);
     index=index%allData.length;
   });
 
@@ -164,8 +163,8 @@ function genderLegend() {
       .data(c.domain().slice().reverse())
     .enter().append("g")
       .attr("class","legend")
-      .attr("transform",function(d,i) { 
-        return "translate(0," + i * 20 + ")"; 
+      .attr("transform",function(d,i) {
+        return "translate(0," + i * 20 + ")";
       });
 
   legend.append("rect")
@@ -180,8 +179,8 @@ function genderLegend() {
       .attr("y",18)
       .attr("dy",".35em")
       .style("text-anchor","end")
-      .text(function(d) { 
-        return d.charAt(0).toUpperCase()+d.slice(1); 
+      .text(function(d) {
+        return d.charAt(0).toUpperCase()+d.slice(1);
       });
 }
 
@@ -201,8 +200,8 @@ function survivedLegend() {
       .data(s.domain().slice().reverse())
     .enter().append("g")
       .attr("class","legend")
-      .attr("transform",function(d,i) { 
-        return "translate(0," + i * 20 + ")"; 
+      .attr("transform",function(d,i) {
+        return "translate(0," + i * 20 + ")";
       });
 
   legend.append("rect")
@@ -225,19 +224,19 @@ function survivedLegend() {
  ***************/
 
 function update(data){
-  
+
   //BIND DATA
   var scatter = d3.select(".chart").selectAll("circle")
       .data(data,key);
-  
+
   // x position
   x = d3.scaleLinear()
       .domain([0,data.length-1])
       .range([35,490]);
-  
+
   //UPDATE
   scatter.attr("stroke-width","5px");
-  
+
   //ENTER
   var enter = scatter.enter().append("circle")
       .attr("fill-opacity",0.85)
@@ -245,12 +244,12 @@ function update(data){
       .attr("cx",function(d,i){ return x(i); })
       .attr("cy",function(d){ return y(d.age); })
       .attr("stroke",function(d){ return s(d.survived); })
-    .on("mouseover",function(d){ 
+    .on("mouseover",function(d){
       d3.select(this).transition()
         .attr("stroke-width","5px")
         .attr("r",r(d.fare));
     })
-    .on("mouseout",function(){ 
+    .on("mouseout",function(){
       d3.select(this).transition()
         .delay(1000)
         .attr("stroke-width","0px")
@@ -260,7 +259,7 @@ function update(data){
   // Add a title to the point (on mouseover)
   enter.append("svg:title")
       .text(function(d){ return d.name;});
-    
+
   //ENTER + UPDATE
   enter.merge(scatter).transition().duration(1000)
       .attr("cx",function(d,i){ return x(i); })
@@ -268,7 +267,7 @@ function update(data){
       .attr("fill",function(d){ return c(d.sex)})
       .attr("stroke",function(d){ return s(d.survived)})
       .attr("stroke-width","0px");
-  
+
   //EXIT
   scatter.exit().transition().duration(1000)
       .attr("cx",0)
@@ -276,7 +275,7 @@ function update(data){
       .remove();
 }
 
-function fetch(start,stop){
+function dataFetch(start,stop){
   if(stop<=allData.length){
     update(allData.slice(start,stop));
   }
